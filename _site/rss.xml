@@ -72,6 +72,167 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <pubDate>Sun, 07 Aug 2011 00:00:00 UT</pubDate>
     <guid>http://example.com/posts/2011-08-07-Tail Recursion.html</guid>
 </item>
+<item>
+    <title>Memoization Benchmark</title>
+    <link>http://example.com/posts/2012-11-02-MemoizationRace.html</link>
+    <description><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <title>SimpleBlog - Memoization Benchmark</title>
+        <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+        <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+
+        <link rel="alternate" type="application/rss+xml" title="SimpleBlog" href="../rss.xml"></link>
+    </head>
+    <body>
+        <h1>SimpleBlog - Memoization Benchmark</h1>
+        <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+        </div>
+
+        <h1>Memoization Benchmark</h1>
+
+<p>by <em>comatose</em> on <strong>November  2, 2012</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/memoization.html">memoization</a>.</p>
+
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="ot">{-# LANGUAGE FlexibleContexts      #-}</span>
+<span class="fu">&gt;</span> <span class="ot">{-# LANGUAGE FlexibleInstances     #-}</span>
+<span class="fu">&gt;</span> <span class="ot">{-# LANGUAGE MultiParamTypeClasses #-}</span>
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> <span class="kw">module</span> <span class="dt">Main</span> <span class="kw">where</span>
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Exception</span>
+<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Monad</span>
+<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Monad.State</span>
+<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Data.Array</span>
+<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Data.Function</span>
+<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Data.Hashable</span>
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.HashMap.Lazy</span>     <span class="kw">as</span> <span class="dt">H</span>
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.IntMap</span>           <span class="kw">as</span> <span class="dt">I</span>
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.Map</span>              <span class="kw">as</span> <span class="dt">M</span>
+<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">System.CPUTime</span>
+<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">System.Environment</span>
+<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Text.Printf</span></code></pre>
+<p>haskell은 memoization이 비교적 쉽게 가능한데, <a href="http://www.haskell.org/hoogle/">hoogle</a>과 <a href="http://holumbus.fh-wedel.de/hayoo/hayoo.html">hayoo</a>를 검색해 보니 총 4개의 package가 검색되었다.</p>
+<ol style="list-style-type: decimal">
+<li><a href="http://hackage.haskell.org/package/memoize">memoize</a></li>
+<li><a href="http://hackage.haskell.org/package/data-memocombinators">data-memocombinators</a></li>
+<li><a href="http://hackage.haskell.org/package/MemoTrie">MemoTrie</a></li>
+<li><a href="http://hackage.haskell.org/package/monad-memo">monad-memo</a></li>
+</ol>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.Function.Memoize</span> <span class="kw">as</span> <span class="dt">M1</span>
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.MemoCombinators</span>  <span class="kw">as</span> <span class="dt">M2</span>
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.MemoTrie</span>         <span class="kw">as</span> <span class="dt">M3</span>
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Control.Monad.Memo</span>    <span class="kw">as</span> <span class="dt">M4</span></code></pre>
+<p>fibonacci 수열을 대상으로 간단한 benchmark를 수행해 보았다.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="kw">instance</span> (<span class="kw">Eq</span> k, <span class="dt">Hashable</span> k) <span class="ot">=&gt;</span> <span class="dt">M4.MapLike</span> (<span class="dt">H.HashMap</span> k v) k v <span class="kw">where</span>
+<span class="fu">&gt;</span>   <span class="fu">lookup</span> <span class="fu">=</span> H.lookup
+<span class="fu">&gt;</span>   add <span class="fu">=</span> H.insert</code></pre>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fib ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+<span class="fu">&gt;</span> fib <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fib <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fib n <span class="fu">=</span> fib (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fib (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibG ::</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>) <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+<span class="fu">&gt;</span> fibG fib <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fibG fib <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fibG fib n <span class="fu">=</span> fib (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fib (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
+<p><code>figG</code>는 open recursion으로 정의되었다.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibMC ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+<span class="fu">&gt;</span> fibMC <span class="fu">=</span> M2.integral go
+<span class="fu">&gt;</span>   <span class="kw">where</span> go <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>         go <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>         go n <span class="fu">=</span> fibMC (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fibMC (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
+<p><code>figMC</code>는 MemoCombinator 사용</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibMM ::</span> (<span class="dt">M4.MapLike</span> c <span class="dt">Int</span> <span class="dt">Integer</span>) <span class="ot">=&gt;</span> c <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+<span class="fu">&gt;</span> fibMM ml <span class="fu">=</span> (<span class="ot">`M4.evalMemoState`</span> ml) <span class="fu">.</span> f
+<span class="fu">&gt;</span>   <span class="kw">where</span> f <span class="dv">0</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>         f <span class="dv">1</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>         f n <span class="fu">=</span> liftM2 (<span class="fu">+</span>) (M4.memo f (n <span class="fu">-</span> <span class="dv">1</span>)) (M4.memo f (n <span class="fu">-</span> <span class="dv">2</span>))</code></pre>
+<p><code>fibMM</code>는 monad-memo package 사용</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibST ::</span> (<span class="dt">M4.MapLike</span> c <span class="dt">Int</span> <span class="dt">Integer</span>) <span class="ot">=&gt;</span> c <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+<span class="fu">&gt;</span> fibST ml n0 <span class="fu">=</span> evalState (go n0) ml
+<span class="fu">&gt;</span>   <span class="kw">where</span> go <span class="dv">0</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>         go <span class="dv">1</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>         go n <span class="fu">=</span> <span class="kw">do</span>
+<span class="fu">&gt;</span>           memo <span class="ot">&lt;-</span> get
+<span class="fu">&gt;</span>           <span class="kw">case</span> M4.lookup n memo <span class="kw">of</span>
+<span class="fu">&gt;</span>             <span class="kw">Just</span> v <span class="ot">-&gt;</span> <span class="fu">return</span> v
+<span class="fu">&gt;</span>             <span class="kw">Nothing</span> <span class="ot">-&gt;</span> <span class="kw">do</span>
+<span class="fu">&gt;</span>               v <span class="ot">&lt;-</span> liftM2 (<span class="fu">+</span>) (go (n <span class="fu">-</span> <span class="dv">1</span>)) (go (n <span class="fu">-</span> <span class="dv">2</span>))
+<span class="fu">&gt;</span>               modify (M4.add n v)
+<span class="fu">&gt;</span>               <span class="fu">return</span> v</code></pre>
+<p><code>fibST</code>는 <code>MapLike</code> instance와 <code>State</code> monad를 이용한 memoization</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibL ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+<span class="fu">&gt;</span> fibL n0 <span class="fu">=</span> [f i <span class="fu">|</span> i <span class="ot">&lt;-</span> [<span class="dv">0</span><span class="fu">..</span>n0]] <span class="fu">!!</span> n0
+<span class="fu">&gt;</span>   <span class="kw">where</span> f <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>         f <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>         f n <span class="fu">=</span> fibL (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fibL (n <span class="fu">-</span> <span class="dv">2</span>)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span><span class="ot"> fibA ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+<span class="fu">&gt;</span> fibA n0 <span class="fu">=</span> array (<span class="dv">0</span>, n0) [(i, f i) <span class="fu">|</span> i <span class="ot">&lt;-</span> [<span class="dv">0</span><span class="fu">..</span>n0]] <span class="fu">!</span> n0
+<span class="fu">&gt;</span>   <span class="kw">where</span> f <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>         f <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>         f n <span class="fu">=</span> fibA (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fibA (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
+<p><code>fibL</code>과 <code>fibA</code>는 각각 <code>List</code>와 <code>Array</code>에 lazy-evaluation 사용</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibIt ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+<span class="fu">&gt;</span> fibIt n0 <span class="fu">|</span> n0 <span class="fu">&lt;</span> <span class="dv">2</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>          <span class="fu">|</span> <span class="fu">otherwise</span> <span class="fu">=</span> go <span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>   <span class="kw">where</span> go n a b <span class="fu">|</span> n <span class="fu">==</span> n0 <span class="fu">=</span> a <span class="fu">+</span> b
+<span class="fu">&gt;</span>                  <span class="fu">|</span> <span class="fu">otherwise</span> <span class="fu">=</span> go (n <span class="fu">+</span> <span class="dv">1</span>) (a <span class="fu">+</span> b) a</code></pre>
+<p><code>fibIt</code>는 tail-recursive iteration 구현</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> main <span class="fu">=</span> <span class="kw">do</span>
+<span class="fu">&gt;</span>   n <span class="ot">&lt;-</span> liftM (<span class="fu">read.</span> <span class="fu">head</span>) getArgs
+<span class="fu">&gt;</span>   vs <span class="ot">&lt;-</span> <span class="fu">mapM</span> (time <span class="fu">.</span> (<span class="fu">$</span>n)) [</code></pre>
+<p>Fujitsu P1620 랩탑에서 100000번째 fibonacci 수를 구하는데 걸리는 시간을 재봤다.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     M1.memoize fib   <span class="co">-- worst, same performance as fib</span></code></pre>
+<p><code>memoize</code>는 거의 사용 불가, <code>fib</code>와 거의 같은 성능을 보인다.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     M1.memoFix fibG, <span class="co">-- memoize</span></code></pre>
+<p><code>memofix</code>는 3.432s</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     fibMC, <span class="co">-- data-memocombinators</span></code></pre>
+<p><code>fibMC</code>는 6.605s</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     fix (M3.memo <span class="fu">.</span> fibG) <span class="co">--MemoTrie</span></code></pre>
+<p>이건 4.764s</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     fibMM I.empty, <span class="co">-- &quot;monad-memo&quot; using IntMap</span>
+<span class="fu">&gt;</span>     fibMM H.empty, <span class="co">-- &quot;monad-memo&quot; using HashMap</span>
+<span class="fu">&gt;</span>     fibMM M.empty, <span class="co">-- &quot;monad-memo&quot; using Map</span></code></pre>
+<p>1.252s, 1.460s, 1.492s</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     fibST I.empty, <span class="co">-- state monad using IntMap</span>
+<span class="fu">&gt;</span>     fibST H.empty, <span class="co">-- state monad using HashMap</span>
+<span class="fu">&gt;</span>     fibST M.empty, <span class="co">-- state monad using Map</span></code></pre>
+<p>1.620s, 2.012s, 2.304s</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     fibL, fibA, <span class="co">-- lazy evaluation with List and Array</span></code></pre>
+<p>이것도 사용 불가, Array를 써도 그다지 성능 향상이 없다.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     fibIt <span class="co">-- tail-recursive iteration</span></code></pre>
+<p>0.252s, 비교 불가.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     ]
+<span class="fu">&gt;</span>   end <span class="ot">&lt;-</span> getCPUTime
+<span class="fu">&gt;</span>   <span class="fu">print</span> <span class="fu">$</span> <span class="fu">all</span> (<span class="fu">==</span> <span class="fu">head</span> vs) <span class="fu">$</span> <span class="fu">tail</span> vs
+<span class="fu">&gt;</span>   printf <span class="st">&quot;%0.9f sec \n&quot;</span> ((<span class="fu">fromIntegral</span> (end <span class="fu">-</span> start)<span class="ot"> ::</span> <span class="dt">Double</span>) <span class="fu">/</span> <span class="dv">10</span><span class="fu">^</span><span class="dv">12</span>)
+<span class="fu">&gt;</span>   <span class="fu">return</span> v
+<span class="fu">&gt;</span>   start <span class="ot">&lt;-</span> getCPUTime
+<span class="fu">&gt;</span>   v <span class="ot">&lt;-</span> evaluate m
+<span class="fu">&gt;</span> time m <span class="fu">=</span> <span class="kw">do</span></code></pre>
+<p>최종 순위</p>
+<ol style="list-style-type: decimal">
+<li>0.252s, iteration</li>
+<li>1.252s, monad-memo</li>
+<li>1.620s, state monad</li>
+<li>3.432s, memoize</li>
+<li>4.764s, memo-trie</li>
+<li>6.605s, data-memocombinators</li>
+</ol>
+<p>종합적으로 고려해 볼 때 monad-memo가 memoization package 중에서 가장 좋은 성능을 보인다.</p>
+
+    </body>
+</html>
+]]></description>
+    <pubDate>Fri, 02 Nov 2012 00:00:00 UT</pubDate>
+    <guid>http://example.com/posts/2012-11-02-MemoizationRace.html</guid>
+</item>
 
     </channel> 
 </rss>
