@@ -41,7 +41,7 @@
 	</td>
       </tr>
       <tr>
-	<td width="88" background="/images/tw_left_bg.png"></td>
+	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
 	  <h1>Tail Recursion 만들기</h1>
 
@@ -82,7 +82,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <p>위 코드의 let 정의와 일치한다.</p>
 
 	</td>
-	<td width="93" align="right" background="/images/tw_right_bg.png"></td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
       </tr>
     </table>
   </body>
@@ -125,7 +125,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 	</td>
       </tr>
       <tr>
-	<td width="88" background="/images/tw_left_bg.png"></td>
+	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
 	  <h1>Memoization Benchmark</h1>
 
@@ -262,7 +262,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <p>종합적으로 고려해 볼 때 monad-memo가 memoization package 중에서 가장 좋은 성능을 보인다.</p>
 
 	</td>
-	<td width="93" align="right" background="/images/tw_right_bg.png"></td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
       </tr>
     </table>
   </body>
@@ -305,7 +305,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 	</td>
       </tr>
       <tr>
-	<td width="88" background="/images/tw_left_bg.png"></td>
+	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
 	  <h1>Hakyll과 Github로 Blog 만들기</h1>
 
@@ -318,7 +318,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <p>_site 디렉토리를 제대로 인식하기 위해 .nojekyll을 추가하고 index.html에 _site로 redirection하도록 하면 완성. markdown과 literate haskell로 작성하는게 어색하지 않지만 나쁘지 않은 것 같다.</p>
 
 	</td>
-	<td width="93" align="right" background="/images/tw_right_bg.png"></td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
       </tr>
     </table>
   </body>
