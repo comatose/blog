@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - Hakyll과 Github로 Blog 만들기</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" width="88"><img src="../images/tw_left.png"></img></td>
+	<td height="109" background="/images/tw_middle_m.png"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" background="/images/tw_middle_m.png"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" width="93"><img src="../images/tw_right.png"></img></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="center" width="709" height="114" bgcolor="white">
+	  <h1>Lambda Play - Hakyll과 Github로 Blog 만들기</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="/images/tw_left_bg.png"></td>
+	<td colspan="2" width="709" valign="top">
+	  <h1>Hakyll과 Github로 Blog 만들기</h1>
+
+<p>by <em>comatose</em> on <strong>November  3, 2012</strong></p>
+
+<p>Tagged as: <a href="../tags/hakyll.html">hakyll</a>, <a href="../tags/blog.html">blog</a>, <a href="../tags/github.html">github</a>.</p>
+
+<p><a href="http://www.github.com/">Github</a>는 일반적으로 소스저장소로 사용하지만, <a href="http://pages.github.com/">Pages</a>가 지원되면서 간단한 웹서버로 사용 가능하다. 다만, html만 지원되기 때문에, <a href="http://jekyllrb.com/">Jekyll</a>같은 static site generator도 함께 지원한다. <a href="http://jekyllrb.com/">Jekyll</a>을 써도 좋지만, haskell 기반의 <a href="http://jaspervdj.be/hakyll/">Hakyll</a>이 더 재밌을 것 같아 <a href="http://jaspervdj.be/hakyll/">Hakyll</a>을 사용해 봤다.</p>
+<p>일단 <a href="http://jaspervdj.be/hakyll/">Hakyll</a>은 생각보다 사용하기 쉬웠는데, tagblog template 기반에 source code 표시를 위한 css만 추가했다. 결과물은 <a href="https://github.com/comatose/blog/tree/gh-pages">여기</a>.</p>
+<p>_site 디렉토리를 제대로 인식하기 위해 .nojekyll을 추가하고 index.html에 _site로 redirection하도록 하면 완성. markdown과 literate haskell로 작성하는게 어색하지 않지만 나쁘지 않은 것 같다.</p>
+
+	</td>
+	<td width="88" background="/images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>

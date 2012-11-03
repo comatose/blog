@@ -1,15 +1,29 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 
-import Prelude hiding (id)
-import Control.Arrow ((>>>), (***), arr)
-import Control.Category (id)
-import Data.Monoid (mempty, mconcat)
+import           Control.Arrow    (arr, (***), (>>>))
+import           Control.Category (id)
+import           Data.Monoid      (mconcat, mempty)
+import           Prelude          hiding (id)
 
-import Hakyll
+import           Hakyll
 
 main :: IO ()
 main = hakyll $ do
+    -- Copy images
+    match "images/*" $ do
+        route idRoute
+        compile copyFileCompiler
+
+    match "favicon.ico" $ do
+        route idRoute
+        compile copyFileCompiler
+
+    -- Copy files (deep)
+    match "files/**" $ do
+        route idRoute
+        compile copyFileCompiler
+
     -- Compress CSS
     match "css/*" $ do
         route   idRoute

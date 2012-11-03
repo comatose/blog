@@ -1,0 +1,206 @@
+<!--
+
+/* 반드시 들어가야 하는 스타일 시작 */
+
+/* 1. 본문 전체  */
+
+	body,td {
+		font-size:9pt;
+		font-family: 굴림;
+		line-height:150%;
+	}
+
+/* 2. 기본 링크 */
+
+	A:link { color:#666666; text-decoration:none; }
+	A:visited { color:#666666; text-decoration:none; }
+	A:active { color:#666666; text-decoration:none; }
+	A:hover { color:#d0d0d0; text-decoration:none; }
+
+
+/* 3. 이미지 */
+
+	img {
+		border-width:0;
+	}
+
+/* 4. 이미지 버튼 */
+
+	.ib {
+		cursor:pointer;
+	}
+
+/* 5. 입력 텍스트 */
+
+	.text {
+		font-family: 굴림;
+		font-size:9pt;
+		padding-top:2;
+	}
+
+/* 6. 트리 레이블 */
+
+	.branch2 {
+/*
+		font-size:9pt;
+		padding:2;
+		line-height:100%;
+*/
+	}
+
+/* 7. 트리 폴더 */
+
+	.branch3 {
+/*
+		cursor:pointer;
+		line-height:100%;
+*/
+		font-size:9pt;
+		line-height:9pt;
+		cursor:pointer;
+		height:17px;
+		padding:2 2 0 2;
+	}
+
+/* 8. 달력 월 표시 */
+
+	.cal_month {
+		font-size:7pt;
+		font-family:verdana;
+		font-weight:bold;
+		text-align:center;
+		height:20;
+		background-color:#ffffff;
+	}
+
+/* 9. 달력 요일 표시 */
+
+	.cal_week1 {
+		text-align:center;
+		font-size:7pt;
+		font-family:verdana;
+		background-color:#ffffff;
+	}
+
+/* 10. 달력 일요일 표시 */
+
+	.cal_week2 {
+		color:#990000;
+		text-align:center;
+		font-size:7pt;
+		font-family:verdana;
+		background-color:#ffffff;
+	}
+
+/* 11. 달력 지난 달 날짜 표시 */
+
+	.cal_day1 {
+		font-size:0pt;
+		font-family:tahoma;
+		text-align:right;
+		padding-right:3;
+		background-color:#ffffff;
+		height:22;
+	}
+
+/* 12. 달력 다음 달 날짜 표시 */
+
+	.cal_day2 {
+		font-size:0pt;
+		font-family:tahoma;
+		text-align:right;
+		padding-right:3;
+		background-color:#ffffff;
+		height:22;
+	}
+
+/* 13. 달력 이번 달 날짜 표시 */
+
+	.cal_day3 {
+		font-size:8pt;
+		font-family:tahoma;
+		text-align:right;
+		padding-right:3;
+		background-color:#ffffff;
+		height:22;
+	}
+
+/* 14. 달력 오늘 날짜 표시 */
+
+	.cal_day4 {
+		font-size:8pt;
+		font-family:tahoma;
+		text-align:right;
+		padding-right:3;
+		background-color:#F4F3F9;
+		height:22;
+	}
+
+/* 15. 달력 글쓴 날 링크 스타일 */
+
+	A.cal_click:link { 
+	     color:#555555; 
+		 font-weight:bold;
+	}
+	
+	A.cal_click:visited { 
+	     color:#555555; 
+		 font-weight:bold;
+	}
+
+
+/* 16. 이미지 아래 캡션 스타일 */
+
+	.cap1 {
+		text-align:center;
+		color:#300099;
+		word-break:break-all;
+	}
+
+/* 16. 키워드 스타일 */
+
+	.key1 {
+		cursor:pointer;
+		text-decoration:none;
+		border-bottom: 1px solid gray;
+	}
+
+/* 반드시 들어가야하는 스타일 끝 - 이 아래는 자유롭게 추가, 삭제 가능 */
+
+
+	.h1 {
+		font-size:7pt;
+		font-family: verdana, 굴림;
+		color:#555555
+	}
+
+	.h2 {
+		font-size:8pt;
+		font-family:verdana, 굴림;
+		color:#555555;
+	}
+
+	.box1 {
+		background-color:#F7F7F7;
+		border-style:dotted;
+		border-width:1;
+		border-color:C5C6C7;
+		margin-top:2;
+	}
+
+	.plink {
+		padding:5;
+		color:#A0A0A0;
+	}
+
+	.title1 {
+		background-image:url(./images/menu_back.png);
+		padding-left:5;
+		width:198;
+		height:14;
+	}
+
+
+.ver9px {font-family:Verdana;font-size:9px}
+
+-->
