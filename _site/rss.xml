@@ -27,12 +27,12 @@
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - Tail Recursion 만들기</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -111,12 +111,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - lazy evaluation으로 소수열 구하기</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -167,12 +167,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - Stanford lecture on Haskell</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -224,12 +224,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - Haskel Fixed Point Combinator 1</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -281,12 +281,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - Haskel Fixed Point Combinator 2</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -381,12 +381,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - Haskel Fixed Point Combinator 3</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -450,12 +450,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - Y in Practical Programs</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -505,12 +505,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - LLVM bindings for Haskell</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -563,12 +563,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - Tech-talk about Haskell at Google: Haskell Amuse-Bouche</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -620,12 +620,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - Fixed Point Combinator Video by Heinrich Apfelmus</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -689,12 +689,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - Memoization 구현</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -783,12 +783,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - Memoization 구현 2</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -854,12 +854,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - fix vs fix'</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -908,12 +908,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - Open Recursion</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -962,14 +962,14 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <guid>http://example.com/posts/2011-11-30-OpenRecursion.html</guid>
 </item>
 <item>
-    <title>haskell로 Y 구현하기</title>
+    <title>Y in Haskell?</title>
     <link>http://example.com/posts/2011-11-30-Y-in-Haskell.html</link>
     <description><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-    <title>Lambda Play - haskell로 Y 구현하기</title>
+    <title>Lambda Play - Y in Haskell?</title>
     <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
     <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
     <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
@@ -981,13 +981,13 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
-	  <h1>Lambda Play - haskell로 Y 구현하기</h1>
+	<td colspan="2" valign="top" height="81" bgcolor="white">
+	  <h1>Lambda Play - Y in Haskell?</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -997,13 +997,27 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>haskell로 Y 구현하기</h1>
+	  <h1>Y in Haskell?</h1>
 
 <p>by <em>comatose</em> on <strong>November 30, 2011</strong></p>
 
 <p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/fixed point combinator.html">fixed point combinator</a>.</p>
 
-<p><a href="https://groups.google.com/forum/?fromgroups=#!topic/stanford-11au-cs240h/gRjdqUjD8_I">https://groups.google.com/forum/?fromgroups=#!topic/stanford-11au-cs240h/gRjdqUjD8_I</a></p>
+<p>untyped lambda calculus에서 Y는 다음과 같다.</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Y</span> <span class="fu">=</span> λf<span class="fu">.</span>(λx<span class="fu">.</span>f (x x)) (λx<span class="fu">.</span>f (x x))</code></pre>
+<p>이걸 Haskell로 직역하면 아래와 같을텐데,</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">y0 f <span class="fu">=</span> (\x <span class="ot">-&gt;</span> f (x x)) (\x <span class="ot">-&gt;</span> f (x x))  <span class="co">-- this is the pseudo-Haskell code</span></code></pre>
+<p>y0는 컴파일 되지 않는다. 왜냐하면 Haskell은 “typed” lambda calculus이기 때문이다.</p>
+<p><code>x</code>의 타입이 <code>a</code>라고 하면, <code>x x</code>를 가능하게 하려면 <code>x</code>의 타입은 <code>a -&gt; a</code>가 되어야 한다. 이게 반복되면 <code>x</code>의 타입은 <code>a -&gt; a -&gt; .. -&gt; a</code>가 되는데 Haskell은 무한한 타입을 허용하지 않는다.</p>
+<p>대신 아래처럼 Contructor로 wrapping하면 가능하다.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="kw">newtype</span> <span class="dt">SelfApply</span> t <span class="fu">=</span> <span class="dt">SelfApply</span> {<span class="ot"> selfApply ::</span> <span class="dt">SelfApply</span> t <span class="ot">-&gt;</span> t }
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span><span class="ot"> y ::</span> (t <span class="ot">-&gt;</span> t) <span class="ot">-&gt;</span> t
+<span class="fu">&gt;</span> y f <span class="fu">=</span> selfApply term term
+<span class="fu">&gt;</span>   <span class="kw">where</span> term <span class="fu">=</span> (<span class="dt">SelfApply</span> <span class="fu">$</span> \x <span class="ot">-&gt;</span> f (selfApply x x))</code></pre>
+<ul>
+<li><a href="https://groups.google.com/forum/?fromgroups=#!topic/stanford-11au-cs240h/gRjdqUjD8_I">출처</a> “Y combinator in Haskell”</li>
+</ul>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -1035,12 +1049,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - nirvana = fix life</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -1095,12 +1109,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - Memoization Benchmark</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
@@ -1278,12 +1292,12 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
       <tr>
 	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
 	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
       </tr>
       <tr>
-	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	<td colspan="2" valign="top" height="81" bgcolor="white">
 	  <h1>Lambda Play - Hakyll과 Github로 Blog 만들기</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
