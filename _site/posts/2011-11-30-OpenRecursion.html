@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - Open Recursion</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
+	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	  <h1>Lambda Play - Open Recursion</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="../images/tw_left_bg.png"></td>
+	<td colspan="2" valign="top">
+	  <h1>Open Recursion</h1>
+
+<p>by <em>comatose</em> on <strong>November 30, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/open recursion.html">open recursion</a>.</p>
+
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> fib <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fib <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fib n <span class="fu">=</span> fib (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fib (n <span class="fu">-</span> <span class="dv">2</span>)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> fibG self <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fibG self <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fibG self n <span class="fu">=</span> self (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> self (n <span class="fu">-</span> <span class="dv">2</span>)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> fib' <span class="fu">=</span> fix fibG</code></pre>
+<p><code>fib'</code>과 같이 함수 자신의 이름을 body에서 참조하지 않고 구현하는 것을 Anonymous Recursion이라고 부르기도 하지만, 간혹 Open Recursion 이라고도 한다.</p>
+<p>그 이유는 재귀적으로 호출될 함수를 나중에 결정(bind)할 수 있기 때문인데, <code>fib</code>를 살펴 보면, <code>fib</code> 내부에서 재귀적으로 호출될 함수를 <code>fib</code>로 고정(closed)시켰기 때문에 <code>fib</code>의 수정없이 동작을 바꾸기 어렵다.</p>
+<p>하지만 <code>fib'</code>은 <code>fibG</code>를 수정하지 않고 <code>fib'</code>을 수정할 수 있다. (예, wrapping, memoization, extension 등)</p>
+<p>즉, Open Recursion으로 노출된 라이브러리는 원본의 수정없이 쉽게 확장하거나 변경할 수 있다는 장점이 있다.</p>
+<p>관련하여 흥미로운 예제로 <a href="http://okmij.org/ftp/tagless-final/course/#infin1">interpreter</a>의 구현이 있다. (De-serializing 부분 참고)</p>
+<h3 id="참고-포스트">참고 포스트</h3>
+<ul>
+<li><p><a href="http://lambda-the-ultimate.org/node/3204">http://lambda-the-ultimate.org/node/3204</a></p></li>
+<li><p><a href="http://www.kennknowles.com/blog/2008/05/07/ctl-model-checking-in-haskell-a-classic-algorithm-explained-as-memoization/">http://www.kennknowles.com/blog/2008/05/07/ctl-model-checking-in-haskell-a-classic-algorithm-explained-as-memoization/</a></p></li>
+<li><p><a href="http://okmij.org/ftp/tagless-final/course/SerializeExt.hs">http://okmij.org/ftp/tagless-final/course/SerializeExt.hs</a></p></li>
+</ul>
+
+	</td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>
