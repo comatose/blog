@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-    <title>Lambda Play - Posts tagged ‘memoization’</title>
+    <title>Lambda Play - lazy evaluation으로 소수열 구하기</title>
     <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
     <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
     <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
@@ -21,7 +21,7 @@
       </tr>
       <tr>
 	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
-	  <h1>Lambda Play - Posts tagged ‘memoization’</h1>
+	  <h1>Lambda Play - lazy evaluation으로 소수열 구하기</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -31,26 +31,15 @@
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Posts tagged ‘memoization’</h1>
-<ul>
-    <li>
-    <a href="../posts/2012-11-02-MemoizationRace.html">Memoization Benchmark</a>
-    - <em>November  2, 2012</em> - by <em>comatose</em>
-</li>
-<li>
-    <a href="../posts/2011-11-25-Memoization2.html">Memoization 구현 2</a>
-    - <em>November 25, 2011</em> - by <em>comatose</em>
-</li>
-<li>
-    <a href="../posts/2011-11-25-Memoization.html">Memoization 구현</a>
-    - <em>November 25, 2011</em> - by <em>comatose</em>
-</li>
-<li>
-    <a href="../posts/2011-10-09-Y.html">Y in Practical Programs</a>
-    - <em>October  9, 2011</em> - by <em>comatose</em>
-</li>
+	  <h1>lazy evaluation으로 소수열 구하기</h1>
 
-</ul>
+<p>by <em>comatose</em> on <strong>August 12, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/primes.html">primes</a>.</p>
+
+<p>당신이 사용하는 언어가 당신의 생각을 바꾼다.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> primes <span class="fu">=</span> sieve [<span class="dv">2</span><span class="fu">..</span>]
+<span class="fu">&gt;</span>   <span class="kw">where</span> sieve (x<span class="fu">:</span>xs) <span class="fu">=</span> x <span class="fu">:</span> sieve [n <span class="fu">|</span> n <span class="ot">&lt;-</span> xs, (n <span class="ot">`rem`</span> x) <span class="fu">/=</span> <span class="dv">0</span>]</code></pre>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>

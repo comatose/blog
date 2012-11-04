@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - Memoization 구현 2</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
+	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	  <h1>Lambda Play - Memoization 구현 2</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="../images/tw_left_bg.png"></td>
+	<td colspan="2" valign="top">
+	  <h1>Memoization 구현 2</h1>
+
+<p>by <em>comatose</em> on <strong>November 25, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/memoization.html">memoization</a>.</p>
+
+<p>아래 글과 관련해서 다음과 같은 구현도 가능하다. 출처. <a href="http://www.kennknowles.com/blog/2008/05/07/ctl-model-checking-in-haskell-a-classic-algorithm-explained-as-memoization/">여기</a></p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> memo' ::</span> (<span class="dt">MonadState</span> (<span class="dt">M.Map</span> k v) m, <span class="kw">Ord</span> k) <span class="ot">=&gt;</span>
+<span class="fu">&gt;</span>          (k <span class="ot">-&gt;</span> m v) <span class="ot">-&gt;</span> k <span class="ot">-&gt;</span> m v
+<span class="fu">&gt;</span> memo' f' n <span class="fu">=</span> <span class="kw">do</span>
+<span class="fu">&gt;</span>   table <span class="ot">&lt;-</span> get
+<span class="fu">&gt;</span>   <span class="kw">case</span> M.lookup n table <span class="kw">of</span>
+<span class="fu">&gt;</span>     <span class="kw">Just</span> y <span class="ot">-&gt;</span> <span class="fu">return</span> y
+<span class="fu">&gt;</span>     <span class="kw">Nothing</span> <span class="ot">-&gt;</span> <span class="kw">do</span>
+<span class="fu">&gt;</span>       v <span class="ot">&lt;-</span> f' n
+<span class="fu">&gt;</span>       put <span class="fu">$</span> M.insert n v table
+<span class="fu">&gt;</span>       <span class="fu">return</span> v
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> fibMemo' n <span class="fu">=</span> evalState (fix (fibM' <span class="fu">.</span> memo') n) M.empty
+<span class="fu">&gt;</span> fibMemo'' n <span class="fu">=</span> evalState (fix (memo' <span class="fu">.</span> fibM') n) M.empty</code></pre>
+<p>fibMemo는 fibM’을 wrap한 것이고 fibMemo’과 fibMemo’’는 mixin 기법을 쓴 것이다.</p>
+<p>fix의 정의를 이용해서 fix (fibM’ . memo’)을 전개해보면</p>
+<p>fibM’ . memo’ . fibM’ . memo’ … 인 것을 알 수 있다.</p>
+<p>mixin이란 용어는 여기서 유래한 것이 아닌가 싶다.</p>
+
+	</td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>

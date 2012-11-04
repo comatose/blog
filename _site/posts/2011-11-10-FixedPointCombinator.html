@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - Fixed Point Combinator Video by Heinrich Apfelmus</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
+	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	  <h1>Lambda Play - Fixed Point Combinator Video by Heinrich Apfelmus</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="../images/tw_left_bg.png"></td>
+	<td colspan="2" valign="top">
+	  <h1>Fixed Point Combinator Video by Heinrich Apfelmus</h1>
+
+<p>by <em>comatose</em> on <strong>November 10, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/fixed point combinator.html">fixed point combinator</a>.</p>
+
+<p><a href="http://apfelmus.nfshost.com/blog/2010/07/02-fixed-points-video/player.html">http://apfelmus.nfshost.com/blog/2010/07/02-fixed-points-video/player.html</a></p>
+<p>12분 54초, Mind-Blowing에 충분한 시간</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="co">-- 1) factorial with recursion</span>
+<span class="fu">&gt;</span> fact <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> fact (n <span class="fu">-</span> <span class="dv">1</span>)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> <span class="co">-- 2) fact = fact' fact</span>
+<span class="fu">&gt;</span> fact' <span class="fu">=</span> \f n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> f (n <span class="fu">-</span> <span class="dv">1</span>)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> <span class="co">-- 3) fact = fix fact'</span>
+<span class="fu">&gt;</span> fix f' <span class="fu">=</span> <span class="kw">let</span> f <span class="fu">=</span> f' f <span class="kw">in</span> f
+<span class="fu">&gt;</span> fix' f' <span class="fu">=</span> f' (fix' f')</code></pre>
+<p>1) <code>fact</code>를 인자로 나머지 루틴을 일종의 패턴으로 추출하여, <code>fact = fact' fact</code> 를 만족시키도록 <code>fact'</code>을 새로 정의한다.</p>
+<p>2) <code>fact'</code>과 <code>fact</code>는 생김새도 비슷하며 서로 밀접하게 연관되어 있다. (하지만, <code>fact</code>는 재귀 형식이지만, <code>fact'</code>은 재귀적이지 않다.) 이제, <code>fact'</code>에서 <code>fact</code>를 도출해주는 <code>fix</code> 함수를 정의한다. (즉, <code>fact = fix fact'</code>)</p>
+<p>3) <code>fix'</code>을 보면 haskell의 <code>fix</code>는 재귀적임을 알 수 있다. <code>fact</code>는 재귀적이다. <code>fact'</code>은 재귀적이지 않다. 다시 <code>fix</code>는 재귀적이다. “The fixed point combinator is the essence of recursion.” 에 공감하게 된다.</p>
+<p>하지만, 놀랍게도 untyped lambda calculus의 <code>fix</code>는 재귀적이지 않다.</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">   <span class="dt">Y</span> <span class="fu">=</span> λf<span class="fu">.</span>(λx<span class="fu">.</span>f (x x)) (λx<span class="fu">.</span>f (x x))</code></pre>
+
+	</td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>

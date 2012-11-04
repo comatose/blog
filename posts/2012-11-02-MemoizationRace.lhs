@@ -49,12 +49,14 @@ fibonacci 수열을 대상으로 간단한 benchmark를 수행해 보았다.
 > fib 1 = 1
 > fib n = fib (n - 1) + fib (n - 2)
 
+`figG`는 open recursion으로 정의되었다.
+
 > fibG :: (Int -> Integer) -> Int -> Integer
 > fibG fib 0 = 1
 > fibG fib 1 = 1
 > fibG fib n = fib (n - 1) + fib (n - 2)
 
-`figG`는 open recursion으로 정의되었다.
+`figMC`는 MemoCombinator 사용
 
 > fibMC :: Int -> Integer
 > fibMC = M2.integral go
@@ -62,7 +64,7 @@ fibonacci 수열을 대상으로 간단한 benchmark를 수행해 보았다.
 >         go 1 = 1
 >         go n = fibMC (n - 1) + fibMC (n - 2)
 
-`figMC`는 MemoCombinator 사용
+`fibMM`는 monad-memo package 사용
 
 > fibMM :: (M4.MapLike c Int Integer) => c -> Int -> Integer
 > fibMM ml = (`M4.evalMemoState` ml) . f
@@ -70,7 +72,7 @@ fibonacci 수열을 대상으로 간단한 benchmark를 수행해 보았다.
 >         f 1 = return 1
 >         f n = liftM2 (+) (M4.memo f (n - 1)) (M4.memo f (n - 2))
 
-`fibMM`는 monad-memo package 사용
+`fibST`는 `MapLike` instance와 `State` monad를 이용한 memoization
 
 > fibST :: (M4.MapLike c Int Integer) => c -> Int -> Integer
 > fibST ml n0 = evalState (go n0) ml
@@ -85,21 +87,22 @@ fibonacci 수열을 대상으로 간단한 benchmark를 수행해 보았다.
 >               modify (M4.add n v)
 >               return v
 
-`fibST`는 `MapLike` instance와 `State` monad를 이용한 memoization
+`fibA`는 `Array`와 lazy-evaluation 사용
 
-> fibL :: Int -> Integer
-> fibL n0 = [f i | i <- [0..n0]] !! n0
->   where f 0 = 1
->         f 1 = 1
->         f n = fibL (n - 1) + fibL (n - 2)
->
 > fibA :: Int -> Integer
-> fibA n0 = array (0, n0) [(i, f i) | i <- [0..n0]] ! n0
->   where f 0 = 1
+> fibA n0 = memo ! n0
+>   where memo = listArray (0, n0) [f i | i <- [0..n0]]
+>         f 0 = 1
 >         f 1 = 1
->         f n = fibA (n - 1) + fibA (n - 2)
+>         f n = memo ! (n - 1) + memo ! (n - 2)
 
-`fibL`과 `fibA`는 각각 `List`와 `Array`에 lazy-evaluation 사용
+`fibLz`는 `List`를 사용한 lazy evalutation
+
+> fibLz :: Int -> Integer
+> fibLz = (series !!)
+>   where series = 1:1:zipWith (+) series (tail series)
+
+`fibIt`는 tail-recursive iteration 구현
 
 > fibIt :: Int -> Integer
 > fibIt n0 | n0 < 2 = 1
@@ -107,66 +110,61 @@ fibonacci 수열을 대상으로 간단한 benchmark를 수행해 보았다.
 >   where go n a b | n == n0 = a + b
 >                  | otherwise = go (n + 1) (a + b) a
 
-`fibIt`는 tail-recursive iteration 구현
+Fujitsu P1620 랩탑에서 100000번째 fibonacci 수를 구하는데 걸리는 시간을 재봤다.
 
 > main = do
 >   n <- liftM (read. head) getArgs
 >   vs <- mapM (time . ($n)) [
-
-Fujitsu P1620 랩탑에서 100000번째 fibonacci 수를 구하는데 걸리는 시간을 재봤다.
-
->     M1.memoize fib   -- worst, same performance as fib
-
-`memoize`는 거의 사용 불가, `fib`와 거의 같은 성능을 보인다.
-
+>     M1.memoize fib,   -- worst, same performance as fib
 >     M1.memoFix fibG, -- memoize
-
-`memofix`는 3.432s
-
 >     fibMC, -- data-memocombinators
+>     fix (M3.memo . fibG), --MemoTrie
+>     fibMM I.empty, fibMM H.empty, fibMM M.empty, -- monad-memo
+>     fibST I.empty, fibST H.empty, fibST M.empty, -- state monad
+>     fibA, -- lazy evaluation with Array
+>     fibIt, -- tail-recursive iteration
+>     fibLz
+>     ]
+>   print $ all (== head vs) $ tail vs
+> 
+> time m = do
+>   start <- getCPUTime
+>   v <- evaluate m
+>   end <- getCPUTime
+>   printf "%0.9f sec \n" ((fromIntegral (end - start) :: Double) / 10^12)
+>   return v
+
+`M1.memoize fib`는 거의 사용 불가, `fib`와 거의 같은 성능을 보인다.
+
+`M1.memofix fibG`는 3.432s
 
 `fibMC`는 6.605s
 
->     fix (M3.memo . fibG) --MemoTrie
+`fix (M3.memo . fibG)`는 4.764s
 
-이건 4.764s
+`fibMM`는 1.252s, 1.460s, 1.492s
 
->     fibMM I.empty, -- "monad-memo" using IntMap
->     fibMM H.empty, -- "monad-memo" using HashMap
->     fibMM M.empty, -- "monad-memo" using Map
+`fibST`는 1.620s, 2.012s, 2.304s
 
-1.252s, 1.460s, 1.492s
+`fibA`는 1.220s
 
->     fibST I.empty, -- state monad using IntMap
->     fibST H.empty, -- state monad using HashMap
->     fibST M.empty, -- state monad using Map
+`fibLz`는 1.216s.
 
-1.620s, 2.012s, 2.304s
+`fibIt`는 0.252s,
 
->     fibL, fibA, -- lazy evaluation with List and Array
 
-이것도 사용 불가, Array를 써도 그다지 성능 향상이 없다.
+memoization package 순위
 
->     fibIt -- tail-recursive iteration
+1. 1.252s, monad-memo
+1. 3.432s, memoize
+1. 4.764s, memo-trie
+1. 6.605s, data-memocombinators
 
-0.252s, 비교 불가.
-
->     ]
->   end <- getCPUTime
->   print $ all (== head vs) $ tail vs
->   printf "%0.9f sec \n" ((fromIntegral (end - start) :: Double) / 10^12)
->   return v
->   start <- getCPUTime
->   v <- evaluate m
-> time m = do
-
-최종 순위
+기타 순위
 
 1. 0.252s, iteration
-2. 1.252s, monad-memo
-3. 1.620s, state monad
-4. 3.432s, memoize
-5. 4.764s, memo-trie
-6. 6.605s, data-memocombinators
+1. 1.216s, lazy-evaluation
+1. 1.220s, lazy-evaluation using Array
+1. 1.620s, state monad
 
-종합적으로 고려해 볼 때 monad-memo가 memoization package 중에서 가장 좋은 성능을 보인다.
+그나마, monad-memo가 memoization package 중에서 가장 좋은 성능을 보인다.

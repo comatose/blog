@@ -92,6 +92,749 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
     <guid>http://example.com/posts/2011-08-07-Tail Recursion.html</guid>
 </item>
 <item>
+    <title>lazy evaluation으로 소수열 구하기</title>
+    <link>http://example.com/posts/2011-08-12-Primes.html</link>
+    <description><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - lazy evaluation으로 소수열 구하기</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
+	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	  <h1>Lambda Play - lazy evaluation으로 소수열 구하기</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="../images/tw_left_bg.png"></td>
+	<td colspan="2" valign="top">
+	  <h1>lazy evaluation으로 소수열 구하기</h1>
+
+<p>by <em>comatose</em> on <strong>August 12, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/primes.html">primes</a>.</p>
+
+<p>당신이 사용하는 언어가 당신의 생각을 바꾼다.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> primes <span class="fu">=</span> sieve [<span class="dv">2</span><span class="fu">..</span>]
+<span class="fu">&gt;</span>   <span class="kw">where</span> sieve (x<span class="fu">:</span>xs) <span class="fu">=</span> x <span class="fu">:</span> sieve [n <span class="fu">|</span> n <span class="ot">&lt;-</span> xs, (n <span class="ot">`rem`</span> x) <span class="fu">/=</span> <span class="dv">0</span>]</code></pre>
+
+	</td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>
+]]></description>
+    <pubDate>Fri, 12 Aug 2011 00:00:00 UT</pubDate>
+    <guid>http://example.com/posts/2011-08-12-Primes.html</guid>
+</item>
+<item>
+    <title>Stanford lecture on Haskell</title>
+    <link>http://example.com/posts/2011-10-08-StanfordHaskell.html</link>
+    <description><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - Stanford lecture on Haskell</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
+	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	  <h1>Lambda Play - Stanford lecture on Haskell</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="../images/tw_left_bg.png"></td>
+	<td colspan="2" valign="top">
+	  <h1>Stanford lecture on Haskell</h1>
+
+<p>by <em>comatose</em> on <strong>October  8, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/lecture.html">lecture</a>.</p>
+
+<p><a href="http://www.scs.stanford.edu/11au-cs240h/">CS240h: Functional Systems in Haskell</a></p>
+<p>이번 학기 시작한 강의, 강의 노트가 매우 알차다.</p>
+<p>한 학기가 기대되며, 비디오 녹화를 장비 문제로 못 한다는 것이 아쉬움.</p>
+<p>이런 강의를 직접 들을 수 있는 스탠포드 대학생들은 참으로 행운아로구나.</p>
+
+	</td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>
+]]></description>
+    <pubDate>Sat, 08 Oct 2011 00:00:00 UT</pubDate>
+    <guid>http://example.com/posts/2011-10-08-StanfordHaskell.html</guid>
+</item>
+<item>
+    <title>Haskel Fixed Point Combinator 1</title>
+    <link>http://example.com/posts/2011-10-08-Y-Combinator.html</link>
+    <description><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - Haskel Fixed Point Combinator 1</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
+	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	  <h1>Lambda Play - Haskel Fixed Point Combinator 1</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="../images/tw_left_bg.png"></td>
+	<td colspan="2" valign="top">
+	  <h1>Haskel Fixed Point Combinator 1</h1>
+
+<p>by <em>comatose</em> on <strong>October  8, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/fixed point.html">fixed point</a>, <a href="../tags/Y combinator.html">Y combinator</a>.</p>
+
+<p>시작은 <a href="http://playingwithpointers.com/archives/590">여기</a></p>
+<p><a href="http://www.lambdassociates.org/">Qi</a> 언어에 fix 함수를 최근에 알았는데, Haskell의 fix 함수의 존재도 이제 알았다.</p>
+<p>Lazy Evaluation으로 사용법과 의미는 조금 다르다.</p>
+<p>관련하여 좀 더 자세한 내용은 <a href="http://en.wikibooks.org/wiki/Haskell/Fix_and_recursion">여기</a> 참고.</p>
+
+	</td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>
+]]></description>
+    <pubDate>Sat, 08 Oct 2011 00:00:00 UT</pubDate>
+    <guid>http://example.com/posts/2011-10-08-Y-Combinator.html</guid>
+</item>
+<item>
+    <title>Haskel Fixed Point Combinator 2</title>
+    <link>http://example.com/posts/2011-10-09-Y-Combinator2.html</link>
+    <description><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - Haskel Fixed Point Combinator 2</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
+	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	  <h1>Lambda Play - Haskel Fixed Point Combinator 2</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="../images/tw_left_bg.png"></td>
+	<td colspan="2" valign="top">
+	  <h1>Haskel Fixed Point Combinator 2</h1>
+
+<p>by <em>comatose</em> on <strong>October  9, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/fixed point combinator.html">fixed point combinator</a>, <a href="../tags/Y combinator.html">Y combinator</a>.</p>
+
+<p>fix 함수의 구현은 다음과 같다.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="co">-- http://playingwithpointers.com/archives/590</span>
+<span class="fu">&gt;</span> fix' f0 <span class="fu">=</span> applyInfinitely f0 <span class="fu">undefined</span>
+<span class="fu">&gt;</span>   <span class="kw">where</span>
+<span class="fu">&gt;</span>     applyInfinitely f x <span class="fu">=</span> f (applyInfinitely f x)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> <span class="co">-- http://hackage.haskell.org/packages/archive/base/latest/doc/html/src/Data-Function.html#fix</span>
+<span class="fu">&gt;</span> <span class="co">-- | @'fix' f@ is the least fixed point of the function @f@,</span>
+<span class="fu">&gt;</span> <span class="co">-- i.e. the least defined @x@ such that @f x = x@.</span>
+<span class="fu">&gt;</span><span class="ot"> fix ::</span> (a <span class="ot">-&gt;</span> a) <span class="ot">-&gt;</span> a
+<span class="fu">&gt;</span> fix f <span class="fu">=</span> <span class="kw">let</span> x <span class="fu">=</span> f x <span class="kw">in</span> x</code></pre>
+<p><code>fix'</code>은 <code>fix</code>를 좀 더 풀어쓴 형태다. 결과적으로 <code>fix</code>는 <code>f</code>를 <code>f(f(f(... )))</code> 형태로 무한히 적용한다.</p>
+<p><code>factorial</code>의 재귀 버전과 <code>fix</code> 버전은 다음과 같다.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="co">-- recursive factorial</span>
+<span class="fu">&gt;</span> fact n <span class="fu">=</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> fact (n<span class="dv">-1</span>)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> <span class="co">-- factorial by fix</span>
+<span class="fu">&gt;</span> fact <span class="fu">=</span> fix (\rec n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> rec (n<span class="dv">-1</span>))</code></pre>
+<p><code>fix</code>를 이용해서 anonymous recursion이 가능해진다.</p>
+<p><code>fix</code> 버전 <code>fact</code>를 다음과 같이 정의에 따라 확장해도 되고,</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> fact' <span class="fu">=</span> \rec n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> rec (n<span class="dv">-1</span>)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> fix fact'
+<span class="fu">&gt;</span>   <span class="fu">=</span> <span class="kw">let</span> x <span class="fu">=</span> fact' x
+<span class="fu">&gt;</span>     <span class="kw">in</span> x
+<span class="fu">&gt;</span>   <span class="fu">=</span> fact' x
+<span class="fu">&gt;</span>   <span class="fu">=</span> (\rec n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> rec (n<span class="dv">-1</span>)) x
+<span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> x (n<span class="dv">-1</span>)
+<span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> fact' x (n<span class="dv">-1</span>)
+<span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>           <span class="kw">else</span> n <span class="fu">*</span> (\rec n' <span class="ot">-&gt;</span> <span class="kw">if</span> n' <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n' <span class="fu">*</span> rec (n'<span class="fu">-</span><span class="dv">1</span>)) x (n<span class="dv">-1</span>)
+<span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>           <span class="kw">else</span> n <span class="fu">*</span> (<span class="kw">if</span> n<span class="dv">-1</span> <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> (n<span class="dv">-1</span>) <span class="fu">*</span> x (n<span class="dv">-2</span>))
+<span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>           <span class="kw">else</span> n <span class="fu">*</span> (<span class="kw">if</span> n<span class="dv">-1</span> <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> (n<span class="dv">-1</span>) <span class="fu">*</span> fact' x (n<span class="dv">-2</span>))
+<span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>           <span class="kw">else</span> n <span class="fu">*</span> (<span class="kw">if</span> n<span class="dv">-1</span> <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>                     <span class="kw">else</span> (n<span class="dv">-1</span>) <span class="fu">*</span> (<span class="kw">if</span> n<span class="dv">-2</span> <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>                                   <span class="kw">else</span> (n<span class="dv">-2</span>) <span class="fu">*</span> fact' x (n<span class="dv">-3</span>)))
+<span class="fu">&gt;</span>   <span class="fu">=</span> <span class="fu">...</span></code></pre>
+<p>또는 <code>fix</code>의 denotational semantics에 의해 다음도 가능하다.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="co">-- fix will find a fixed point of fact', i.e. the function f such that f == fact' f.</span>
+<span class="fu">&gt;</span> <span class="co">-- But let's expand what this means:</span>
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> f <span class="fu">=</span> fact' f
+<span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> f (n<span class="dv">-1</span>)</code></pre>
+<p><code>fix fact' == fact</code> 가 확인된다.</p>
+
+	</td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>
+]]></description>
+    <pubDate>Sun, 09 Oct 2011 00:00:00 UT</pubDate>
+    <guid>http://example.com/posts/2011-10-09-Y-Combinator2.html</guid>
+</item>
+<item>
+    <title>Haskel Fixed Point Combinator 3</title>
+    <link>http://example.com/posts/2011-10-09-Y-Combinator3.html</link>
+    <description><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - Haskel Fixed Point Combinator 3</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
+	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	  <h1>Lambda Play - Haskel Fixed Point Combinator 3</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="../images/tw_left_bg.png"></td>
+	<td colspan="2" valign="top">
+	  <h1>Haskel Fixed Point Combinator 3</h1>
+
+<p>by <em>comatose</em> on <strong>October  9, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/fixed point combinator.html">fixed point combinator</a>, <a href="../tags/Y combinator.html">Y combinator</a>.</p>
+
+<p>n번째 fibonacci 수를 구하는 함수의 비효율적이지만 가장 유명한 구현 :</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> fib <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fib <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fib n <span class="fu">=</span> fib (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fib (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
+<p>역시 <code>fix</code>를 이용하여 구현 가능하다.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> fib fib <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fib fib <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fib fib n <span class="fu">=</span> fib (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fib (n <span class="fu">-</span> <span class="dv">2</span>)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> fibSlow <span class="fu">=</span> fix fib</code></pre>
+<p>함수명 <code>fib</code>는 shadowing 되므로 인자 변수명 <code>fib</code>와는 별개임을 주의. Haskell Syntax의 장점이 돋보인다.</p>
+<p>지금도 충분히 흥미로운데 더욱 흥미로운 것은 이를 간단하게 Memoization을 할 수 있다.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="kw">import</span> <span class="dt">Data.MemoTrie</span>(memo)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span><span class="ot"> fibFast ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+<span class="fu">&gt;</span> fibFast <span class="fu">=</span> fix (memo <span class="fu">.</span> fib)</code></pre>
+
+	</td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>
+]]></description>
+    <pubDate>Sun, 09 Oct 2011 00:00:00 UT</pubDate>
+    <guid>http://example.com/posts/2011-10-09-Y-Combinator3.html</guid>
+</item>
+<item>
+    <title>Y in Practical Programs</title>
+    <link>http://example.com/posts/2011-10-09-Y.html</link>
+    <description><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - Y in Practical Programs</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
+	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	  <h1>Lambda Play - Y in Practical Programs</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="../images/tw_left_bg.png"></td>
+	<td colspan="2" valign="top">
+	  <h1>Y in Practical Programs</h1>
+
+<p>by <em>comatose</em> on <strong>October  9, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/memoization.html">memoization</a>, <a href="../tags/Y combinator.html">Y combinator</a>.</p>
+
+<p><a href="../files/Y_in_Practical_Programs.pdf">Y in Practical Programs</a></p>
+<p>재귀의 각 단계를 Wrapping 할 수 있다.</p>
+
+	</td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>
+]]></description>
+    <pubDate>Sun, 09 Oct 2011 00:00:00 UT</pubDate>
+    <guid>http://example.com/posts/2011-10-09-Y.html</guid>
+</item>
+<item>
+    <title>LLVM bindings for Haskell</title>
+    <link>http://example.com/posts/2011-10-10-LLVM.html</link>
+    <description><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - LLVM bindings for Haskell</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
+	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	  <h1>Lambda Play - LLVM bindings for Haskell</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="../images/tw_left_bg.png"></td>
+	<td colspan="2" valign="top">
+	  <h1>LLVM bindings for Haskell</h1>
+
+<p>by <em>comatose</em> on <strong>October 10, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/LLVM.html">LLVM</a>, <a href="../tags/haskell.html">haskell</a>.</p>
+
+<p>참고 자료.</p>
+<p><a href="http://augustss.blogspot.com/2009/01/llvm-llvm-low-level-virtual-machine-is.html">http://augustss.blogspot.com/2009/01/llvm-llvm-low-level-virtual-machine-is.html</a></p>
+<p><a href="http://augustss.blogspot.com/2009/01/llvm-arithmetic-so-we-want-to-compute-x.html">http://augustss.blogspot.com/2009/01/llvm-arithmetic-so-we-want-to-compute-x.html</a></p>
+<p><a href="http://augustss.blogspot.com/2009/01/performance-update-ive-continued.html">http://augustss.blogspot.com/2009/01/performance-update-ive-continued.html</a></p>
+<p><a href="http://augustss.blogspot.com/2009/02/is-haskell-fast-lets-do-simple.html">http://augustss.blogspot.com/2009/02/is-haskell-fast-lets-do-simple.html</a></p>
+
+	</td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>
+]]></description>
+    <pubDate>Mon, 10 Oct 2011 00:00:00 UT</pubDate>
+    <guid>http://example.com/posts/2011-10-10-LLVM.html</guid>
+</item>
+<item>
+    <title>Tech-talk about Haskell at Google: Haskell Amuse-Bouche</title>
+    <link>http://example.com/posts/2011-10-24-HaskellAmuse.html</link>
+    <description><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - Tech-talk about Haskell at Google: Haskell Amuse-Bouche</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
+	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	  <h1>Lambda Play - Tech-talk about Haskell at Google: Haskell Amuse-Bouche</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="../images/tw_left_bg.png"></td>
+	<td colspan="2" valign="top">
+	  <h1>Tech-talk about Haskell at Google: Haskell Amuse-Bouche</h1>
+
+<p>by <em>comatose</em> on <strong>October 24, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>.</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/b9FagOVqxmI" frameborder="0" allowfullscreen></iframe>
+
+<p>Slides: <a href="http://www.ozonehouse.com/mark/haskell-amuse-bouche/slides.html">http://www.ozonehouse.com/mark/haskell-amuse-bouche/slides.html</a></p>
+<p>Code: <a href="https://github.com/mtnviewmark/haskell-amuse-bouche">https://github.com/mtnviewmark/haskell-amuse-bouche</a></p>
+
+	</td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>
+]]></description>
+    <pubDate>Mon, 24 Oct 2011 00:00:00 UT</pubDate>
+    <guid>http://example.com/posts/2011-10-24-HaskellAmuse.html</guid>
+</item>
+<item>
+    <title>Fixed Point Combinator Video by Heinrich Apfelmus</title>
+    <link>http://example.com/posts/2011-11-10-FixedPointCombinator.html</link>
+    <description><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - Fixed Point Combinator Video by Heinrich Apfelmus</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
+	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	  <h1>Lambda Play - Fixed Point Combinator Video by Heinrich Apfelmus</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="../images/tw_left_bg.png"></td>
+	<td colspan="2" valign="top">
+	  <h1>Fixed Point Combinator Video by Heinrich Apfelmus</h1>
+
+<p>by <em>comatose</em> on <strong>November 10, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/fixed point combinator.html">fixed point combinator</a>.</p>
+
+<p><a href="http://apfelmus.nfshost.com/blog/2010/07/02-fixed-points-video/player.html">http://apfelmus.nfshost.com/blog/2010/07/02-fixed-points-video/player.html</a></p>
+<p>12분 54초, Mind-Blowing에 충분한 시간</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="co">-- 1) factorial with recursion</span>
+<span class="fu">&gt;</span> fact <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> fact (n <span class="fu">-</span> <span class="dv">1</span>)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> <span class="co">-- 2) fact = fact' fact</span>
+<span class="fu">&gt;</span> fact' <span class="fu">=</span> \f n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> f (n <span class="fu">-</span> <span class="dv">1</span>)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> <span class="co">-- 3) fact = fix fact'</span>
+<span class="fu">&gt;</span> fix f' <span class="fu">=</span> <span class="kw">let</span> f <span class="fu">=</span> f' f <span class="kw">in</span> f
+<span class="fu">&gt;</span> fix' f' <span class="fu">=</span> f' (fix' f')</code></pre>
+<p>1) <code>fact</code>를 인자로 나머지 루틴을 일종의 패턴으로 추출하여, <code>fact = fact' fact</code> 를 만족시키도록 <code>fact'</code>을 새로 정의한다.</p>
+<p>2) <code>fact'</code>과 <code>fact</code>는 생김새도 비슷하며 서로 밀접하게 연관되어 있다. (하지만, <code>fact</code>는 재귀 형식이지만, <code>fact'</code>은 재귀적이지 않다.) 이제, <code>fact'</code>에서 <code>fact</code>를 도출해주는 <code>fix</code> 함수를 정의한다. (즉, <code>fact = fix fact'</code>)</p>
+<p>3) <code>fix'</code>을 보면 haskell의 <code>fix</code>는 재귀적임을 알 수 있다. <code>fact</code>는 재귀적이다. <code>fact'</code>은 재귀적이지 않다. 다시 <code>fix</code>는 재귀적이다. “The fixed point combinator is the essence of recursion.” 에 공감하게 된다.</p>
+<p>하지만, 놀랍게도 untyped lambda calculus의 <code>fix</code>는 재귀적이지 않다.</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">   <span class="dt">Y</span> <span class="fu">=</span> λf<span class="fu">.</span>(λx<span class="fu">.</span>f (x x)) (λx<span class="fu">.</span>f (x x))</code></pre>
+
+	</td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>
+]]></description>
+    <pubDate>Thu, 10 Nov 2011 00:00:00 UT</pubDate>
+    <guid>http://example.com/posts/2011-11-10-FixedPointCombinator.html</guid>
+</item>
+<item>
+    <title>Memoization 구현</title>
+    <link>http://example.com/posts/2011-11-25-Memoization.html</link>
+    <description><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - Memoization 구현</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
+	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	  <h1>Lambda Play - Memoization 구현</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="../images/tw_left_bg.png"></td>
+	<td colspan="2" valign="top">
+	  <h1>Memoization 구현</h1>
+
+<p>by <em>comatose</em> on <strong>November 25, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/memoization.html">memoization</a>.</p>
+
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="ot">{-# LANGUAGE NoMonomorphismRestriction #-}</span>
+<span class="fu">&gt;</span> <span class="ot">{-# LANGUAGE FlexibleContexts #-}</span>
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="dt">Control.Monad.Fix</span> (fix)
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.Map</span> <span class="kw">as</span> <span class="dt">M</span>
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="dt">Control.Monad.State</span> <span class="kw">hiding</span> (fix)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span><span class="ot"> fib' ::</span> (<span class="kw">Num</span> a) <span class="ot">=&gt;</span> (a <span class="ot">-&gt;</span> a) <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a
+<span class="fu">&gt;</span> fib' fib <span class="dv">0</span> <span class="fu">=</span> <span class="dv">0</span>
+<span class="fu">&gt;</span> fib' fib <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fib' fib n <span class="fu">=</span> fib (n <span class="fu">-</span> <span class="dv">2</span>) <span class="fu">+</span> fib (n <span class="fu">-</span> <span class="dv">1</span>)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span><span class="ot"> fib ::</span> <span class="kw">Num</span> a <span class="ot">=&gt;</span> a <span class="ot">-&gt;</span> a
+<span class="fu">&gt;</span> fib <span class="fu">=</span> fix fib'
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span><span class="ot"> fibM' ::</span> (<span class="kw">Num</span> a, <span class="kw">Monad</span> m) <span class="ot">=&gt;</span> (a <span class="ot">-&gt;</span> m a) <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> m a
+<span class="fu">&gt;</span> fibM' fibM <span class="dv">0</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">0</span>
+<span class="fu">&gt;</span> fibM' fibM <span class="dv">1</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fibM' fibM n <span class="fu">=</span> <span class="kw">do</span>
+<span class="fu">&gt;</span>   x <span class="ot">&lt;-</span> fibM (n <span class="fu">-</span> <span class="dv">2</span>)
+<span class="fu">&gt;</span>   y <span class="ot">&lt;-</span> fibM (n <span class="fu">-</span> <span class="dv">1</span>)
+<span class="fu">&gt;</span>   <span class="fu">return</span> <span class="fu">$</span> x <span class="fu">+</span> y
+<span class="fu">&gt;</span>   
+<span class="fu">&gt;</span><span class="ot"> fibM ::</span> (<span class="kw">Num</span> a, <span class="kw">Monad</span> m) <span class="ot">=&gt;</span> a <span class="ot">-&gt;</span> m a
+<span class="fu">&gt;</span> fibM <span class="fu">=</span> fix fibM'
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span><span class="ot"> memo ::</span> (<span class="dt">MonadState</span> (<span class="dt">M.Map</span> k v) m, <span class="kw">Ord</span> k) <span class="ot">=&gt;</span>
+<span class="fu">&gt;</span>          ((k <span class="ot">-&gt;</span> m v) <span class="ot">-&gt;</span> k <span class="ot">-&gt;</span> m v) <span class="ot">-&gt;</span> (k <span class="ot">-&gt;</span> m v) <span class="ot">-&gt;</span> k <span class="ot">-&gt;</span> m v
+<span class="fu">&gt;</span> memo f' f n <span class="fu">=</span> <span class="kw">do</span>
+<span class="fu">&gt;</span>   table <span class="ot">&lt;-</span> get
+<span class="fu">&gt;</span>   <span class="kw">case</span> M.lookup n table <span class="kw">of</span>
+<span class="fu">&gt;</span>     <span class="kw">Just</span> y <span class="ot">-&gt;</span> <span class="fu">return</span> y
+<span class="fu">&gt;</span>     <span class="kw">Nothing</span> <span class="ot">-&gt;</span> <span class="kw">do</span>
+<span class="fu">&gt;</span>       v <span class="ot">&lt;-</span> f' f n
+<span class="fu">&gt;</span>       put <span class="fu">$</span> M.insert n v table
+<span class="fu">&gt;</span>       <span class="fu">return</span> v
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> fibMemo n <span class="fu">=</span> evalState (fix (memo fibM') n) M.empty</code></pre>
+<p>나름 State 모나드와 Map을 이용해서 memoization을 구현해 보았다.</p>
+<p>fib’를 재활용하지 못 해 fibM’을 따로 만들어 줘야 하고 fibMemo의 정의도 지저분하다.</p>
+<p>아래 소개된 MemoTrie는 과연 어떻게 한건지…</p>
+
+	</td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>
+]]></description>
+    <pubDate>Fri, 25 Nov 2011 00:00:00 UT</pubDate>
+    <guid>http://example.com/posts/2011-11-25-Memoization.html</guid>
+</item>
+<item>
+    <title>Memoization 구현 2</title>
+    <link>http://example.com/posts/2011-11-25-Memoization2.html</link>
+    <description><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - Memoization 구현 2</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
+	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	  <h1>Lambda Play - Memoization 구현 2</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="../images/tw_left_bg.png"></td>
+	<td colspan="2" valign="top">
+	  <h1>Memoization 구현 2</h1>
+
+<p>by <em>comatose</em> on <strong>November 25, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/memoization.html">memoization</a>.</p>
+
+<p>아래 글과 관련해서 다음과 같은 구현도 가능하다. 출처. <a href="http://www.kennknowles.com/blog/2008/05/07/ctl-model-checking-in-haskell-a-classic-algorithm-explained-as-memoization/">여기</a></p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> memo' ::</span> (<span class="dt">MonadState</span> (<span class="dt">M.Map</span> k v) m, <span class="kw">Ord</span> k) <span class="ot">=&gt;</span>
+<span class="fu">&gt;</span>          (k <span class="ot">-&gt;</span> m v) <span class="ot">-&gt;</span> k <span class="ot">-&gt;</span> m v
+<span class="fu">&gt;</span> memo' f' n <span class="fu">=</span> <span class="kw">do</span>
+<span class="fu">&gt;</span>   table <span class="ot">&lt;-</span> get
+<span class="fu">&gt;</span>   <span class="kw">case</span> M.lookup n table <span class="kw">of</span>
+<span class="fu">&gt;</span>     <span class="kw">Just</span> y <span class="ot">-&gt;</span> <span class="fu">return</span> y
+<span class="fu">&gt;</span>     <span class="kw">Nothing</span> <span class="ot">-&gt;</span> <span class="kw">do</span>
+<span class="fu">&gt;</span>       v <span class="ot">&lt;-</span> f' n
+<span class="fu">&gt;</span>       put <span class="fu">$</span> M.insert n v table
+<span class="fu">&gt;</span>       <span class="fu">return</span> v
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> fibMemo' n <span class="fu">=</span> evalState (fix (fibM' <span class="fu">.</span> memo') n) M.empty
+<span class="fu">&gt;</span> fibMemo'' n <span class="fu">=</span> evalState (fix (memo' <span class="fu">.</span> fibM') n) M.empty</code></pre>
+<p>fibMemo는 fibM’을 wrap한 것이고 fibMemo’과 fibMemo’’는 mixin 기법을 쓴 것이다.</p>
+<p>fix의 정의를 이용해서 fix (fibM’ . memo’)을 전개해보면</p>
+<p>fibM’ . memo’ . fibM’ . memo’ … 인 것을 알 수 있다.</p>
+<p>mixin이란 용어는 여기서 유래한 것이 아닌가 싶다.</p>
+
+	</td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>
+]]></description>
+    <pubDate>Fri, 25 Nov 2011 00:00:00 UT</pubDate>
+    <guid>http://example.com/posts/2011-11-25-Memoization2.html</guid>
+</item>
+<item>
     <title>Memoization Benchmark</title>
     <link>http://example.com/posts/2012-11-02-MemoizationRace.html</link>
     <description><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
@@ -170,23 +913,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <span class="fu">&gt;</span> fib <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
 <span class="fu">&gt;</span> fib <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
 <span class="fu">&gt;</span> fib n <span class="fu">=</span> fib (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fib (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
+<p><code>figG</code>는 open recursion으로 정의되었다.</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibG ::</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>) <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibG fib <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
 <span class="fu">&gt;</span> fibG fib <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
 <span class="fu">&gt;</span> fibG fib n <span class="fu">=</span> fib (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fib (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
-<p><code>figG</code>는 open recursion으로 정의되었다.</p>
+<p><code>figMC</code>는 MemoCombinator 사용</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibMC ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibMC <span class="fu">=</span> M2.integral go
 <span class="fu">&gt;</span>   <span class="kw">where</span> go <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
 <span class="fu">&gt;</span>         go <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
 <span class="fu">&gt;</span>         go n <span class="fu">=</span> fibMC (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fibMC (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
-<p><code>figMC</code>는 MemoCombinator 사용</p>
+<p><code>fibMM</code>는 monad-memo package 사용</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibMM ::</span> (<span class="dt">M4.MapLike</span> c <span class="dt">Int</span> <span class="dt">Integer</span>) <span class="ot">=&gt;</span> c <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibMM ml <span class="fu">=</span> (<span class="ot">`M4.evalMemoState`</span> ml) <span class="fu">.</span> f
 <span class="fu">&gt;</span>   <span class="kw">where</span> f <span class="dv">0</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
 <span class="fu">&gt;</span>         f <span class="dv">1</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
 <span class="fu">&gt;</span>         f n <span class="fu">=</span> liftM2 (<span class="fu">+</span>) (M4.memo f (n <span class="fu">-</span> <span class="dv">1</span>)) (M4.memo f (n <span class="fu">-</span> <span class="dv">2</span>))</code></pre>
-<p><code>fibMM</code>는 monad-memo package 사용</p>
+<p><code>fibST</code>는 <code>MapLike</code> instance와 <code>State</code> monad를 이용한 memoization</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibST ::</span> (<span class="dt">M4.MapLike</span> c <span class="dt">Int</span> <span class="dt">Integer</span>) <span class="ot">=&gt;</span> c <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibST ml n0 <span class="fu">=</span> evalState (go n0) ml
 <span class="fu">&gt;</span>   <span class="kw">where</span> go <span class="dv">0</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
@@ -199,67 +943,69 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <span class="fu">&gt;</span>               v <span class="ot">&lt;-</span> liftM2 (<span class="fu">+</span>) (go (n <span class="fu">-</span> <span class="dv">1</span>)) (go (n <span class="fu">-</span> <span class="dv">2</span>))
 <span class="fu">&gt;</span>               modify (M4.add n v)
 <span class="fu">&gt;</span>               <span class="fu">return</span> v</code></pre>
-<p><code>fibST</code>는 <code>MapLike</code> instance와 <code>State</code> monad를 이용한 memoization</p>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibL ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
-<span class="fu">&gt;</span> fibL n0 <span class="fu">=</span> [f i <span class="fu">|</span> i <span class="ot">&lt;-</span> [<span class="dv">0</span><span class="fu">..</span>n0]] <span class="fu">!!</span> n0
-<span class="fu">&gt;</span>   <span class="kw">where</span> f <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
+<p><code>fibA</code>는 <code>Array</code>와 lazy-evaluation 사용</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibA ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+<span class="fu">&gt;</span> fibA n0 <span class="fu">=</span> memo <span class="fu">!</span> n0
+<span class="fu">&gt;</span>   <span class="kw">where</span> memo <span class="fu">=</span> listArray (<span class="dv">0</span>, n0) [f i <span class="fu">|</span> i <span class="ot">&lt;-</span> [<span class="dv">0</span><span class="fu">..</span>n0]]
+<span class="fu">&gt;</span>         f <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
 <span class="fu">&gt;</span>         f <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
-<span class="fu">&gt;</span>         f n <span class="fu">=</span> fibL (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fibL (n <span class="fu">-</span> <span class="dv">2</span>)
-<span class="fu">&gt;</span> 
-<span class="fu">&gt;</span><span class="ot"> fibA ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
-<span class="fu">&gt;</span> fibA n0 <span class="fu">=</span> array (<span class="dv">0</span>, n0) [(i, f i) <span class="fu">|</span> i <span class="ot">&lt;-</span> [<span class="dv">0</span><span class="fu">..</span>n0]] <span class="fu">!</span> n0
-<span class="fu">&gt;</span>   <span class="kw">where</span> f <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
-<span class="fu">&gt;</span>         f <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
-<span class="fu">&gt;</span>         f n <span class="fu">=</span> fibA (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fibA (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
-<p><code>fibL</code>과 <code>fibA</code>는 각각 <code>List</code>와 <code>Array</code>에 lazy-evaluation 사용</p>
+<span class="fu">&gt;</span>         f n <span class="fu">=</span> memo <span class="fu">!</span> (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> memo <span class="fu">!</span> (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
+<p><code>fibLz</code>는 <code>List</code>를 사용한 lazy evalutation</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibLz ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+<span class="fu">&gt;</span> fibLz <span class="fu">=</span> (series <span class="fu">!!</span>)
+<span class="fu">&gt;</span>   <span class="kw">where</span> series <span class="fu">=</span> <span class="dv">1</span><span class="fu">:</span><span class="dv">1</span><span class="fu">:zipWith</span> (<span class="fu">+</span>) series (<span class="fu">tail</span> series)</code></pre>
+<p><code>fibIt</code>는 tail-recursive iteration 구현</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibIt ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibIt n0 <span class="fu">|</span> n0 <span class="fu">&lt;</span> <span class="dv">2</span> <span class="fu">=</span> <span class="dv">1</span>
 <span class="fu">&gt;</span>          <span class="fu">|</span> <span class="fu">otherwise</span> <span class="fu">=</span> go <span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span>
 <span class="fu">&gt;</span>   <span class="kw">where</span> go n a b <span class="fu">|</span> n <span class="fu">==</span> n0 <span class="fu">=</span> a <span class="fu">+</span> b
 <span class="fu">&gt;</span>                  <span class="fu">|</span> <span class="fu">otherwise</span> <span class="fu">=</span> go (n <span class="fu">+</span> <span class="dv">1</span>) (a <span class="fu">+</span> b) a</code></pre>
-<p><code>fibIt</code>는 tail-recursive iteration 구현</p>
+<p>Fujitsu P1620 랩탑에서 100000번째 fibonacci 수를 구하는데 걸리는 시간을 재봤다.</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> main <span class="fu">=</span> <span class="kw">do</span>
 <span class="fu">&gt;</span>   n <span class="ot">&lt;-</span> liftM (<span class="fu">read.</span> <span class="fu">head</span>) getArgs
-<span class="fu">&gt;</span>   vs <span class="ot">&lt;-</span> <span class="fu">mapM</span> (time <span class="fu">.</span> (<span class="fu">$</span>n)) [</code></pre>
-<p>Fujitsu P1620 랩탑에서 100000번째 fibonacci 수를 구하는데 걸리는 시간을 재봤다.</p>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     M1.memoize fib   <span class="co">-- worst, same performance as fib</span></code></pre>
-<p><code>memoize</code>는 거의 사용 불가, <code>fib</code>와 거의 같은 성능을 보인다.</p>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     M1.memoFix fibG, <span class="co">-- memoize</span></code></pre>
-<p><code>memofix</code>는 3.432s</p>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     fibMC, <span class="co">-- data-memocombinators</span></code></pre>
-<p><code>fibMC</code>는 6.605s</p>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     fix (M3.memo <span class="fu">.</span> fibG) <span class="co">--MemoTrie</span></code></pre>
-<p>이건 4.764s</p>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     fibMM I.empty, <span class="co">-- &quot;monad-memo&quot; using IntMap</span>
-<span class="fu">&gt;</span>     fibMM H.empty, <span class="co">-- &quot;monad-memo&quot; using HashMap</span>
-<span class="fu">&gt;</span>     fibMM M.empty, <span class="co">-- &quot;monad-memo&quot; using Map</span></code></pre>
-<p>1.252s, 1.460s, 1.492s</p>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     fibST I.empty, <span class="co">-- state monad using IntMap</span>
-<span class="fu">&gt;</span>     fibST H.empty, <span class="co">-- state monad using HashMap</span>
-<span class="fu">&gt;</span>     fibST M.empty, <span class="co">-- state monad using Map</span></code></pre>
-<p>1.620s, 2.012s, 2.304s</p>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     fibL, fibA, <span class="co">-- lazy evaluation with List and Array</span></code></pre>
-<p>이것도 사용 불가, Array를 써도 그다지 성능 향상이 없다.</p>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     fibIt <span class="co">-- tail-recursive iteration</span></code></pre>
-<p>0.252s, 비교 불가.</p>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>     ]
-<span class="fu">&gt;</span>   end <span class="ot">&lt;-</span> getCPUTime
+<span class="fu">&gt;</span>   vs <span class="ot">&lt;-</span> <span class="fu">mapM</span> (time <span class="fu">.</span> (<span class="fu">$</span>n)) [
+<span class="fu">&gt;</span>     M1.memoize fib,   <span class="co">-- worst, same performance as fib</span>
+<span class="fu">&gt;</span>     M1.memoFix fibG, <span class="co">-- memoize</span>
+<span class="fu">&gt;</span>     fibMC, <span class="co">-- data-memocombinators</span>
+<span class="fu">&gt;</span>     fix (M3.memo <span class="fu">.</span> fibG), <span class="co">--MemoTrie</span>
+<span class="fu">&gt;</span>     fibMM I.empty, fibMM H.empty, fibMM M.empty, <span class="co">-- monad-memo</span>
+<span class="fu">&gt;</span>     fibST I.empty, fibST H.empty, fibST M.empty, <span class="co">-- state monad</span>
+<span class="fu">&gt;</span>     fibA, <span class="co">-- lazy evaluation with Array</span>
+<span class="fu">&gt;</span>     fibIt, <span class="co">-- tail-recursive iteration</span>
+<span class="fu">&gt;</span>     fibLz
+<span class="fu">&gt;</span>     ]
 <span class="fu">&gt;</span>   <span class="fu">print</span> <span class="fu">$</span> <span class="fu">all</span> (<span class="fu">==</span> <span class="fu">head</span> vs) <span class="fu">$</span> <span class="fu">tail</span> vs
-<span class="fu">&gt;</span>   printf <span class="st">&quot;%0.9f sec \n&quot;</span> ((<span class="fu">fromIntegral</span> (end <span class="fu">-</span> start)<span class="ot"> ::</span> <span class="dt">Double</span>) <span class="fu">/</span> <span class="dv">10</span><span class="fu">^</span><span class="dv">12</span>)
-<span class="fu">&gt;</span>   <span class="fu">return</span> v
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> time m <span class="fu">=</span> <span class="kw">do</span>
 <span class="fu">&gt;</span>   start <span class="ot">&lt;-</span> getCPUTime
 <span class="fu">&gt;</span>   v <span class="ot">&lt;-</span> evaluate m
-<span class="fu">&gt;</span> time m <span class="fu">=</span> <span class="kw">do</span></code></pre>
-<p>최종 순위</p>
+<span class="fu">&gt;</span>   end <span class="ot">&lt;-</span> getCPUTime
+<span class="fu">&gt;</span>   printf <span class="st">&quot;%0.9f sec \n&quot;</span> ((<span class="fu">fromIntegral</span> (end <span class="fu">-</span> start)<span class="ot"> ::</span> <span class="dt">Double</span>) <span class="fu">/</span> <span class="dv">10</span><span class="fu">^</span><span class="dv">12</span>)
+<span class="fu">&gt;</span>   <span class="fu">return</span> v</code></pre>
+<p><code>M1.memoize fib</code>는 거의 사용 불가, <code>fib</code>와 거의 같은 성능을 보인다.</p>
+<p><code>M1.memofix fibG</code>는 3.432s</p>
+<p><code>fibMC</code>는 6.605s</p>
+<p><code>fix (M3.memo . fibG)</code>는 4.764s</p>
+<p><code>fibMM</code>는 1.252s, 1.460s, 1.492s</p>
+<p><code>fibST</code>는 1.620s, 2.012s, 2.304s</p>
+<p><code>fibA</code>는 1.220s</p>
+<p><code>fibLz</code>는 1.216s.</p>
+<p><code>fibIt</code>는 0.252s,</p>
+<p>memoization package 순위</p>
 <ol style="list-style-type: decimal">
-<li>0.252s, iteration</li>
 <li>1.252s, monad-memo</li>
-<li>1.620s, state monad</li>
 <li>3.432s, memoize</li>
 <li>4.764s, memo-trie</li>
 <li>6.605s, data-memocombinators</li>
 </ol>
-<p>종합적으로 고려해 볼 때 monad-memo가 memoization package 중에서 가장 좋은 성능을 보인다.</p>
+<p>기타 순위</p>
+<ol style="list-style-type: decimal">
+<li>0.252s, iteration</li>
+<li>1.216s, lazy-evaluation</li>
+<li>1.220s, lazy-evaluation using Array</li>
+<li>1.620s, state monad</li>
+</ol>
+<p>그나마, monad-memo가 memoization package 중에서 가장 좋은 성능을 보인다.</p>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>Lambda Play - Haskel Fixed Point Combinator 3</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
+  </head>
+  <body>
+    <center>
+    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
+      <tr>
+	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
+	<td height="109" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
+	<td height="109" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
+	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
+      </tr>
+      <tr>
+	<td colspan="2" valign="top" width="709" height="81" bgcolor="white">
+	  <h1>Lambda Play - Haskel Fixed Point Combinator 3</h1>
+	  <div id="navigation">
+            <a href="../">Home</a>
+            <a href="../posts.html">All posts</a>
+          </div>	  
+	</td>
+      </tr>
+      <tr>
+	<td width="88" background="../images/tw_left_bg.png"></td>
+	<td colspan="2" valign="top">
+	  <h1>Haskel Fixed Point Combinator 3</h1>
+
+<p>by <em>comatose</em> on <strong>October  9, 2011</strong></p>
+
+<p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/fixed point combinator.html">fixed point combinator</a>, <a href="../tags/Y combinator.html">Y combinator</a>.</p>
+
+<p>n번째 fibonacci 수를 구하는 함수의 비효율적이지만 가장 유명한 구현 :</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> fib <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fib <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fib n <span class="fu">=</span> fib (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fib (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
+<p>역시 <code>fix</code>를 이용하여 구현 가능하다.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> fib fib <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fib fib <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fib fib n <span class="fu">=</span> fib (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fib (n <span class="fu">-</span> <span class="dv">2</span>)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span> fibSlow <span class="fu">=</span> fix fib</code></pre>
+<p>함수명 <code>fib</code>는 shadowing 되므로 인자 변수명 <code>fib</code>와는 별개임을 주의. Haskell Syntax의 장점이 돋보인다.</p>
+<p>지금도 충분히 흥미로운데 더욱 흥미로운 것은 이를 간단하게 Memoization을 할 수 있다.</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="kw">import</span> <span class="dt">Data.MemoTrie</span>(memo)
+<span class="fu">&gt;</span> 
+<span class="fu">&gt;</span><span class="ot"> fibFast ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+<span class="fu">&gt;</span> fibFast <span class="fu">=</span> fix (memo <span class="fu">.</span> fib)</code></pre>
+
+	</td>
+	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
+      </tr>
+    </table>
+  </body>
+</html>
