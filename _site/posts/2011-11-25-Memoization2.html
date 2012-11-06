@@ -37,7 +37,7 @@
 
 <p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/memoization.html">memoization</a>.</p>
 
-<p>아래 글과 관련해서 다음과 같은 구현도 가능하다. 출처. <a href="http://www.kennknowles.com/blog/2008/05/07/ctl-model-checking-in-haskell-a-classic-algorithm-explained-as-memoization/">여기</a></p>
+<p><a href="http://comatose.github.com/blog/_site/posts/2011-11-25-Memoization.html">아래</a>와 관련해서 다음과 같은 구현도 가능하다. 출처. <a href="http://www.kennknowles.com/blog/2008/05/07/ctl-model-checking-in-haskell-a-classic-algorithm-explained-as-memoization/">여기</a></p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="ot">{-# LANGUAGE NoMonomorphismRestriction #-}</span>
 <span class="fu">&gt;</span> <span class="ot">{-# LANGUAGE FlexibleContexts #-}</span>
 <span class="fu">&gt;</span> 
@@ -64,9 +64,9 @@
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span> fibMemo' <span class="fu">=</span> (<span class="ot">`evalState`</span> M.empty) <span class="fu">.</span> (fix (fibM' <span class="fu">.</span> memo'))
 <span class="fu">&gt;</span> fibMemo'' <span class="fu">=</span> (<span class="ot">`evalState`</span> M.empty) <span class="fu">.</span> (fix (memo' <span class="fu">.</span> fibM'))</code></pre>
-<p>fibMemo는 fibM’을 wrap한 것이고 fibMemo’과 fibMemo’’는 mixin 기법을 쓴 것이다.</p>
-<p>fix의 정의를 이용해서 fix (fibM’ . memo’)을 전개해보면</p>
-<p>fibM’ . memo’ . fibM’ . memo’ … 인 것을 알 수 있다.</p>
+<p><code>fibMemo</code>는 <code>fibM'</code>을 wrap한 것이고 <code>fibMemo'</code>과 <code>fibMemo''</code>는 mixin 기법을 쓴 것이다.</p>
+<p><code>fix</code>의 정의를 이용해서 <code>fix (fibM' . memo')</code>을 전개해보면</p>
+<p><code>fibM' . memo' . fibM' . memo' ...</code> 인 것을 알 수 있다.</p>
 <p>mixin이란 용어는 여기서 유래한 것이 아닌가 싶다.</p>
 
 	</td>
