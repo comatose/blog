@@ -5,6 +5,18 @@ tags: haskell, memoization
 ---
 아래 글과 관련해서 다음과 같은 구현도 가능하다. 출처. [여기](http://www.kennknowles.com/blog/2008/05/07/ctl-model-checking-in-haskell-a-classic-algorithm-explained-as-memoization/)
 
+> {-# LANGUAGE NoMonomorphismRestriction #-}
+> {-# LANGUAGE FlexibleContexts #-}
+> 
+> import Control.Monad.Fix (fix)
+> import qualified Data.Map as M
+> import Control.Monad.State hiding (fix)
+> 
+> fibM' :: (Monad m) => (Int -> m Integer) -> Int -> m Integer
+> fibM' fibM 0 = return 0
+> fibM' fibM 1 = return 1
+> fibM' fibM n = liftM2 (+) (fibM (n - 2)) (fibM (n - 1))
+>
 > memo' :: (MonadState (M.Map k v) m, Ord k) =>
 >          (k -> m v) -> k -> m v
 > memo' f' n = do
@@ -13,11 +25,12 @@ tags: haskell, memoization
 >     Just y -> return y
 >     Nothing -> do
 >       v <- f' n
+>       table' <- get    -- this is important!!!
 >       put $ M.insert n v table
 >       return v
 > 
-> fibMemo' n = evalState (fix (fibM' . memo') n) M.empty
-> fibMemo'' n = evalState (fix (memo' . fibM') n) M.empty
+> fibMemo' = (`evalState` M.empty) . (fix (fibM' . memo'))
+> fibMemo'' = (`evalState` M.empty) . (fix (memo' . fibM'))
 
 fibMemo는 fibM'을 wrap한 것이고 fibMemo'과 fibMemo''는 mixin 기법을 쓴 것이다.
 

@@ -87,6 +87,28 @@ fibonacci 수열을 대상으로 간단한 benchmark를 수행해 보았다.
 >               modify (M4.add n v)
 >               return v
 
+fibMM'은 [여기](http://comatose.github.com/blog/_site/posts/2011-11-25-Memoization.html) 참고
+
+> fibCM :: (M4.MapLike c Int Integer) => c -> Int -> Integer
+> fibCM ml = (`evalState` ml) . (fix $ memoM fibMG)
+>   where
+>     fibMG :: (Monad m) => (Int -> m Integer) -> Int -> m Integer
+>     fibMG fm 0 = return 1
+>     fibMG fm 1 = return 1
+>     fibMG fm n = liftM2 (+) (fm (n - 1)) (fm (n - 2))
+> 
+>     memoM :: (Show k, Show v, M4.MapLike c k v, MonadState c m) =>
+>      ((k -> m v) -> k -> m v) -> (k -> m v) -> k -> m v
+>     memoM f' f n = do
+>       table <- get
+>       case M4.lookup n table of
+>         Just y -> return y
+>         Nothing -> do
+>           v <- f' f n
+>           table' <- get
+>           put $ M4.add n v table'
+>           return v
+
 `fibA`는 `Array`와 lazy-evaluation 사용
 
 > fibA :: Int -> Integer
@@ -123,7 +145,8 @@ Fujitsu P1620 랩탑에서 100000번째 fibonacci 수를 구하는데 걸리는 
 >     fibST I.empty, fibST H.empty, fibST M.empty, -- state monad
 >     fibA, -- lazy evaluation with Array
 >     fibIt, -- tail-recursive iteration
->     fibLz
+>     fibLz,
+>     fibCM M.empty -- custom monad memo
 >     ]
 >   print $ all (== head vs) $ tail vs
 > 
@@ -146,12 +169,13 @@ Fujitsu P1620 랩탑에서 100000번째 fibonacci 수를 구하는데 걸리는 
 
 `fibST`는 1.620s, 2.012s, 2.304s
 
+`fibCM`은 1.727s, 다만, HashMap 이나 Map 사용시 stack overflow가 발생한다.
+
 `fibA`는 1.220s
 
 `fibLz`는 1.216s.
 
 `fibIt`는 0.252s,
-
 
 memoization package 순위
 
@@ -166,5 +190,6 @@ memoization package 순위
 1. 1.216s, lazy-evaluation
 1. 1.220s, lazy-evaluation using Array
 1. 1.620s, state monad
+1. 1.727s, custom monad memo
 
 그나마, monad-memo가 memoization package 중에서 가장 좋은 성능을 보인다.
