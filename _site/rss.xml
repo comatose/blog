@@ -1199,7 +1199,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <span class="fu">&gt;</span>               v <span class="ot">&lt;-</span> liftM2 (<span class="fu">+</span>) (go (n <span class="fu">-</span> <span class="dv">1</span>)) (go (n <span class="fu">-</span> <span class="dv">2</span>))
 <span class="fu">&gt;</span>               modify (M4.add n v)
 <span class="fu">&gt;</span>               <span class="fu">return</span> v</code></pre>
-<p>fibMM’은 <a href="http://comatose.github.com/blog/_site/posts/2011-11-25-Memoization.html">여기</a> 참고</p>
+<p><code>fibCM</code>은 <a href="http://comatose.github.com/blog/_site/posts/2011-11-25-Memoization.html">여기</a> 참고</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibCM ::</span> (<span class="dt">M4.MapLike</span> c <span class="dt">Int</span> <span class="dt">Integer</span>) <span class="ot">=&gt;</span> c <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibCM ml <span class="fu">=</span> (<span class="ot">`evalState`</span> ml) <span class="fu">.</span> (fix <span class="fu">$</span> memoM fibMG)
 <span class="fu">&gt;</span>   <span class="kw">where</span>

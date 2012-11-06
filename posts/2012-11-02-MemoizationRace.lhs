@@ -87,7 +87,7 @@ fibonacci 수열을 대상으로 간단한 benchmark를 수행해 보았다.
 >               modify (M4.add n v)
 >               return v
 
-fibMM'은 [여기](http://comatose.github.com/blog/_site/posts/2011-11-25-Memoization.html) 참고
+`fibCM`은 [여기](http://comatose.github.com/blog/_site/posts/2011-11-25-Memoization.html) 참고
 
 > fibCM :: (M4.MapLike c Int Integer) => c -> Int -> Integer
 > fibCM ml = (`evalState` ml) . (fix $ memoM fibMG)
