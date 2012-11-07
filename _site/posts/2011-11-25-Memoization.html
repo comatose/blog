@@ -45,8 +45,8 @@
 <span class="fu">&gt;</span> <span class="kw">import</span> <span class="dt">Control.Monad.State</span> <span class="kw">hiding</span> (fix)
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span><span class="ot"> fibM' ::</span> (<span class="kw">Monad</span> m) <span class="ot">=&gt;</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> m <span class="dt">Integer</span>) <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> m <span class="dt">Integer</span>
-<span class="fu">&gt;</span> fibM' fibM <span class="dv">0</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">0</span>
-<span class="fu">&gt;</span> fibM' fibM <span class="dv">1</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fibM' _ <span class="dv">0</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">0</span>
+<span class="fu">&gt;</span> fibM' _ <span class="dv">1</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
 <span class="fu">&gt;</span> fibM' fibM n <span class="fu">=</span> liftM2 (<span class="fu">+</span>) (fibM (n <span class="fu">-</span> <span class="dv">2</span>)) (fibM (n <span class="fu">-</span> <span class="dv">1</span>))
 <span class="fu">&gt;</span>   
 <span class="fu">&gt;</span><span class="ot"> memo ::</span> (<span class="dt">MonadState</span> (<span class="dt">M.Map</span> k v) m, <span class="kw">Ord</span> k) <span class="ot">=&gt;</span>
@@ -57,8 +57,7 @@
 <span class="fu">&gt;</span>     <span class="kw">Just</span> y <span class="ot">-&gt;</span> <span class="fu">return</span> y
 <span class="fu">&gt;</span>     <span class="kw">Nothing</span> <span class="ot">-&gt;</span> <span class="kw">do</span>
 <span class="fu">&gt;</span>       v <span class="ot">&lt;-</span> f' f n
-<span class="fu">&gt;</span>       table' <span class="ot">&lt;-</span> get    <span class="co">-- this is important!!!</span>
-<span class="fu">&gt;</span>       put <span class="fu">$</span> M.insert n v table
+<span class="fu">&gt;</span>       modify <span class="fu">$</span> M.insert n v
 <span class="fu">&gt;</span>       <span class="fu">return</span> v
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span> fibMemo <span class="fu">=</span> (<span class="ot">`evalState`</span> M.empty) <span class="fu">.</span> (fix (memo fibM'))</code></pre>

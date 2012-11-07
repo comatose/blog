@@ -14,7 +14,6 @@ tags: haskell, memoization
 > import           Control.Monad
 > import           Control.Monad.State
 > import           Data.Array
-> import           Data.Function
 > import           Data.Hashable
 > import qualified Data.HashMap.Lazy     as H
 > import qualified Data.IntMap           as I
@@ -52,9 +51,9 @@ fibonacci 수열을 대상으로 간단한 benchmark를 수행해 보았다.
 `figG`는 open recursion으로 정의되었다.
 
 > fibG :: (Int -> Integer) -> Int -> Integer
-> fibG fib 0 = 1
-> fibG fib 1 = 1
-> fibG fib n = fib (n - 1) + fib (n - 2)
+> fibG _ 0 = 1
+> fibG _ 1 = 1
+> fibG f n = f (n - 1) + f (n - 2)
 
 `figMC`는 MemoCombinator 사용
 
@@ -93,8 +92,8 @@ fibonacci 수열을 대상으로 간단한 benchmark를 수행해 보았다.
 > fibCM ml = (`evalState` ml) . (fix $ memoM fibMG)
 >   where
 >     fibMG :: (Monad m) => (Int -> m Integer) -> Int -> m Integer
->     fibMG fm 0 = return 1
->     fibMG fm 1 = return 1
+>     fibMG _ 0 = return 1
+>     fibMG _ 1 = return 1
 >     fibMG fm n = liftM2 (+) (fm (n - 1)) (fm (n - 2))
 > 
 >     memoM :: (Show k, Show v, M4.MapLike c k v, MonadState c m) =>
@@ -105,8 +104,7 @@ fibonacci 수열을 대상으로 간단한 benchmark를 수행해 보았다.
 >         Just y -> return y
 >         Nothing -> do
 >           v <- f' f n
->           table' <- get
->           put $ M4.add n v table'
+>           modify $ M4.add n v
 >           return v
 
 `fibA`는 `Array`와 lazy-evaluation 사용
@@ -134,6 +132,7 @@ fibonacci 수열을 대상으로 간단한 benchmark를 수행해 보았다.
 
 Fujitsu P1620 랩탑에서 100000번째 fibonacci 수를 구하는데 걸리는 시간을 재봤다.
 
+> main :: IO ()
 > main = do
 >   n <- liftM (read. head) getArgs
 >   vs <- mapM (time . ($n)) [
@@ -150,6 +149,7 @@ Fujitsu P1620 랩탑에서 100000번째 fibonacci 수를 구하는데 걸리는 
 >     ]
 >   print $ all (== head vs) $ tail vs
 > 
+> time :: a -> IO a
 > time m = do
 >   start <- getCPUTime
 >   v <- evaluate m

@@ -47,7 +47,6 @@
 <span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Monad</span>
 <span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Monad.State</span>
 <span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Data.Array</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Data.Function</span>
 <span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Data.Hashable</span>
 <span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.HashMap.Lazy</span>     <span class="kw">as</span> <span class="dt">H</span>
 <span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.IntMap</span>           <span class="kw">as</span> <span class="dt">I</span>
@@ -76,9 +75,9 @@
 <span class="fu">&gt;</span> fib n <span class="fu">=</span> fib (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fib (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
 <p><code>figG</code>는 open recursion으로 정의되었다.</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibG ::</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>) <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
-<span class="fu">&gt;</span> fibG fib <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
-<span class="fu">&gt;</span> fibG fib <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
-<span class="fu">&gt;</span> fibG fib n <span class="fu">=</span> fib (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fib (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
+<span class="fu">&gt;</span> fibG _ <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fibG _ <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="fu">&gt;</span> fibG f n <span class="fu">=</span> f (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> f (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
 <p><code>figMC</code>는 MemoCombinator 사용</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibMC ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibMC <span class="fu">=</span> M2.integral go
@@ -109,8 +108,8 @@
 <span class="fu">&gt;</span> fibCM ml <span class="fu">=</span> (<span class="ot">`evalState`</span> ml) <span class="fu">.</span> (fix <span class="fu">$</span> memoM fibMG)
 <span class="fu">&gt;</span>   <span class="kw">where</span>
 <span class="fu">&gt;</span><span class="ot">     fibMG ::</span> (<span class="kw">Monad</span> m) <span class="ot">=&gt;</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> m <span class="dt">Integer</span>) <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> m <span class="dt">Integer</span>
-<span class="fu">&gt;</span>     fibMG fm <span class="dv">0</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
-<span class="fu">&gt;</span>     fibMG fm <span class="dv">1</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>     fibMG _ <span class="dv">0</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>     fibMG _ <span class="dv">1</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
 <span class="fu">&gt;</span>     fibMG fm n <span class="fu">=</span> liftM2 (<span class="fu">+</span>) (fm (n <span class="fu">-</span> <span class="dv">1</span>)) (fm (n <span class="fu">-</span> <span class="dv">2</span>))
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span><span class="ot">     memoM ::</span> (<span class="kw">Show</span> k, <span class="kw">Show</span> v, <span class="dt">M4.MapLike</span> c k v, <span class="dt">MonadState</span> c m) <span class="ot">=&gt;</span>
@@ -121,8 +120,7 @@
 <span class="fu">&gt;</span>         <span class="kw">Just</span> y <span class="ot">-&gt;</span> <span class="fu">return</span> y
 <span class="fu">&gt;</span>         <span class="kw">Nothing</span> <span class="ot">-&gt;</span> <span class="kw">do</span>
 <span class="fu">&gt;</span>           v <span class="ot">&lt;-</span> f' f n
-<span class="fu">&gt;</span>           table' <span class="ot">&lt;-</span> get
-<span class="fu">&gt;</span>           put <span class="fu">$</span> M4.add n v table'
+<span class="fu">&gt;</span>           modify <span class="fu">$</span> M4.add n v
 <span class="fu">&gt;</span>           <span class="fu">return</span> v</code></pre>
 <p><code>fibA</code>는 <code>Array</code>와 lazy-evaluation 사용</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibA ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
@@ -142,7 +140,8 @@
 <span class="fu">&gt;</span>   <span class="kw">where</span> go n a b <span class="fu">|</span> n <span class="fu">==</span> n0 <span class="fu">=</span> a <span class="fu">+</span> b
 <span class="fu">&gt;</span>                  <span class="fu">|</span> <span class="fu">otherwise</span> <span class="fu">=</span> go (n <span class="fu">+</span> <span class="dv">1</span>) (a <span class="fu">+</span> b) a</code></pre>
 <p>Fujitsu P1620 랩탑에서 100000번째 fibonacci 수를 구하는데 걸리는 시간을 재봤다.</p>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> main <span class="fu">=</span> <span class="kw">do</span>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> main ::</span> <span class="dt">IO</span> ()
+<span class="fu">&gt;</span> main <span class="fu">=</span> <span class="kw">do</span>
 <span class="fu">&gt;</span>   n <span class="ot">&lt;-</span> liftM (<span class="fu">read.</span> <span class="fu">head</span>) getArgs
 <span class="fu">&gt;</span>   vs <span class="ot">&lt;-</span> <span class="fu">mapM</span> (time <span class="fu">.</span> (<span class="fu">$</span>n)) [
 <span class="fu">&gt;</span>     M1.memoize fib,   <span class="co">-- worst, same performance as fib</span>
@@ -158,6 +157,7 @@
 <span class="fu">&gt;</span>     ]
 <span class="fu">&gt;</span>   <span class="fu">print</span> <span class="fu">$</span> <span class="fu">all</span> (<span class="fu">==</span> <span class="fu">head</span> vs) <span class="fu">$</span> <span class="fu">tail</span> vs
 <span class="fu">&gt;</span> 
+<span class="fu">&gt;</span><span class="ot"> time ::</span> a <span class="ot">-&gt;</span> <span class="dt">IO</span> a
 <span class="fu">&gt;</span> time m <span class="fu">=</span> <span class="kw">do</span>
 <span class="fu">&gt;</span>   start <span class="ot">&lt;-</span> getCPUTime
 <span class="fu">&gt;</span>   v <span class="ot">&lt;-</span> evaluate m

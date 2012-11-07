@@ -13,8 +13,8 @@ tags: haskell, memoization
 > import Control.Monad.State hiding (fix)
 > 
 > fibM' :: (Monad m) => (Int -> m Integer) -> Int -> m Integer
-> fibM' fibM 0 = return 0
-> fibM' fibM 1 = return 1
+> fibM' _ 0 = return 0
+> fibM' _ 1 = return 1
 > fibM' fibM n = liftM2 (+) (fibM (n - 2)) (fibM (n - 1))
 >
 > memo' :: (MonadState (M.Map k v) m, Ord k) =>
@@ -25,8 +25,7 @@ tags: haskell, memoization
 >     Just y -> return y
 >     Nothing -> do
 >       v <- f' n
->       table' <- get    -- this is important!!!
->       put $ M.insert n v table
+>       modify $ M.insert n v
 >       return v
 > 
 > fibMemo' = (`evalState` M.empty) . (fix (fibM' . memo'))
