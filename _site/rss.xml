@@ -736,7 +736,6 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span> fibMemo <span class="fu">=</span> (<span class="ot">`evalState`</span> M.empty) <span class="fu">.</span> (fix (memo fibM'))</code></pre>
 <p>나름 <code>State</code> 모나드와 <code>Map</code>을 이용해서 memoization을 구현했다.</p>
-<p>주의할 것은, <code>table'</code>을 다시 얻어오지 않으면 memoization을 잃어버린다는 점이다.</p>
 <p>작동은 잘 되지만, <code>fibM'</code>처럼 기존 <code>fib</code>를 Monad로 재정의 해야한다는 것은 아쉽다.</p>
 <p>아래 소개된 MemoTrie는 과연 어떻게 한건지…</p>
 

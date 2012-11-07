@@ -31,8 +31,6 @@ tags: haskell, memoization
 
 나름 `State` 모나드와 `Map`을 이용해서 memoization을 구현했다.
 
-주의할 것은, `table'`을 다시 얻어오지 않으면 memoization을 잃어버린다는 점이다.
-
 작동은 잘 되지만, `fibM'`처럼 기존 `fib`를 Monad로 재정의 해야한다는 것은 아쉽다.
 
 아래 소개된 MemoTrie는 과연 어떻게 한건지...
