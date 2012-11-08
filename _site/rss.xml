@@ -1581,7 +1581,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 </item>
 <item>
     <title>Haskell 디버깅</title>
-    <link>http://example.com/posts/2012-11-08-DebuggingHaskell.html</link>
+    <link>http://example.com/posts/2012-11-05-DebugginHaskell.html</link>
     <description><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -1617,7 +1617,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 	<td colspan="2" valign="top">
 	  <h1>Haskell 디버깅</h1>
 
-<p>by <em>comatose</em> on <strong>November  8, 2012</strong></p>
+<p>by <em>comatose</em> on <strong>November  5, 2012</strong></p>
 
 <p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/debug.html">debug</a>.</p>
 
@@ -1630,8 +1630,8 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
   </body>
 </html>
 ]]></description>
-    <pubDate>Thu, 08 Nov 2012 00:00:00 UT</pubDate>
-    <guid>http://example.com/posts/2012-11-08-DebuggingHaskell.html</guid>
+    <pubDate>Mon, 05 Nov 2012 00:00:00 UT</pubDate>
+    <guid>http://example.com/posts/2012-11-05-DebugginHaskell.html</guid>
 </item>
 
     </channel> 
