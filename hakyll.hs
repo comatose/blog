@@ -1,15 +1,22 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 
-import           Control.Arrow    (arr, (***), (>>>))
-import           Control.Category (id)
-import           Data.Monoid      (mconcat, mempty)
-import           Prelude          hiding (id)
+import           Control.Applicative
+import           Control.Arrow       (arr, (***), (>>>))
+import           Control.Category    (id)
+import           Data.Monoid         (mconcat, mempty)
+import           Prelude             hiding (id)
 
 import           Hakyll
 
+myConfig = defaultHakyllConfiguration {
+  ignoreFile = \s -> head s == '#',
+  deployCommand = "git add _site/* posts/* drafts/*; git commit -a -m \"updated.\"; git push"
+  }
+
 main :: IO ()
-main = hakyll $ do
+main = hakyllWith myConfig
+       $ do
     -- Copy images
     match "images/*" $ do
         route idRoute
@@ -107,9 +114,9 @@ makeTagList tag posts =
 
 feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
-    { feedTitle       = "SimpleBlog RSS feed."
-    , feedDescription = "A simple demo of an RSS feed created with Hakyll."
-    , feedAuthorName  = "Jasper Van der Jeugt"
-    , feedAuthorEmail = "test@example.com"
-    , feedRoot        = "http://example.com"
+    { feedTitle       = "Lambda Play"
+    , feedDescription = ""
+    , feedAuthorName  = ""
+    , feedAuthorEmail = ""
+    , feedRoot        = "http://comatose.github.com/blog/_site"
     }

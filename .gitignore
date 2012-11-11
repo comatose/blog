@@ -2,3 +2,6 @@
 /hakyll.hi
 /hakyll.o
 /_site/posts/*_flymake.html
+/hakyll_flymake.hs
+/draft/*.hi
+/draft/*.o
