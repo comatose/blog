@@ -11,7 +11,7 @@ import           Hakyll
 
 myConfig = defaultHakyllConfiguration {
   ignoreFile = \s -> head s == '#',
-  deployCommand = "git add _site/* posts/* drafts/*; git commit -a -m \"updated.\"; git push"
+  deployCommand = "git add _site/* posts/* drafts/* templates/* css/* files/* images/*; git commit -a -m \"updated.\"; git push"
   }
 
 main :: IO ()
@@ -39,12 +39,14 @@ main = hakyllWith myConfig
     -- Render posts
     match "posts/*" $ do
         route   $ setExtension ".html"
-        compile $ pageCompiler
-            >>> arr (renderDateField "date" "%B %e, %Y" "Date unknown")
-            >>> renderTagsField "prettytags" (fromCapture "tags/*")
-            >>> applyTemplateCompiler "templates/post.html"
-            >>> applyTemplateCompiler "templates/default.html"
-            >>> relativizeUrlsCompiler
+        compile $
+          pageCompiler
+          >>> arr (setField "cmntid" "HHHHH")
+          >>> arr (renderDateField "date" "%B %e, %Y" "Date unknown")
+          >>> renderTagsField "prettytags" (fromCapture "tags/*")
+          >>> applyTemplateCompiler "templates/post.html"
+          >>> applyTemplateCompiler "templates/default.html"
+          >>> relativizeUrlsCompiler
 
     -- Render posts list
     match "posts.html" $ route idRoute
