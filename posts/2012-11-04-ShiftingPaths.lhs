@@ -8,8 +8,6 @@ tags: GCJ, haskell
 
 여전히 solveLarge는 미해결.
 
-> module Main where
-> 
 > import           Control.Parallel.Strategies
 > import           Data.Array
 > import qualified Data.BitSet                 as B
