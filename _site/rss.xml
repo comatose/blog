@@ -33,7 +33,7 @@
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Tail Recursion 만들기 - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Tail Recursion 만들기</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -43,7 +43,11 @@
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Tail Recursion 만들기</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Tail Recursion 만들기</h1>
 
 <p>by <em>comatose</em> on <strong>August  7, 2011</strong></p>
 
@@ -81,6 +85,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <span class="dv">3</span> <span class="fu">*</span> f (n <span class="fu">-</span> <span class="dv">2</span>) <span class="fu">=</span> b <span class="fu">*</span> <span class="dv">3</span> <span class="ot">`div`</span> <span class="dv">2</span> <span class="fu">=</span> c'</code></pre>
 <p>위 코드의 let 정의와 일치한다.</p>
 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-08-07-Tail Recursion.html';
+  var disqus_title = 'Tail Recursion 만들기';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
       </tr>
@@ -117,7 +139,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - lazy evaluation으로 소수열 구하기 - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - lazy evaluation으로 소수열 구하기</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -127,7 +149,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>lazy evaluation으로 소수열 구하기</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>lazy evaluation으로 소수열 구하기</h1>
 
 <p>by <em>comatose</em> on <strong>August 12, 2011</strong></p>
 
@@ -136,6 +162,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <p>당신이 사용하는 언어가 당신의 생각을 바꾼다.</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> primes <span class="fu">=</span> sieve [<span class="dv">2</span><span class="fu">..</span>]
 <span class="fu">&gt;</span>   <span class="kw">where</span> sieve (x<span class="fu">:</span>xs) <span class="fu">=</span> x <span class="fu">:</span> sieve [n <span class="fu">|</span> n <span class="ot">&lt;-</span> xs, (n <span class="ot">`rem`</span> x) <span class="fu">/=</span> <span class="dv">0</span>]</code></pre>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-08-12-Primes.html';
+  var disqus_title = 'lazy evaluation으로 소수열 구하기';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -173,7 +217,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Stanford lecture on Haskell - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Stanford lecture on Haskell</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -183,7 +227,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Stanford lecture on Haskell</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Stanford lecture on Haskell</h1>
 
 <p>by <em>comatose</em> on <strong>October  8, 2011</strong></p>
 
@@ -193,6 +241,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <p>이번 학기 시작한 강의, 강의 노트가 매우 알차다.</p>
 <p>한 학기가 기대되며, 비디오 녹화를 장비 문제로 못 한다는 것이 아쉬움.</p>
 <p>이런 강의를 직접 들을 수 있는 스탠포드 대학생들은 참으로 행운아로구나.</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-10-08-StanfordHaskell.html';
+  var disqus_title = 'Stanford lecture on Haskell';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -230,7 +296,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Haskel Fixed Point Combinator 1 - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Haskel Fixed Point Combinator 1</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -240,7 +306,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Haskel Fixed Point Combinator 1</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Haskel Fixed Point Combinator 1</h1>
 
 <p>by <em>comatose</em> on <strong>October  8, 2011</strong></p>
 
@@ -250,6 +320,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <p><a href="http://www.lambdassociates.org/">Qi</a> 언어에 fix 함수를 최근에 알았는데, Haskell의 fix 함수의 존재도 이제 알았다.</p>
 <p>Lazy Evaluation으로 사용법과 의미는 조금 다르다.</p>
 <p>관련하여 좀 더 자세한 내용은 <a href="http://en.wikibooks.org/wiki/Haskell/Fix_and_recursion">여기</a> 참고.</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-10-08-Y-Combinator.html';
+  var disqus_title = 'Haskel Fixed Point Combinator 1';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -287,7 +375,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Haskel Fixed Point Combinator 2 - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Haskel Fixed Point Combinator 2</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -297,7 +385,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Haskel Fixed Point Combinator 2</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Haskel Fixed Point Combinator 2</h1>
 
 <p>by <em>comatose</em> on <strong>October  9, 2011</strong></p>
 
@@ -351,6 +443,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> f (n<span class="dv">-1</span>)</code></pre>
 <p><code>fix fact' == fact</code> 가 확인된다.</p>
 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-10-09-Y-Combinator2.html';
+  var disqus_title = 'Haskel Fixed Point Combinator 2';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
       </tr>
@@ -387,7 +497,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Haskel Fixed Point Combinator 3 - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Haskel Fixed Point Combinator 3</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -397,7 +507,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Haskel Fixed Point Combinator 3</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Haskel Fixed Point Combinator 3</h1>
 
 <p>by <em>comatose</em> on <strong>October  9, 2011</strong></p>
 
@@ -419,6 +533,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span><span class="ot"> fibFast ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibFast <span class="fu">=</span> fix (memo <span class="fu">.</span> fib)</code></pre>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-10-09-Y-Combinator3.html';
+  var disqus_title = 'Haskel Fixed Point Combinator 3';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -456,7 +588,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Y in Practical Programs - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Y in Practical Programs</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -466,7 +598,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Y in Practical Programs</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Y in Practical Programs</h1>
 
 <p>by <em>comatose</em> on <strong>October  9, 2011</strong></p>
 
@@ -474,6 +610,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 
 <p><a href="../files/Y_in_Practical_Programs.pdf">Y in Practical Programs</a></p>
 <p>재귀의 각 단계를 Wrapping 할 수 있다.</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-10-09-Y.html';
+  var disqus_title = 'Y in Practical Programs';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -511,7 +665,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - LLVM bindings for Haskell - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - LLVM bindings for Haskell</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -521,7 +675,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>LLVM bindings for Haskell</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>LLVM bindings for Haskell</h1>
 
 <p>by <em>comatose</em> on <strong>October 10, 2011</strong></p>
 
@@ -532,6 +690,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <p><a href="http://augustss.blogspot.com/2009/01/llvm-arithmetic-so-we-want-to-compute-x.html">http://augustss.blogspot.com/2009/01/llvm-arithmetic-so-we-want-to-compute-x.html</a></p>
 <p><a href="http://augustss.blogspot.com/2009/01/performance-update-ive-continued.html">http://augustss.blogspot.com/2009/01/performance-update-ive-continued.html</a></p>
 <p><a href="http://augustss.blogspot.com/2009/02/is-haskell-fast-lets-do-simple.html">http://augustss.blogspot.com/2009/02/is-haskell-fast-lets-do-simple.html</a></p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-10-10-LLVM.html';
+  var disqus_title = 'LLVM bindings for Haskell';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -569,7 +745,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Tech-talk about Haskell at Google: Haskell Amuse-Bouche - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Tech-talk about Haskell at Google: Haskell Amuse-Bouche</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -579,7 +755,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Tech-talk about Haskell at Google: Haskell Amuse-Bouche</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Tech-talk about Haskell at Google: Haskell Amuse-Bouche</h1>
 
 <p>by <em>comatose</em> on <strong>October 24, 2011</strong></p>
 
@@ -589,6 +769,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 
 <p>Slides: <a href="http://www.ozonehouse.com/mark/haskell-amuse-bouche/slides.html">http://www.ozonehouse.com/mark/haskell-amuse-bouche/slides.html</a></p>
 <p>Code: <a href="https://github.com/mtnviewmark/haskell-amuse-bouche">https://github.com/mtnviewmark/haskell-amuse-bouche</a></p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-10-24-HaskellAmuse.html';
+  var disqus_title = 'Tech-talk about Haskell at Google: Haskell Amuse-Bouche';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -626,7 +824,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Fixed Point Combinator Video by Heinrich Apfelmus - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Fixed Point Combinator Video by Heinrich Apfelmus</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -636,7 +834,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Fixed Point Combinator Video by Heinrich Apfelmus</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Fixed Point Combinator Video by Heinrich Apfelmus</h1>
 
 <p>by <em>comatose</em> on <strong>November 10, 2011</strong></p>
 
@@ -658,6 +860,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <p>3) <code>fix'</code>을 보면 haskell의 <code>fix</code>는 재귀적임을 알 수 있다. <code>fact</code>는 재귀적이다. <code>fact'</code>은 재귀적이지 않다. 다시 <code>fix</code>는 재귀적이다. “The fixed point combinator is the essence of recursion.” 에 공감하게 된다.</p>
 <p>하지만, 놀랍게도 untyped lambda calculus의 <code>fix</code>는 재귀적이지 않다.</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">   <span class="dt">Y</span> <span class="fu">=</span> λf<span class="fu">.</span>(λx<span class="fu">.</span>f (x x)) (λx<span class="fu">.</span>f (x x))</code></pre>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-11-10-FixedPointCombinator.html';
+  var disqus_title = 'Fixed Point Combinator Video by Heinrich Apfelmus';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -695,7 +915,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Memoization 구현 - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Memoization 구현</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -705,7 +925,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Memoization 구현</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Memoization 구현</h1>
 
 <p>by <em>comatose</em> on <strong>November 25, 2011</strong></p>
 
@@ -738,6 +962,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <p>나름 <code>State</code> 모나드와 <code>Map</code>을 이용해서 memoization을 구현했다.</p>
 <p>작동은 잘 되지만, <code>fibM'</code>처럼 기존 <code>fib</code>를 Monad로 재정의 해야한다는 것은 아쉽다.</p>
 <p>아래 소개된 MemoTrie는 과연 어떻게 한건지…</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-11-25-Memoization.html';
+  var disqus_title = 'Memoization 구현';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -775,7 +1017,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Memoization 구현 2 - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Memoization 구현 2</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -785,7 +1027,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Memoization 구현 2</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Memoization 구현 2</h1>
 
 <p>by <em>comatose</em> on <strong>November 25, 2011</strong></p>
 
@@ -821,6 +1067,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <p><code>fix</code>의 정의를 이용해서 <code>fix (fibM' . memo')</code>을 전개해보면</p>
 <p><code>fibM' . memo' . fibM' . memo' ...</code> 인 것을 알 수 있다.</p>
 <p>mixin이란 용어는 여기서 유래한 것이 아닌가 싶다.</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-11-25-Memoization2.html';
+  var disqus_title = 'Memoization 구현 2';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -858,7 +1122,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - fix vs fix' - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - fix vs fix'</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -868,13 +1132,35 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>fix vs fix'</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>fix vs fix'</h1>
 
 <p>by <em>comatose</em> on <strong>November 30, 2011</strong></p>
 
 <p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/fixed point combinator.html">fixed point combinator</a>.</p>
 
 <p><a href="http://groups.google.com/group/stanford-11au-cs240h/browse_thread/thread/41005683f4479eeb">http://groups.google.com/group/stanford-11au-cs240h/browse_thread/thread/41005683f4479eeb</a></p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-11-30-FixFix'.html';
+  var disqus_title = 'fix vs fix'';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -912,7 +1198,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Open Recursion - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Open Recursion</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -922,7 +1208,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Open Recursion</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Open Recursion</h1>
 
 <p>by <em>comatose</em> on <strong>November 30, 2011</strong></p>
 
@@ -948,6 +1238,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <li><p><a href="http://www.kennknowles.com/blog/2008/05/07/ctl-model-checking-in-haskell-a-classic-algorithm-explained-as-memoization/">http://www.kennknowles.com/blog/2008/05/07/ctl-model-checking-in-haskell-a-classic-algorithm-explained-as-memoization/</a></p></li>
 <li><p><a href="http://okmij.org/ftp/tagless-final/course/SerializeExt.hs">http://okmij.org/ftp/tagless-final/course/SerializeExt.hs</a></p></li>
 </ul>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-11-30-OpenRecursion.html';
+  var disqus_title = 'Open Recursion';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -985,7 +1293,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Y in Haskell? - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Y in Haskell?</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -995,7 +1303,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Y in Haskell?</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Y in Haskell?</h1>
 
 <p>by <em>comatose</em> on <strong>November 30, 2011</strong></p>
 
@@ -1016,6 +1328,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <ul>
 <li><a href="https://groups.google.com/forum/?fromgroups=#!topic/stanford-11au-cs240h/gRjdqUjD8_I">출처</a> “Y combinator in Haskell”</li>
 </ul>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-11-30-Y-in-Haskell.html';
+  var disqus_title = 'Y in Haskell?';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -1053,7 +1383,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - nirvana = fix life - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - nirvana = fix life</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -1063,7 +1393,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>nirvana = fix life</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>nirvana = fix life</h1>
 
 <p>by <em>comatose</em> on <strong>December  1, 2011</strong></p>
 
@@ -1076,6 +1410,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <div class="figure">
 <img src="../images/hinduism_in_haskell_tshirt.jpg"></img><p class="caption"></p>
 </div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-12-01-Nirvana.html';
+  var disqus_title = 'nirvana = fix life';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -1113,7 +1465,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Memoization Benchmark - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Memoization Benchmark</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -1123,7 +1475,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Memoization Benchmark</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Memoization Benchmark</h1>
 
 <p>by <em>comatose</em> on <strong>November  2, 2012</strong></p>
 
@@ -1283,6 +1639,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 </ol>
 <p>그나마, monad-memo가 memoization package 중에서 가장 좋은 성능을 보인다.</p>
 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2012-11-02-MemoizationRace.html';
+  var disqus_title = 'Memoization Benchmark';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
       </tr>
@@ -1319,7 +1693,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Hakyll과 Github로 Blog 만들기 - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Hakyll과 Github로 Blog 만들기</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -1329,7 +1703,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Hakyll과 Github로 Blog 만들기</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Hakyll과 Github로 Blog 만들기</h1>
 
 <p>by <em>comatose</em> on <strong>November  3, 2012</strong></p>
 
@@ -1338,6 +1716,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <p><a href="http://www.github.com/">Github</a>는 일반적으로 소스저장소로 사용하지만, <a href="http://pages.github.com/">Pages</a>가 지원되면서 간단한 웹서버로 사용 가능하다. 다만, html만 지원되기 때문에, <a href="http://jekyllrb.com/">Jekyll</a>같은 static site generator도 함께 지원한다. <a href="http://jekyllrb.com/">Jekyll</a>을 써도 좋지만, haskell 기반의 <a href="http://jaspervdj.be/hakyll/">Hakyll</a>이 더 재밌을 것 같아 <a href="http://jaspervdj.be/hakyll/">Hakyll</a>을 사용해 봤다.</p>
 <p>일단 <a href="http://jaspervdj.be/hakyll/">Hakyll</a>은 생각보다 사용하기 쉬웠는데, tagblog template 기반에 source code 표시를 위한 css만 추가했다. 결과물은 <a href="https://github.com/comatose/blog/tree/gh-pages">여기</a>.</p>
 <p>_site 디렉토리를 제대로 인식하기 위해 .nojekyll을 추가하고 index.html에 _site로 redirection하도록 하면 완성. markdown과 literate haskell로 작성하는게 어색하지 않지만 나쁘지 않은 것 같다.</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2012-11-03-HakyllAndGithub.html';
+  var disqus_title = 'Hakyll과 Github로 Blog 만들기';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
@@ -1375,7 +1771,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - BoxFactory - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - BoxFactory</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -1385,7 +1781,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>BoxFactory</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>BoxFactory</h1>
 
 <p>by <em>comatose</em> on <strong>November  4, 2012</strong></p>
 
@@ -1455,6 +1855,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span>       listToIntPair [i, j] <span class="fu">=</span> (<span class="fu">read</span> i, <span class="fu">read</span> j)</code></pre>
 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2012-11-04-BoxFactory.html';
+  var disqus_title = 'BoxFactory';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
       </tr>
@@ -1491,7 +1909,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Shifting Paths - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Shifting Paths</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -1501,7 +1919,11 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Shifting Paths</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Shifting Paths</h1>
 
 <p>by <em>comatose</em> on <strong>November  4, 2012</strong></p>
 
@@ -1509,9 +1931,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 
 <p><a href="http://code.google.com/codejam/contest/2075486/dashboard#s=p4">Problem Description</a></p>
 <p>여전히 solveLarge는 미해결.</p>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="kw">module</span> <span class="dt">Main</span> <span class="kw">where</span>
-<span class="fu">&gt;</span> 
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Parallel.Strategies</span>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Parallel.Strategies</span>
 <span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Data.Array</span>
 <span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.BitSet</span>                 <span class="kw">as</span> <span class="dt">B</span></code></pre>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="co">-- left and right paths</span>
@@ -1569,6 +1989,24 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
 <span class="fu">&gt;</span>         <span class="kw">where</span> n <span class="fu">=</span> <span class="fu">read</span> x
 <span class="fu">&gt;</span>               (clrs, rest) <span class="fu">=</span> <span class="fu">splitAt</span> (n <span class="fu">-</span> <span class="dv">1</span>) xs</code></pre>
 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2012-11-04-ShiftingPaths.html';
+  var disqus_title = 'Shifting Paths';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
       </tr>
@@ -1605,7 +2043,7 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Haskell 디버깅 - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - Haskell 디버깅</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -1615,13 +2053,35 @@ c <span class="fu">=</span> <span class="dv">3</span> <span class="fu">*</span> 
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>Haskell 디버깅</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>Haskell 디버깅</h1>
 
 <p>by <em>comatose</em> on <strong>November  5, 2012</strong></p>
 
 <p>Tagged as: <a href="../tags/haskell.html">haskell</a>, <a href="../tags/debug.html">debug</a>.</p>
 
 <p><a href="http://www.haskell.org/haskellwiki/Debugging">출처.</a></p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2012-11-05-DebugginHaskell.html';
+  var disqus_title = 'Haskell 디버깅';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>

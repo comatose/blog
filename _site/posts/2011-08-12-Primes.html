@@ -21,7 +21,7 @@
       </tr>
       <tr>
 	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - lazy evaluation으로 소수열 구하기 - HHHHH</h1>
+	  <h1><a href="../">Lambda Play</a> - lazy evaluation으로 소수열 구하기</h1>
 	  <div id="navigation">
             <a href="../">Home</a>
             <a href="../posts.html">All posts</a>
@@ -31,7 +31,11 @@
       <tr>
 	<td width="88" background="../images/tw_left_bg.png"></td>
 	<td colspan="2" valign="top">
-	  <h1>lazy evaluation으로 소수열 구하기</h1>
+	  <script type="text/javascript">
+    var disqus_developer = 1;
+</script>
+
+<h1>lazy evaluation으로 소수열 구하기</h1>
 
 <p>by <em>comatose</em> on <strong>August 12, 2011</strong></p>
 
@@ -40,6 +44,24 @@
 <p>당신이 사용하는 언어가 당신의 생각을 바꾼다.</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> primes <span class="fu">=</span> sieve [<span class="dv">2</span><span class="fu">..</span>]
 <span class="fu">&gt;</span>   <span class="kw">where</span> sieve (x<span class="fu">:</span>xs) <span class="fu">=</span> x <span class="fu">:</span> sieve [n <span class="fu">|</span> n <span class="ot">&lt;-</span> xs, (n <span class="ot">`rem`</span> x) <span class="fu">/=</span> <span class="dv">0</span>]</code></pre>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2011-08-12-Primes.html';
+  var disqus_title = 'lazy evaluation으로 소수열 구하기';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	</td>
 	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
