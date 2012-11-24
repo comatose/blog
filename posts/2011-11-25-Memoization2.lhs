@@ -3,7 +3,7 @@ title: Memoization 구현 2
 author: comatose
 tags: haskell, memoization
 ---
-[아래](http://comatose.github.com/blog/_site/posts/2011-11-25-Memoization.html)와 관련해서 다음과 같은 구현도 가능하다. 출처. [여기](http://www.kennknowles.com/blog/2008/05/07/ctl-model-checking-in-haskell-a-classic-algorithm-explained-as-memoization/)
+[아래](2011-11-25-Memoization.html)와 관련해서 다음과 같은 구현도 가능하다. 출처. [여기](http://www.kennknowles.com/blog/2008/05/07/ctl-model-checking-in-haskell-a-classic-algorithm-explained-as-memoization/)
 
 > {-# LANGUAGE NoMonomorphismRestriction #-}
 > {-# LANGUAGE FlexibleContexts #-}

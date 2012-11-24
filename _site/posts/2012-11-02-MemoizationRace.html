@@ -107,7 +107,7 @@
 <span class="fu">&gt;</span>               v <span class="ot">&lt;-</span> liftM2 (<span class="fu">+</span>) (go (n <span class="fu">-</span> <span class="dv">1</span>)) (go (n <span class="fu">-</span> <span class="dv">2</span>))
 <span class="fu">&gt;</span>               modify (M4.add n v)
 <span class="fu">&gt;</span>               <span class="fu">return</span> v</code></pre>
-<p><code>fibCM</code>은 <a href="http://comatose.github.com/blog/_site/posts/2011-11-25-Memoization.html">여기</a> 참고</p>
+<p><code>fibCM</code>은 <a href="2011-11-25-Memoization.html">여기</a> 참고</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibCM ::</span> (<span class="dt">M4.MapLike</span> c <span class="dt">Int</span> <span class="dt">Integer</span>) <span class="ot">=&gt;</span> c <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibCM ml <span class="fu">=</span> (<span class="ot">`evalState`</span> ml) <span class="fu">.</span> (fix <span class="fu">$</span> memoM fibMG)
 <span class="fu">&gt;</span>   <span class="kw">where</span>
@@ -116,8 +116,8 @@
 <span class="fu">&gt;</span>     fibMG _ <span class="dv">1</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
 <span class="fu">&gt;</span>     fibMG fm n <span class="fu">=</span> liftM2 (<span class="fu">+</span>) (fm (n <span class="fu">-</span> <span class="dv">1</span>)) (fm (n <span class="fu">-</span> <span class="dv">2</span>))
 <span class="fu">&gt;</span> 
-<span class="fu">&gt;</span><span class="ot">     memoM ::</span> (<span class="kw">Show</span> k, <span class="kw">Show</span> v, <span class="dt">M4.MapLike</span> c k v, <span class="dt">MonadState</span> c m) <span class="ot">=&gt;</span>
-<span class="fu">&gt;</span>      ((k <span class="ot">-&gt;</span> m v) <span class="ot">-&gt;</span> k <span class="ot">-&gt;</span> m v) <span class="ot">-&gt;</span> (k <span class="ot">-&gt;</span> m v) <span class="ot">-&gt;</span> k <span class="ot">-&gt;</span> m v
+<span class="fu">&gt;</span><span class="ot">     memoM ::</span> (<span class="dt">M4.MapLike</span> c k v, <span class="dt">MonadState</span> c m) <span class="ot">=&gt;</span>
+<span class="fu">&gt;</span>              ((k <span class="ot">-&gt;</span> m v) <span class="ot">-&gt;</span> k <span class="ot">-&gt;</span> m v) <span class="ot">-&gt;</span> (k <span class="ot">-&gt;</span> m v) <span class="ot">-&gt;</span> k <span class="ot">-&gt;</span> m v
 <span class="fu">&gt;</span>     memoM f' f n <span class="fu">=</span> <span class="kw">do</span>
 <span class="fu">&gt;</span>       table <span class="ot">&lt;-</span> get
 <span class="fu">&gt;</span>       <span class="kw">case</span> M4.lookup n table <span class="kw">of</span>
