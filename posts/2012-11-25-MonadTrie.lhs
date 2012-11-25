@@ -27,7 +27,7 @@ IO를 쓰지 않고 라이브러리 수준에서 이렇게 간결한 memoization
 >   where tab = map f [0..]
 >         f 0 = 1
 >         f 1 = 1
->         f n = fibLazy (n - 1) + fibLazy (n - 2)
+>         f n = tab !! (n - 1) + tab !! (n - 2)
 
 일반적인 List를 이용한 memoization의 구현인 `fibLazy`에서 `f`를 open recursion으로 변형하고
 
