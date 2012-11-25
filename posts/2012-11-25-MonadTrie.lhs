@@ -27,7 +27,7 @@ IO를 쓰지 않고 라이브러리 수준에서 이렇게 간결한 memoization
 >   where tab = map f [0..]
 >         f 0 = 1
 >         f 1 = 1
->         f n = tab !! (n - 1) + tab !! (n - 2)
+>         f n = fibLazy (n - 1) + fibLazy (n - 2)
 
 일반적인 List를 이용한 memoization의 구현인 `fibLazy`에서 `f`를 open recursion으로 변형하고
 
@@ -51,7 +51,7 @@ IO를 쓰지 않고 라이브러리 수준에서 이렇게 간결한 memoization
 > fibLz :: (Int -> Integer)
 > fibLz = fix (memo . fibG)
 >   where memo :: (Int -> Integer) -> (Int -> Integer)
->         memo f = (map f [0..] !!)
+>         memo = \f -> (map f [0..] !!)
 
 다시, `memo`를 좀 더 분리해보면,
 
@@ -63,7 +63,7 @@ IO를 쓰지 않고 라이브러리 수준에서 이렇게 간결한 memoization
 >     untabify :: [Integer] -> (Int -> Integer)
 >     untabify = (!!)
 
-결국 `memo`가 하는 일은 함수를 자료구조로 만들고(`tabify`) 다시 함수로 만들어주는(`untabify`) 거였다.
+결국 `memo`가 하는 일은 함수를 자료구조로 만들고(`tabify`) 다시 함수로 만들어주는(`untabify`) 것이다.
 
 List가 비효율적이면 `memo'`처럼 Array를 사용할 수 있다.
 

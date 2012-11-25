@@ -58,7 +58,7 @@
 <span class="fu">&gt;</span>   <span class="kw">where</span> tab <span class="fu">=</span> <span class="fu">map</span> f [<span class="dv">0</span><span class="fu">..</span>]
 <span class="fu">&gt;</span>         f <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
 <span class="fu">&gt;</span>         f <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
-<span class="fu">&gt;</span>         f n <span class="fu">=</span> tab <span class="fu">!!</span> (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> tab <span class="fu">!!</span> (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
+<span class="fu">&gt;</span>         f n <span class="fu">=</span> fibLazy (n <span class="fu">-</span> <span class="dv">1</span>) <span class="fu">+</span> fibLazy (n <span class="fu">-</span> <span class="dv">2</span>)</code></pre>
 <p>일반적인 List를 이용한 memoization의 구현인 <code>fibLazy</code>에서 <code>f</code>를 open recursion으로 변형하고</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> fibLazy' <span class="fu">=</span> (tab <span class="fu">!!</span>)
 <span class="fu">&gt;</span>   <span class="kw">where</span> tab <span class="fu">=</span> <span class="fu">map</span> (fibG (tab <span class="fu">!!</span>)) [<span class="dv">0</span><span class="fu">..</span>]
@@ -78,7 +78,7 @@
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibLz ::</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>)
 <span class="fu">&gt;</span> fibLz <span class="fu">=</span> fix (memo <span class="fu">.</span> fibG)
 <span class="fu">&gt;</span>   <span class="kw">where</span><span class="ot"> memo ::</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>) <span class="ot">-&gt;</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>)
-<span class="fu">&gt;</span>         memo f <span class="fu">=</span> (<span class="fu">map</span> f [<span class="dv">0</span><span class="fu">..</span>] <span class="fu">!!</span>)</code></pre>
+<span class="fu">&gt;</span>         memo <span class="fu">=</span> \f <span class="ot">-&gt;</span> (<span class="fu">map</span> f [<span class="dv">0</span><span class="fu">..</span>] <span class="fu">!!</span>)</code></pre>
 <p>다시, <code>memo</code>를 좀 더 분리해보면,</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> memo ::</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>) <span class="ot">-&gt;</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>)
 <span class="fu">&gt;</span> memo <span class="fu">=</span> untabify <span class="fu">.</span> tabify
@@ -87,7 +87,7 @@
 <span class="fu">&gt;</span>     tabify f <span class="fu">=</span> (<span class="fu">map</span> f [<span class="dv">0</span><span class="fu">..</span>])
 <span class="fu">&gt;</span><span class="ot">     untabify ::</span> [<span class="dt">Integer</span>] <span class="ot">-&gt;</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>)
 <span class="fu">&gt;</span>     untabify <span class="fu">=</span> (<span class="fu">!!</span>)</code></pre>
-<p>결국 <code>memo</code>가 하는 일은 함수를 자료구조로 만들고(<code>tabify</code>) 다시 함수로 만들어주는(<code>untabify</code>) 거였다.</p>
+<p>결국 <code>memo</code>가 하는 일은 함수를 자료구조로 만들고(<code>tabify</code>) 다시 함수로 만들어주는(<code>untabify</code>) 것이다.</p>
 <p>List가 비효율적이면 <code>memo'</code>처럼 Array를 사용할 수 있다.</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> memo' ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>) <span class="ot">-&gt;</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>)
 <span class="fu">&gt;</span> memo' sz <span class="fu">=</span> untabify <span class="fu">.</span> tabify
