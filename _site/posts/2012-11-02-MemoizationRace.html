@@ -148,8 +148,8 @@
 <span class="fu">&gt;</span> main <span class="fu">=</span> <span class="kw">do</span>
 <span class="fu">&gt;</span>   n <span class="ot">&lt;-</span> liftM (<span class="fu">read.</span> <span class="fu">head</span>) getArgs
 <span class="fu">&gt;</span>   vs <span class="ot">&lt;-</span> <span class="fu">mapM</span> (time <span class="fu">.</span> (<span class="fu">$</span>n)) [
-<span class="fu">&gt;</span>     M1.memoize fib,   <span class="co">-- worst, same performance as fib</span>
-<span class="fu">&gt;</span>     M1.memoFix fibG, <span class="co">-- memoize</span>
+<span class="fu">&gt;</span>     fix (M1.memoize <span class="fu">.</span> fibG),
+<span class="fu">&gt;</span>     M1.memoFix fibG, <span class="co">-- memoize   -- same as the above</span>
 <span class="fu">&gt;</span>     fibMC, <span class="co">-- data-memocombinators</span>
 <span class="fu">&gt;</span>     fix (M3.memo <span class="fu">.</span> fibG), <span class="co">--MemoTrie</span>
 <span class="fu">&gt;</span>     fibMM I.empty, fibMM H.empty, fibMM M.empty, <span class="co">-- monad-memo</span>
@@ -168,8 +168,7 @@
 <span class="fu">&gt;</span>   end <span class="ot">&lt;-</span> getCPUTime
 <span class="fu">&gt;</span>   printf <span class="st">&quot;%0.9f sec \n&quot;</span> ((<span class="fu">fromIntegral</span> (end <span class="fu">-</span> start)<span class="ot"> ::</span> <span class="dt">Double</span>) <span class="fu">/</span> <span class="dv">10</span><span class="fu">^</span><span class="dv">12</span>)
 <span class="fu">&gt;</span>   <span class="fu">return</span> v</code></pre>
-<p><code>M1.memoize fib</code>는 거의 사용 불가, <code>fib</code>와 거의 같은 성능을 보인다.</p>
-<p><code>M1.memofix fibG</code>는 3.432s</p>
+<p><code>fix (M1.memoize fibG)</code>, <code>M1.memofix fibG</code>는 3.432s</p>
 <p><code>fibMC</code>는 6.605s</p>
 <p><code>fix (M3.memo . fibG)</code>는 4.764s</p>
 <p><code>fibMM</code>는 1.252s, 1.460s, 1.492s</p>

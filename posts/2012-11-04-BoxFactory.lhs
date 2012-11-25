@@ -13,9 +13,6 @@ tags: GCJ, haskell
 > import           Control.Monad
 > import           Control.Monad.Memo
 > import           Control.Monad.State
-> import           Control.Parallel.Strategies
-> import           Data.Function
-> import           Data.Function.Memoize
 > import           Data.Hashable
 > import qualified Data.HashMap.Lazy           as H
 > import qualified Data.Map                    as M
@@ -38,16 +35,16 @@ tags: GCJ, haskell
 >   lookup = H.lookup
 >   add = H.insert
 
-> solveMM mc = show . (`evalMemoState` mc) . (uncurry goM)
+> solveMM mc = show . (`evalMemoState` mc) . (uncurry . fix $ for2 memo . goM)
 >   where
->     goM ball@((n, b):bs) tall@((m, t):ts)
+>     goM f ball@((n, b):bs) tall@((m, t):ts)
 >       = if b == t
 >         then if n > m
->              then liftM (m+) $ for2 memo goM ((n - m, b):bs) ts
->              else liftM (n+) $ for2 memo goM bs ((m - n, t):ts)
+>              then liftM (m+) $ f ((n - m, b):bs) ts
+>              else liftM (n+) $ f bs ((m - n, t):ts)
 >         else
->           liftM2 max (for2 memo goM ball ts) (for2 memo goM bs tall)
->     goM _ _ = return 0
+>           liftM2 max (f ball ts) (f bs tall)
+>     goM _ _ _ = return 0
 
 > main :: IO ()
 > main = interact $
