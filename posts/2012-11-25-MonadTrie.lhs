@@ -9,7 +9,7 @@ tags: haskell, memoization
 > import qualified Data.MemoTrie as M
 > import           System.Environment
 
-[여기](http://localhost:5907/posts/2011-10-09-Y-Combinator3.html)에서 소개한 [MemoTrie]는 처음 접했을 때는 그냥 magic이었다.
+[여기](2011-10-09-Y-Combinator3.html)에서 소개한 [MemoTrie]는 처음 접했을 때는 그냥 magic이었다.
 
 > fibG :: (Int -> Integer) -> Int -> Integer
 > fibG _ 0 = 1
@@ -41,7 +41,7 @@ IO를 쓰지 않고 라이브러리 수준에서 이렇게 간결한 memoization
 >   where at = (\f -> (map f [0..] !!)) (fibG at)
 >
 > fibLazy'''' = fix atG
->   where atG at = (\f -> (map f [0..] !!)) (fibG (at))
+>   where atG at = (\f -> (map f [0..] !!)) (fibG at)
 >
 > fibLazy''''' = fix atG
 >   where atG = (\f -> (map f [0..] !!)) . fibG
