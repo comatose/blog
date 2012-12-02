@@ -3,3 +3,4 @@
 /hakyll_flymake.hs
 *.hi
 *.o
+/hakyll

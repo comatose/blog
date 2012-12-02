@@ -9,7 +9,7 @@ tags: haskell, memoization
 > import qualified Data.MemoTrie as M
 > import           System.Environment
 
-[여기](http://localhost:5907/posts/2011-10-09-Y-Combinator3.html)에서 소개한 [MemoTrie]는 처음 접했을 때는 그냥 magic이었다.
+[여기](2011-10-09-Y-Combinator3.html)에서 소개한 [MemoTrie]는 처음 접했을 때는 그냥 magic이었다.
 
 > fibG :: (Int -> Integer) -> Int -> Integer
 > fibG _ 0 = 1
@@ -41,7 +41,7 @@ IO를 쓰지 않고 라이브러리 수준에서 이렇게 간결한 memoization
 >   where at = (\f -> (map f [0..] !!)) (fibG at)
 >
 > fibLazy'''' = fix atG
->   where atG at = (\f -> (map f [0..] !!)) (fibG (at))
+>   where atG at = (\f -> (map f [0..] !!)) (fibG at)
 >
 > fibLazy''''' = fix atG
 >   where atG = (\f -> (map f [0..] !!)) . fibG
@@ -51,7 +51,7 @@ IO를 쓰지 않고 라이브러리 수준에서 이렇게 간결한 memoization
 > fibLz :: (Int -> Integer)
 > fibLz = fix (memo . fibG)
 >   where memo :: (Int -> Integer) -> (Int -> Integer)
->         memo f = (map f [0..] !!)
+>         memo = \f -> (map f [0..] !!)
 
 다시, `memo`를 좀 더 분리해보면,
 
@@ -63,7 +63,7 @@ IO를 쓰지 않고 라이브러리 수준에서 이렇게 간결한 memoization
 >     untabify :: [Integer] -> (Int -> Integer)
 >     untabify = (!!)
 
-결국 `memo`가 하는 일은 함수를 자료구조로 만들고(`tabify`) 다시 함수로 만들어주는(`untabify`) 거였다.
+결국 `memo`가 하는 일은 함수를 자료구조로 만들고(`tabify`) 다시 함수로 만들어주는(`untabify`) 것이다.
 
 List가 비효율적이면 `memo'`처럼 Array를 사용할 수 있다.
 
@@ -85,4 +85,4 @@ List가 비효율적이면 `memo'`처럼 Array를 사용할 수 있다.
 
 근데, [MonadMemo](2012-11-25-MonadMemo.html)가 더 빠르다.
 
-[MemoTrie]:http://www.haskell.org/haskellwiki/MemoTrieㅛㅛㅛㅛㅛ````
+[MemoTrie]:http://www.haskell.org/haskellwiki/MemoTrie

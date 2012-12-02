@@ -136,8 +136,8 @@ Fujitsu P1620 랩탑에서 100000번째 fibonacci 수를 구하는데 걸리는 
 > main = do
 >   n <- liftM (read. head) getArgs
 >   vs <- mapM (time . ($n)) [
->     M1.memoize fib,   -- worst, same performance as fib
->     M1.memoFix fibG, -- memoize
+>     fix (M1.memoize . fibG),
+>     M1.memoFix fibG, -- memoize   -- same as the above
 >     fibMC, -- data-memocombinators
 >     fix (M3.memo . fibG), --MemoTrie
 >     fibMM I.empty, fibMM H.empty, fibMM M.empty, -- monad-memo
@@ -157,9 +157,7 @@ Fujitsu P1620 랩탑에서 100000번째 fibonacci 수를 구하는데 걸리는 
 >   printf "%0.9f sec \n" ((fromIntegral (end - start) :: Double) / 10^12)
 >   return v
 
-`M1.memoize fib`는 거의 사용 불가, `fib`와 거의 같은 성능을 보인다.
-
-`M1.memofix fibG`는 3.432s
+`fix (M1.memoize fibG)`, `M1.memofix fibG`는 3.432s
 
 `fibMC`는 6.605s
 

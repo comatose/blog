@@ -50,9 +50,6 @@
 <span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Monad</span>
 <span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Monad.Memo</span>
 <span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Monad.State</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Parallel.Strategies</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Data.Function</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Data.Function.Memoize</span>
 <span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Data.Hashable</span>
 <span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.HashMap.Lazy</span>           <span class="kw">as</span> <span class="dt">H</span>
 <span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.Map</span>                    <span class="kw">as</span> <span class="dt">M</span></code></pre>
@@ -71,16 +68,16 @@
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="kw">instance</span> (<span class="kw">Eq</span> k, <span class="dt">Hashable</span> k) <span class="ot">=&gt;</span> <span class="dt">MapLike</span> (<span class="dt">H.HashMap</span> k v) k v <span class="kw">where</span>
 <span class="fu">&gt;</span>   <span class="fu">lookup</span> <span class="fu">=</span> H.lookup
 <span class="fu">&gt;</span>   add <span class="fu">=</span> H.insert</code></pre>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> solveMM mc <span class="fu">=</span> <span class="fu">show</span> <span class="fu">.</span> (<span class="ot">`evalMemoState`</span> mc) <span class="fu">.</span> (<span class="fu">uncurry</span> goM)
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> solveMM mc <span class="fu">=</span> <span class="fu">show</span> <span class="fu">.</span> (<span class="ot">`evalMemoState`</span> mc) <span class="fu">.</span> (<span class="fu">uncurry</span> <span class="fu">.</span> fix <span class="fu">$</span> for2 memo <span class="fu">.</span> goM)
 <span class="fu">&gt;</span>   <span class="kw">where</span>
-<span class="fu">&gt;</span>     goM ball<span class="fu">@</span>((n, b)<span class="fu">:</span>bs) tall<span class="fu">@</span>((m, t)<span class="fu">:</span>ts)
+<span class="fu">&gt;</span>     goM f ball<span class="fu">@</span>((n, b)<span class="fu">:</span>bs) tall<span class="fu">@</span>((m, t)<span class="fu">:</span>ts)
 <span class="fu">&gt;</span>       <span class="fu">=</span> <span class="kw">if</span> b <span class="fu">==</span> t
 <span class="fu">&gt;</span>         <span class="kw">then</span> <span class="kw">if</span> n <span class="fu">&gt;</span> m
-<span class="fu">&gt;</span>              <span class="kw">then</span> liftM (m<span class="fu">+</span>) <span class="fu">$</span> for2 memo goM ((n <span class="fu">-</span> m, b)<span class="fu">:</span>bs) ts
-<span class="fu">&gt;</span>              <span class="kw">else</span> liftM (n<span class="fu">+</span>) <span class="fu">$</span> for2 memo goM bs ((m <span class="fu">-</span> n, t)<span class="fu">:</span>ts)
+<span class="fu">&gt;</span>              <span class="kw">then</span> liftM (m<span class="fu">+</span>) <span class="fu">$</span> f ((n <span class="fu">-</span> m, b)<span class="fu">:</span>bs) ts
+<span class="fu">&gt;</span>              <span class="kw">else</span> liftM (n<span class="fu">+</span>) <span class="fu">$</span> f bs ((m <span class="fu">-</span> n, t)<span class="fu">:</span>ts)
 <span class="fu">&gt;</span>         <span class="kw">else</span>
-<span class="fu">&gt;</span>           liftM2 <span class="fu">max</span> (for2 memo goM ball ts) (for2 memo goM bs tall)
-<span class="fu">&gt;</span>     goM _ _ <span class="fu">=</span> <span class="fu">return</span> <span class="dv">0</span></code></pre>
+<span class="fu">&gt;</span>           liftM2 <span class="fu">max</span> (f ball ts) (f bs tall)
+<span class="fu">&gt;</span>     goM _ _ _ <span class="fu">=</span> <span class="fu">return</span> <span class="dv">0</span></code></pre>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> main ::</span> <span class="dt">IO</span> ()
 <span class="fu">&gt;</span> main <span class="fu">=</span> <span class="fu">interact</span> <span class="fu">$</span>
 <span class="fu">&gt;</span>        <span class="fu">unlines</span> <span class="fu">.</span> numbering <span class="fu">.</span> <span class="fu">map</span> (solveMM H.empty)
