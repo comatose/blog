@@ -85,4 +85,4 @@ List가 비효율적이면 `memo'`처럼 Array를 사용할 수 있다.
 
 근데, [MonadMemo](2012-11-25-MonadMemo.html)가 더 빠르다.
 
-[MemoTrie]:http://www.haskell.org/haskellwiki/MemoTrie
+[MemoTrie]:http://www.haskell.org/haskellwiki/MemoTrieㅛㅛㅛㅛㅛ````
