@@ -2268,7 +2268,7 @@ memoln fl fk f k <span class="fu">=</span> <span class="kw">do</span>
 <span class="fu">&gt;</span> <span class="kw">import</span> <span class="dt">Data.Function</span>
 <span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.MemoTrie</span> <span class="kw">as</span> <span class="dt">M</span>
 <span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">System.Environment</span></code></pre>
-<p><a href="http://localhost:5907/posts/2011-10-09-Y-Combinator3.html">여기</a>에서 소개한 <a href="http://www.haskell.org/haskellwiki/MemoTrie">MemoTrie</a>는 처음 접했을 때는 그냥 magic이었다.</p>
+<p><a href="2011-10-09-Y-Combinator3.html">여기</a>에서 소개한 <a href="http://www.haskell.org/haskellwiki/MemoTrie">MemoTrie</a>는 처음 접했을 때는 그냥 magic이었다.</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibG ::</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>) <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibG _ <span class="dv">0</span> <span class="fu">=</span> <span class="dv">1</span>
 <span class="fu">&gt;</span> fibG _ <span class="dv">1</span> <span class="fu">=</span> <span class="dv">1</span>
@@ -2293,7 +2293,7 @@ memoln fl fk f k <span class="fu">=</span> <span class="kw">do</span>
 <span class="fu">&gt;</span>   <span class="kw">where</span> at <span class="fu">=</span> (\f <span class="ot">-&gt;</span> (<span class="fu">map</span> f [<span class="dv">0</span><span class="fu">..</span>] <span class="fu">!!</span>)) (fibG at)
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span> fibLazy'''' <span class="fu">=</span> fix atG
-<span class="fu">&gt;</span>   <span class="kw">where</span> atG at <span class="fu">=</span> (\f <span class="ot">-&gt;</span> (<span class="fu">map</span> f [<span class="dv">0</span><span class="fu">..</span>] <span class="fu">!!</span>)) (fibG (at))
+<span class="fu">&gt;</span>   <span class="kw">where</span> atG at <span class="fu">=</span> (\f <span class="ot">-&gt;</span> (<span class="fu">map</span> f [<span class="dv">0</span><span class="fu">..</span>] <span class="fu">!!</span>)) (fibG at)
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span> fibLazy''''' <span class="fu">=</span> fix atG
 <span class="fu">&gt;</span>   <span class="kw">where</span> atG <span class="fu">=</span> (\f <span class="ot">-&gt;</span> (<span class="fu">map</span> f [<span class="dv">0</span><span class="fu">..</span>] <span class="fu">!!</span>)) <span class="fu">.</span> fibG</code></pre>
