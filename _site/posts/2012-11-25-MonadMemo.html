@@ -64,18 +64,19 @@ memoln fl fk f k <span class="fu">=</span> <span class="kw">do</span>
 <span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.IntMap</span>           <span class="kw">as</span> <span class="dt">I</span>
 <span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Control.Monad.Memo</span>    <span class="kw">as</span> <span class="dt">M4</span>
 <span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">System.Environment</span></code></pre>
+<p><code>fibMM</code>이 monad-memo를 이용한 것</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibMM ::</span> (<span class="dt">M4.MapLike</span> c <span class="dt">Int</span> <span class="dt">Integer</span>) <span class="ot">=&gt;</span> c <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibMM ml <span class="fu">=</span> (<span class="ot">`M4.evalMemoState`</span> ml) <span class="fu">.</span> f
 <span class="fu">&gt;</span>   <span class="kw">where</span> f <span class="dv">0</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
 <span class="fu">&gt;</span>         f <span class="dv">1</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
 <span class="fu">&gt;</span>         f n <span class="fu">=</span> liftM2 (<span class="fu">+</span>) (M4.memo f (n <span class="fu">-</span> <span class="dv">1</span>)) (M4.memo f (n <span class="fu">-</span> <span class="dv">2</span>))</code></pre>
-<p><code>fibMM</code>이 monad-memo를 이용한 것</p>
+<p><code>fibMG</code>는 open recursion 형태</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibMG ::</span> <span class="kw">Monad</span> m <span class="ot">=&gt;</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> m <span class="dt">Integer</span>) <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> m <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibMG _ <span class="dv">0</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
 <span class="fu">&gt;</span> fibMG _ <span class="dv">1</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">1</span>
-<span class="fu">&gt;</span> fibMG f n <span class="fu">=</span> liftM2 (<span class="fu">+</span>) (f (n <span class="fu">-</span> <span class="dv">1</span>)) (f (n <span class="fu">-</span> <span class="dv">2</span>))
-<span class="fu">&gt;</span> 
-<span class="fu">&gt;</span><span class="ot"> fibCM ::</span> (<span class="dt">M4.MapLike</span> c <span class="dt">Int</span> <span class="dt">Integer</span>) <span class="ot">=&gt;</span> c <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+<span class="fu">&gt;</span> fibMG f n <span class="fu">=</span> liftM2 (<span class="fu">+</span>) (f (n <span class="fu">-</span> <span class="dv">1</span>)) (f (n <span class="fu">-</span> <span class="dv">2</span>))</code></pre>
+<p><code>fibCM</code>은 state를 이용한 hand-written 형태</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibCM ::</span> (<span class="dt">M4.MapLike</span> c <span class="dt">Int</span> <span class="dt">Integer</span>) <span class="ot">=&gt;</span> c <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibCM ml <span class="fu">=</span> (<span class="ot">`evalState`</span> ml) <span class="fu">.</span> (fix (memo <span class="fu">.</span> fibMG))
 <span class="fu">&gt;</span>   <span class="kw">where</span>
 <span class="fu">&gt;</span><span class="ot">     memo ::</span> (<span class="dt">M4.MapLike</span> c k v, <span class="dt">MonadState</span> c m) <span class="ot">=&gt;</span>
@@ -88,13 +89,12 @@ memoln fl fk f k <span class="fu">=</span> <span class="kw">do</span>
 <span class="fu">&gt;</span>           v <span class="ot">&lt;-</span> f n
 <span class="fu">&gt;</span>           modify <span class="fu">$</span> M4.add n v
 <span class="fu">&gt;</span>           <span class="fu">return</span> v</code></pre>
-<p><code>fibCM</code>은 state를 이용한 hand-written 형태</p>
+<p><code>fibMM'</code>은 fix와 open recursion을 활용한 monad-memo</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibMM' ::</span> (<span class="dt">M4.MapLike</span> c <span class="dt">Int</span> <span class="dt">Integer</span>) <span class="ot">=&gt;</span> c <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibMM' ml <span class="fu">=</span> (<span class="ot">`M4.evalMemoState`</span> ml) <span class="fu">.</span> (fix (M4.memo <span class="fu">.</span> fibMG))</code></pre>
-<p><code>fibMM'</code>은 fix와 open recursion을 활용한 monad-memo</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> main ::</span> <span class="dt">IO</span> ()
 <span class="fu">&gt;</span> main <span class="fu">=</span> getArgs <span class="fu">&gt;&gt;=</span> <span class="fu">print</span> <span class="fu">.</span> (fibMM' I.empty) <span class="fu">.</span> <span class="fu">read</span> <span class="fu">.</span> <span class="fu">head</span></code></pre>
-<p>그런데, 실제 성능은 <code>fibMM</code>이 조금 더 좋다.</p>
+<p>그런데, 실제 성능은 <code>fibMM</code>이 조금 더 좋고, <code>fibCM</code>은 stack overflow가 발생하는데 이유는 아직..</p>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

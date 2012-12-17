@@ -31,19 +31,23 @@ tags: haskell, memoization
 > import qualified Control.Monad.Memo    as M4
 > import           System.Environment
 
+`fibMM`이 monad-memo를 이용한 것
+
 > fibMM :: (M4.MapLike c Int Integer) => c -> Int -> Integer
 > fibMM ml = (`M4.evalMemoState` ml) . f
 >   where f 0 = return 1
 >         f 1 = return 1
 >         f n = liftM2 (+) (M4.memo f (n - 1)) (M4.memo f (n - 2))
 
-`fibMM`이 monad-memo를 이용한 것
+`fibMG`는 open recursion 형태
 
 > fibMG :: Monad m => (Int -> m Integer) -> Int -> m Integer
 > fibMG _ 0 = return 1
 > fibMG _ 1 = return 1
 > fibMG f n = liftM2 (+) (f (n - 1)) (f (n - 2))
->
+
+`fibCM`은 state를 이용한 hand-written 형태
+
 > fibCM :: (M4.MapLike c Int Integer) => c -> Int -> Integer
 > fibCM ml = (`evalState` ml) . (fix (memo . fibMG))
 >   where
@@ -58,14 +62,12 @@ tags: haskell, memoization
 >           modify $ M4.add n v
 >           return v
 
-`fibCM`은 state를 이용한 hand-written 형태
+`fibMM'`은 fix와 open recursion을 활용한 monad-memo
 
 > fibMM' :: (M4.MapLike c Int Integer) => c -> Int -> Integer
 > fibMM' ml = (`M4.evalMemoState` ml) . (fix (M4.memo . fibMG))
 
-`fibMM'`은 fix와 open recursion을 활용한 monad-memo
-
 > main :: IO ()
 > main = getArgs >>= print . (fibMM' I.empty) . read . head
 
-그런데, 실제 성능은 `fibMM`이 조금 더 좋다.
+그런데, 실제 성능은 `fibMM`이 조금 더 좋고, `fibCM`은 stack overflow가 발생하는데 이유는 아직..
