@@ -2,10 +2,11 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 
 import           Codec.FEC                (deFEC, enFEC)
+import           Control.Arrow
 import           Control.Monad
 import           Crypto.Cipher.AES        (Key, decrypt, encrypt, initKey256)
 import           Crypto.Hash.SHA256       (hash)
-import           Crypto.Padding (padPKCS5, unpadPKCS5)
+import           Crypto.Padding           (padPKCS5, unpadPKCS5)
 import qualified Data.ByteString          as B
 import           Data.ByteString.Char8    (pack)
 import           Data.Maybe               (fromJust)
@@ -36,11 +37,14 @@ readConf fn = do
 
 store :: Key -> String -> Int -> Int -> IO ()
 store key fn k n =
-  B.readFile fn >>= writeSplit . enFEC k n . encrypt key . padPKCS5 16
+  B.readFile fn >>=
+  -- writeSplit . enFEC k n . encrypt key . padPKCS5 16
+  (padPKCS5 16 >>> encrypt key >>> enFEC k n >>> writeSplit)
   where writeSplit = zipWithM_ B.writeFile [fn ++ "." ++ show num | num <- ([0..] :: [Int])]
 
 retrieve :: Key -> String -> Int -> Int -> IO ()
 retrieve key fn k n =
-  readSplit >>= B.writeFile (fn ++ ".dec") . unpadPKCS5 . decrypt key . deFEC k n
+  readSplit >>=
+  (deFEC k n >>> decrypt key >>> unpadPKCS5 >>> B.writeFile (fn ++ ".dec"))
   where readSplit = sequence [B.readFile (fn ++ "." ++ show num) | num <- ([1..(n - 1)] :: [Int])]
 
