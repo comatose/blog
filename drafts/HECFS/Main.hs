@@ -34,12 +34,12 @@ readConf fn = do
   either error return $
     J.resultToEither (J.decode str >>= J.fromJSON)
 
-store :: Key -> String -> Int -> Int -> IO ()
+store :: Key -> FilePath -> Int -> Int -> IO ()
 store key fn k n =
   B.readFile fn >>= writeSplit . enFEC k n . encrypt key . padPKCS5 16
   where writeSplit = zipWithM_ B.writeFile [fn ++ "." ++ show num | num <- ([0..] :: [Int])]
 
-retrieve :: Key -> String -> Int -> Int -> IO ()
+retrieve :: Key -> FilePath -> Int -> Int -> IO ()
 retrieve key fn k n =
   readSplit >>= B.writeFile (fn ++ ".dec") . unpadPKCS5 . decrypt key . deFEC k n
   where readSplit = sequence [B.readFile (fn ++ "." ++ show num) | num <- ([1..(n - 1)] :: [Int])]
