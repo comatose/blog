@@ -1,16 +1,15 @@
 {-# LANGUAGE DeriveDataTypeable  #-}
+{-# LANGUAGE PackageImports      #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
 import           Codec.FEC                (deFEC, enFEC)
 import           Control.Monad
-import           Control.Monad.ST         (runST)
-import           Crypto.Cipher.AES        (Key, decrypt, encrypt, initKey256)
+import           "cryptocipher" Crypto.Cipher.AES        (Key, decrypt, encrypt,
+                                                          initKey256)
 import           Crypto.Hash.SHA256       (hash)
 import           Crypto.Padding           (padPKCS5, unpadPKCS5)
 import qualified Data.ByteString          as B
 import           Data.ByteString.Char8    (pack)
-import qualified Data.Conduit             as C
-import qualified Data.Conduit.List        as CL
 import           Data.Maybe               (fromJust)
 import           System.Console.Haskeline
 import           System.Environment       (getArgs)
@@ -39,11 +38,14 @@ readConf fn = do
 
 store :: Key -> FilePath -> Int -> Int -> IO ()
 store key fn k n =
-  B.readFile fn >>= writeSplit . enFEC k n . encrypt key . padPKCS5 16
-  where writeSplit = zipWithM_ B.writeFile [fn ++ "." ++ show num | num <- ([0..] :: [Int])]
+  B.readFile fn >>= return . encode >>= writeSplit
+  where
+    writeSplit = zipWithM_ B.writeFile [fn ++ "." ++ show num | num <- ([0..] :: [Int])]
+    encode = enFEC k n . encrypt key . padPKCS5 16
 
 retrieve :: Key -> FilePath -> Int -> Int -> IO ()
 retrieve key fn k n =
-  readSplit >>= B.writeFile (fn ++ ".dec") . unpadPKCS5 . decrypt key . deFEC k n
-  where readSplit = sequence [B.readFile (fn ++ "." ++ show num) | num <- ([1..(n - 1)] :: [Int])]
-
+  readSplit >>= return . decode >>= B.writeFile (fn ++ ".dec")
+  where
+    readSplit = sequence [B.readFile (fn ++ "." ++ show num) | num <- ([1..(n - 1)] :: [Int])]
+    decode = unpadPKCS5 . decrypt key . deFEC k n
