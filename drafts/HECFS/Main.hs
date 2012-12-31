@@ -3,11 +3,14 @@
 
 import           Codec.FEC                (deFEC, enFEC)
 import           Control.Monad
+import           Control.Monad.ST         (runST)
 import           Crypto.Cipher.AES        (Key, decrypt, encrypt, initKey256)
 import           Crypto.Hash.SHA256       (hash)
-import           Crypto.Padding (padPKCS5, unpadPKCS5)
+import           Crypto.Padding           (padPKCS5, unpadPKCS5)
 import qualified Data.ByteString          as B
 import           Data.ByteString.Char8    (pack)
+import qualified Data.Conduit             as C
+import qualified Data.Conduit.List        as CL
 import           Data.Maybe               (fromJust)
 import           System.Console.Haskeline
 import           System.Environment       (getArgs)
