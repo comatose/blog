@@ -43,7 +43,6 @@ store key fn k n =
     writeSplit = zipWithM_ B.writeFile [fn ++ "." ++ show num | num <- ([0..] :: [Int])]
     encode = enFEC k n . encrypt key . padPKCS5 16
 
-
 retrieve :: Key -> FilePath -> Int -> Int -> IO ()
 retrieve key fn k n =
   readSplit >>= return . decode >>= B.writeFile (fn ++ ".dec")
