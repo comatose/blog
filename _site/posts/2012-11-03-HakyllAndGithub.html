@@ -1,45 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-    <title>Lambda Play - Hakyll과 Github로 Blog 만들기</title>
-    <link rel="stylesheet" type="text/css" href="../css/default.css"></link>
-    <link rel="stylesheet" type="text/css" href="../css/syntax.css"></link>
-    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Lambda Play - Hakyll과 Github로 Blog 만들기</title>
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+    </head>
+    <body>
+        <div id="header">
+            <!-- <div id="logo"> -->
+            <!--     <a href="/">Lambda Play</a> -->
+            <!-- </div> -->
+            <div id="navigation">
+                <a href="../">Home</a>
+                <!-- <a href="/about.html">About</a> -->
+                <!-- <a href="/contact.html">Contact</a> -->
+                <a href="../archive.html">Archive</a>
+		<a href="../links.html">Links</a>
+            </div>
+        </div>
 
-    <link rel="alternate" type="application/rss+xml" title="Lambda Play" href="../rss.xml"></link>
-  </head>
-  <body>
-    <center>
-    <table cellpadding="0,0,0,0" cellspacing="0,0,0,0" border="0" bgcolor="white">
-      <tr>
-	<td rowspan="2" height="190" width="88" style="background-image:url(../images/tw_left.png); background-repeat:no-repeat;"></td>
-	<td height="109" width="400" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_l.png" height="109" border="0"></img></td>
-	<td height="109" width="200" align="right" style="background-image:url(../images/tw_middle_m.png); background-repeat:repeat-x;"><img src="../images/tw_middle_r.png" height="109" border="0"></img></td>
-	<td rowspan="2" height="190" width="93" style="background-image:url(../images/tw_right.png); background-repeat:no-repeat;"></td>
-      </tr>
-      <tr>
-	<td colspan="2" valign="top" height="81" bgcolor="white">
-	  <h1><a href="../">Lambda Play</a> - Hakyll과 Github로 Blog 만들기</h1>
-	  <div id="navigation">
-            <a href="../">Home</a>
-            <a href="../posts.html">All posts</a>
-          </div>	  
-	</td>
-      </tr>
-      <tr>
-	<td width="88" background="../images/tw_left_bg.png"></td>
-	<td colspan="2" valign="top">
-	  <script type="text/javascript">
-    var disqus_developer = 1;
-</script>
+        <div id="content">
+            <h1>Hakyll과 Github로 Blog 만들기</h1>
 
-<h1>Hakyll과 Github로 Blog 만들기</h1>
-
-<p>by <em>comatose</em> on <strong>November  3, 2012</strong></p>
-
-<p>Tagged as: <a href="../tags/hakyll.html">hakyll</a>, <a href="../tags/blog.html">blog</a>, <a href="../tags/github.html">github</a>.</p>
+            <div class="info">Posted on November  3, 2012</div>
 
 <p><a href="http://www.github.com/">Github</a>는 일반적으로 소스저장소로 사용하지만, <a href="http://pages.github.com/">Pages</a>가 지원되면서 간단한 웹서버로 사용 가능하다. 다만, html만 지원되기 때문에, <a href="http://jekyllrb.com/">Jekyll</a>같은 static site generator도 함께 지원한다. <a href="http://jekyllrb.com/">Jekyll</a>을 써도 좋지만, haskell 기반의 <a href="http://jaspervdj.be/hakyll/">Hakyll</a>이 더 재밌을 것 같아 <a href="http://jaspervdj.be/hakyll/">Hakyll</a>을 사용해 봤다.</p>
 <p>일단 <a href="http://jaspervdj.be/hakyll/">Hakyll</a>은 생각보다 사용하기 쉬웠는데, tagblog template 기반에 source code 표시를 위한 css만 추가했다. 결과물은 <a href="https://github.com/comatose/blog/tree/gh-pages">여기</a>.</p>
@@ -63,9 +47,6 @@
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-	</td>
-	<td width="93" align="right" background="../images/tw_right_bg.png"></td>
-      </tr>
-    </table>
-  </body>
+        </div>
+    </body>
 </html>
