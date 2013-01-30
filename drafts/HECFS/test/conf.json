@@ -1,10 +1,10 @@
 {
     "nodeSet":
     [
-	"aaa",
-	"bbb",
-	"ccc",
-	"ddd"
+	"node0",
+	"node1",
+	"node2",
+	"node3"
     ],
     "numPrimaryNodes": 3
 }

@@ -1,30 +1,29 @@
-{-# LANGUAGE DeriveDataTypeable  #-}
-{-# LANGUAGE PackageImports      #-}
-{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE DeriveDataTypeable #-}
+{-# LANGUAGE PackageImports     #-}
 
-import           Codec.FEC                (deFEC, enFEC)
-import           Control.Monad
-import           "cryptocipher" Crypto.Cipher.AES        (Key, decrypt, encrypt,
-                                                          initKey256)
-import           Crypto.Hash.SHA256       (hash)
-import           Crypto.Padding           (padPKCS5, unpadPKCS5)
-import qualified Data.ByteString          as B
-import           Data.ByteString.Char8    (pack)
-import           Data.Maybe               (fromJust)
+import           "cryptocipher" Crypto.Cipher.AES         (Key, initKey256)
+import           Crypto.Hash.SHA256        (hash)
+import           Crypto.Padding            (padPKCS5, unpadPKCS5)
+import           Data.ByteString.Char8     (pack)
+import           Data.Maybe                (fromJust)
+import           Filesystem.Path.CurrentOS ((</>))
+import qualified Filesystem.Path.CurrentOS as FP
+import           HECFS
 import           System.Console.Haskeline
-import           System.Environment       (getArgs)
-import qualified Text.JSON.Generic        as J
+import           System.Environment        (getArgs)
+import qualified Text.JSON.Generic         as J
 
 data Config = Config{ nodeSet :: [FilePath], numPrimaryNodes :: Int } deriving (J.Typeable, J.Data, Show)
 
 main :: IO ()
 main = do
-  key <- runInputT defaultSettings (getPassword (Just '*') "Password: ") >>= createKey . fromJust
   (Config nodes k) <- readConf "conf.json"
-  [op, fn] <- getArgs
+  [op, file] <- getArgs
+  key <- runInputT defaultSettings (getPassword (Just '*') "Password: ") >>= createKey . fromJust
+  let parts = map (FP.encodeString . (</> (FP.decodeString file)) . FP.decodeString) nodes
   case op of
-    "en" -> store key fn k (length nodes)
-    "de" -> retrieve key fn k (length nodes)
+    "en" -> store key file k parts
+    "de" -> retrieve key parts k (file ++ ".dec")
     _ -> error "invalid option"
 
 createKey :: String -> IO Key
@@ -35,17 +34,3 @@ readConf fn = do
   str <- readFile fn
   either error return $
     J.resultToEither (J.decode str >>= J.fromJSON)
-
-store :: Key -> FilePath -> Int -> Int -> IO ()
-store key fn k n =
-  B.readFile fn >>= return . encode >>= writeSplit
-  where
-    writeSplit = zipWithM_ B.writeFile [fn ++ "." ++ show num | num <- ([0..] :: [Int])]
-    encode = enFEC k n . encrypt key . padPKCS5 16
-
-retrieve :: Key -> FilePath -> Int -> Int -> IO ()
-retrieve key fn k n =
-  readSplit >>= return . decode >>= B.writeFile (fn ++ ".dec")
-  where
-    readSplit = sequence [B.readFile (fn ++ "." ++ show num) | num <- ([1..(n - 1)] :: [Int])]
-    decode = unpadPKCS5 . decrypt key . deFEC k n
