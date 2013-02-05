@@ -1,12 +1,22 @@
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE MagicHash #-}
+
+import GHC.Prim
+import GHC.Generics
 import Prelude hiding (lookup)
 import Data.UnorderedMap
-import qualified Data.ByteString as B
-import qualified Data.ByteString.Char8 as B8
+import Data.Word
+import Data.ByteString.Char8 hiding (empty)
+
+data Value = V Word8 Word8 Word8 deriving (Generic, Show)
+
+instance Serialize Value
 
 main = do
   umap <- empty
-  insert umap (B8.pack "112233") (B8.pack "aabbcc")
-  val <- lookup umap (B8.pack "112233")
+  insert umap (pack "") (V 1 2 3)
+  Just (val :: Value) <- lookup umap (pack "")
   print val
-  delete umap (B8.pack "112233")
+  delete umap (pack "")
   size umap >>= print
