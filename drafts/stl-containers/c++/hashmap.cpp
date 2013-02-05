@@ -42,3 +42,17 @@ void hashmap_delete(HashMap* h, const uint8_t* key, size_t nK){
 size_t hashmap_size(const HashMap* h){
     return h->size();
 }
+
+HashMap::iterator* iter(HashMap* h){
+    return &(h->begin());
+}
+
+bool hasNext(HashMap* h, HashMap::iterator* it){
+    return (*it != h->end());
+}
+
+HashMap::iterator* next(HashMap* h, HashMap::iterator* it, uint8_t** pVal, std::size_t* pNV){
+    *pVal = it ->second.data();
+    *pNV = it->second.size();
+    return &(++(*it));
+}

@@ -15,8 +15,6 @@ extern "C"
 {
 #endif
 
-    typedef HashMap* HashMapPtr;
-
     HashMap* hashmap_create();
     void hashmap_destroy(HashMap* h);
 
@@ -25,6 +23,10 @@ extern "C"
     void hashmap_delete(HashMap* h, const uint8_t* key, std::size_t nK);
     std::size_t hashmap_size(const HashMap* h);
 
+    HashMap::iterator* iter(HashMap* h);
+    bool hasNext(HashMap* h, HashMap::iterator* it);
+    HashMap::iterator* next(HashMap* h, HashMap::iterator* it, uint8_t** pVal, std::size_t* pNV);
+    
 #ifdef __cplusplus
 }
 #endif

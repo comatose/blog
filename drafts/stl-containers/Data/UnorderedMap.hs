@@ -120,3 +120,7 @@ delete (UM umap) key = deleteB umap (encode key)
 
 size :: (Integral a) => UnorderedMap k v -> IO a
 size (UM umap0) = withForeignPtr umap0 $ \umap -> liftM fromIntegral (hashmap_size umap)
+
+foldM :: (Serialize k, Serialize v) => (a -> (k, v) -> IO a) -> a -> UnorderedMap k v -> IO a
+foldM f acc (UM umap) = do
+  
