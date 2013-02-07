@@ -12,7 +12,7 @@ HashMap* hashmap_create(){
 void hashmap_destroy(HashMap* h){
     delete h;
     h = NULL;
-    cout << "hashmap_delete" << endl;
+    cout << "hashmap_destory" << endl;
 }
 
 void hashmap_insert(HashMap* h, const uint8_t* key, size_t nK, const uint8_t* val, size_t nV){
@@ -43,16 +43,24 @@ size_t hashmap_size(const HashMap* h){
     return h->size();
 }
 
-HashMap::iterator* iter(HashMap* h){
-    return &(h->begin());
+HashMap::iterator* iter_create(HashMap* h){
+    return new HashMap::iterator(h->begin());
 }
 
-bool hasNext(HashMap* h, HashMap::iterator* it){
+void iter_destroy(HashMap::iterator* it){
+    delete it;
+    cout << "iter_destory" << endl;
+}
+
+bool iter_hasNext(HashMap* h, HashMap::iterator* it){
     return (*it != h->end());
 }
 
-HashMap::iterator* next(HashMap* h, HashMap::iterator* it, uint8_t** pVal, std::size_t* pNV){
-    *pVal = it ->second.data();
-    *pNV = it->second.size();
-    return &(++(*it));
+void iter_next(HashMap* h, HashMap::iterator* it, uint8_t** pKey, std::size_t* pNK
+	       , uint8_t** pVal, std::size_t* pNV){
+    *pKey = const_cast<uint8_t*>((*it)->first.data());
+    *pNK = (*it)->first.size();
+    *pVal = (*it)->second.data();
+    *pNV = (*it)->second.size();
+    ++(*it);
 }

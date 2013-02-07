@@ -20,6 +20,16 @@ int main(int argc, char** argv){
 	hashmap_insert(h, block, n, block, n / 2);
     }
     cout << hashmap_size(h) << endl;
+
+    HashMap::iterator* it = iter_create(h);
+    while(iter_hasNext(h, it)){
+	uint8_t *pKey, *pVal;
+	size_t nKey, nVal;
+	iter_next(h, it, &pKey, &nKey, &pVal, &nVal);
+	cout << "[" << nKey << ":" << nVal << "]" << endl;
+    }
+    iter_destroy(it);
+
     hashmap_destroy(h);
     return EXIT_SUCCESS;
 }
