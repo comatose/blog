@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Lambda Play - Algebraic Data Types</title>
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+    </head>
+    <body>
+        <div id="header">
+            <!-- <div id="logo"> -->
+            <!--     <a href="/">Lambda Play</a> -->
+            <!-- </div> -->
+            <div id="navigation">
+                <a href="../">Home</a>
+                <!-- <a href="/about.html">About</a> -->
+                <!-- <a href="/contact.html">Contact</a> -->
+                <a href="../archive.html">Archive</a>
+		<a href="../links.html">Links</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Algebraic Data Types</h1>
+
+            <div class="info">Posted on January 26, 2013</div>
+
+<p><a href="http://www.haskellforall.com/2012/12/the-continuation-monad.html">출처</a></p>
+<p>Type algebra says that if we squint then we can translate the following type constructors to algebraic operators and derive equivalent types from simple algebraic manipulations:</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="dt">Either</span> a b  <span class="fu">&lt;=&gt;</span>  a <span class="fu">+</span> b
+<span class="fu">&gt;</span> (a, b)      <span class="fu">&lt;=&gt;</span>  a <span class="fu">*</span> b
+<span class="fu">&gt;</span> a <span class="ot">-&gt;</span> b      <span class="fu">&lt;=&gt;</span>  b <span class="fu">^</span> a</code></pre>
+<p>That means that if we have a function with two continuations:</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> (a1 <span class="ot">-&gt;</span> r) <span class="ot">-&gt;</span> ((a2 <span class="ot">-&gt;</span> r) <span class="ot">-&gt;</span> r)</code></pre>
+<p>… we just translate it to the equivalent algebraic expression:</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> (r <span class="fu">^</span> (r <span class="fu">^</span> a2)) <span class="fu">^</span> (r <span class="fu">^</span> a1)</code></pre>
+<p>… and then we can derive equivalent representations just by using the rules of algebra:</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>   (r <span class="fu">^</span> (r <span class="fu">^</span> a2)) <span class="fu">^</span> (r <span class="fu">^</span> a1)
+<span class="fu">&gt;</span> <span class="fu">=</span> r <span class="fu">^</span> ((r <span class="fu">^</span> a2) <span class="fu">*</span> (r <span class="fu">^</span> a1))
+<span class="fu">&gt;</span> <span class="fu">=</span> r <span class="fu">^</span> (r <span class="fu">^</span> (a2 <span class="fu">+</span> a1))</code></pre>
+<p>… then if we translate that back to the equivalent type, we get:</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> (<span class="dt">Either</span> a2 a1 <span class="ot">-&gt;</span> r) <span class="ot">-&gt;</span> r</code></pre>
+<p>… which is exactly the trick described in the previous section.</p>
+<p>Similarly, if we have more than one argument to a continuation:</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> (a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> r) <span class="ot">-&gt;</span> r</code></pre>
+<p>… we can find an equivalent single-argument form using type algebra:</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span>   r <span class="fu">^</span> ((r <span class="fu">^</span> a) <span class="fu">^</span> b)
+<span class="fu">&gt;</span> <span class="fu">=</span> r <span class="fu">^</span> (r <span class="fu">^</span> (a <span class="fu">*</span> b))</code></pre>
+<p>… which transforms back to:</p>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> ((a, b) <span class="ot">-&gt;</span> r) <span class="ot">-&gt;</span> r</code></pre>
+<p>So type algebra tells us the obvious: uncurry the continuation if it needs a single argument.</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'lambdaplay'; // required: replace example with your forum shortname
+  var disqus_identifier = '/posts/2013-01-26-AlgebraicDataTypes.html';
+  var disqus_title = 'Algebraic Data Types';
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </div>
+    </body>
+</html>
