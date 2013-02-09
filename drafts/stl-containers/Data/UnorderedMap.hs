@@ -119,24 +119,22 @@ foldMB f acc0 umap0 = withForeignPtr umap0 $ \umap -> do
   iter_destroy it
   readIORef acc
     where 
-          loop umap it acc = do
-            hasNext <- iter_hasNext umap it
-            if not hasNext
-              then readIORef acc
-              else do
-              with 2 $ \pNK ->
-                with 2 $ \pNV ->
-                with nullPtr $ \ppKey ->
-                with nullPtr $ \ppVal -> do
-                  iter_next umap it ppKey pNK ppVal pNV
-                  nK <- peek pNK
-                  nV <- peek pNV
-                  pKey <- peek ppKey
-                  pVal <- peek ppVal
-                  key <- Bi.create (fromIntegral nK) (\dst -> copyBytes dst pKey (fromIntegral nK))
-                  val <- Bi.create (fromIntegral nV) (\dst -> copyBytes dst pVal (fromIntegral nV))
-                  readIORef acc >>= (`f` (key, val)) >>= writeIORef acc
-                  loop umap it acc
+      loop umap it acc = do
+        hasNext <- iter_hasNext umap it
+        if not hasNext
+          then return ()
+          else do
+          with 2 $ \pNK -> with 2 $ \pNV ->
+            with nullPtr $ \ppKey -> with nullPtr $ \ppVal -> do
+              iter_next umap it ppKey pNK ppVal pNV
+              nK <- peek pNK
+              nV <- peek pNV
+              pKey <- peek ppKey
+              pVal <- peek ppVal
+              key <- Bi.create (fromIntegral nK) (\dst -> copyBytes dst pKey (fromIntegral nK))
+              val <- Bi.create (fromIntegral nV) (\dst -> copyBytes dst pVal (fromIntegral nV))
+              readIORef acc >>= (`f` (key, val)) >>= (writeIORef acc $!)
+          loop umap it acc
 
 deleteB :: UnorderedMap_ -> B.ByteString -> IO ()
 deleteB umap0 key0 = do
@@ -215,20 +213,19 @@ foldMS f acc0 (UM umap0) = withForeignPtr umap0 $ \umap -> do
   iter_destroy it
   readIORef acc
     where 
+      -- loop :: Ptr UMO -> Ptr UMIO -> IORef a -> IO ()
       loop umap it acc = do
         hasNext <- iter_hasNext umap it
         if not hasNext
-          then readIORef acc
-          else
-          with 2 $ \pNK ->
-          with 2 $ \pNV ->
-          with nullPtr $ \ppKey ->
-          with nullPtr $ \ppVal -> do
-            iter_next umap it ppKey pNK ppVal pNV
-            nK <- peek pNK
-            nV <- peek pNV
-            key <- peek ppKey >>= peek . castPtr
-            val <- peek ppVal >>= peek . castPtr
-            readIORef acc >>= (`f` (key, val)) >>= writeIORef acc
-            loop umap it acc
+          then return ()
+          else do
+          with 2 $ \pNK -> with 2 $ \pNV ->
+            with nullPtr $ \ppKey -> with nullPtr $ \ppVal -> do
+              iter_next umap it ppKey pNK ppVal pNV
+              nK <- peek pNK
+              nV <- peek pNV
+              key <- peek ppKey >>= peek . castPtr
+              val <- peek ppVal >>= peek . castPtr
+              readIORef acc >>= (`f` (key, val)) >>= (writeIORef acc $!)
+          loop umap it acc
 
