@@ -1,0 +1,18 @@
+cabal-version: >= 1.2.3
+name: stl-containers
+version: 0.1
+build-type: Simple
+category: FFI
+library
+  build-depends:
+    base >= 3 && < 5
+    , bindings-DSL >= 1.0.7 && < 1.1
+  include-dirs:
+    c++
+  exposed-modules:
+    Data.DataTypesP
+    -- Data.UnorderedMap
+  extra-libraries:
+    libstdc++ >= 4.7
+
+-- ghc --make -O dedupeffi.hs -cpp -optc -std=c++11 c++/hashmap.cpp -Lc++ -lstdc+

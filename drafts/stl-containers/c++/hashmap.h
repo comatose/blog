@@ -9,6 +9,7 @@
 typedef std::vector<uint8_t> Key;
 typedef std::vector<uint8_t> Value;
 typedef std::unordered_map<Key, Value, boost::hash<Key>> HashMap;
+typedef HashMap::iterator HashMapIter;
 
 #ifdef __cplusplus
 extern "C"

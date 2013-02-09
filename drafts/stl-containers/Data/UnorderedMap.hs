@@ -1,3 +1,4 @@
+{-# LANGUAGE BangPatterns #-}
 {-# LANGUAGE ForeignFunctionInterface #-}
 
 module Data.UnorderedMap
@@ -11,6 +12,7 @@ module Data.UnorderedMap
        , delete
        , size
        , foldM
+       , foldM'
 
        , insertS
        , lookupS
@@ -133,7 +135,7 @@ foldMB f acc0 umap0 = withForeignPtr umap0 $ \umap -> do
               pVal <- peek ppVal
               key <- Bi.create (fromIntegral nK) (\dst -> copyBytes dst pKey (fromIntegral nK))
               val <- Bi.create (fromIntegral nV) (\dst -> copyBytes dst pVal (fromIntegral nV))
-              readIORef acc >>= (`f` (key, val)) >>= (writeIORef acc $!)
+              readIORef acc >>= (`f` (key, val)) >>= (writeIORef acc)
           loop umap it acc
 
 deleteB :: UnorderedMap_ -> B.ByteString -> IO ()
@@ -166,6 +168,11 @@ size (UM umap0) = withForeignPtr umap0 $ \umap -> liftM fromIntegral (hashmap_si
 foldM :: (Serialize k, Serialize v) => (a -> (k, v) -> IO a) -> a -> UnorderedMap k v -> IO a
 foldM f acc (UM umap) = foldMB f' acc umap
   where f' a (k, v) = f a (right . decode $ k, right . decode $ v)
+        right (Right x) = x
+
+foldM' :: (Serialize k, Serialize v) => (a -> (k, v) -> IO a) -> a -> UnorderedMap k v -> IO a
+foldM' f acc (UM umap) = foldMB f' acc umap
+  where f' !a (k, v) = f a (right . decode $ k, right . decode $ v)
         right (Right x) = x
 
 instance Storable B.ByteString where
