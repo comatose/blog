@@ -1,18 +1,34 @@
 cabal-version: >= 1.2.3
 name: stl-containers
+synopsis: Bindings for C++ STL containers
+author: Boncheol Gu
+maintainer: boncheol.gu@gmail.com
 version: 0.1
-build-type: Simple
+build-type:Simple
 category: FFI
 library
   build-depends:
     base >= 3 && < 5
+    , bytestring >= 0.9
+    , cereal >= 0.3
     , bindings-DSL >= 1.0.7 && < 1.1
+  extensions:
+    ForeignFunctionInterface
+    , BangPatterns
+    , EmptyDataDecls
+  cc-options:
+    -std=c++11
+  ghc-options:
+    -Wall
+  hs-source-dirs:
+    src
   include-dirs:
-    c++
+    src/c++
   exposed-modules:
-    Data.DataTypesP
-    -- Data.UnorderedMap
+    -- Data.DataTypes
+    Data.UnorderedMap
+    -- Data.Storable.UnorderedMap
   extra-libraries:
-    libstdc++ >= 4.7
-
--- ghc --make -O dedupeffi.hs -cpp -optc -std=c++11 c++/hashmap.cpp -Lc++ -lstdc+
+    stdc++
+  c-sources:
+    src/c++/hashmap.cpp

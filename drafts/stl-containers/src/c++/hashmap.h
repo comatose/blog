@@ -1,10 +1,10 @@
 #ifndef __hashmap_h__
 #define __hashmap_h__
 
-#include <vector>
-#include <unordered_map>
 #include <cstdint>
 #include <boost/functional/hash.hpp>
+#include <vector>
+#include <unordered_map>
 
 typedef std::vector<uint8_t> Key;
 typedef std::vector<uint8_t> Value;

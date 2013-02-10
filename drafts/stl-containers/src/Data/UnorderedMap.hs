@@ -3,8 +3,7 @@
 
 module Data.UnorderedMap
        (
-         module Data.Serialize
-       ,UnorderedMap
+       UnorderedMap
 
        , empty
        , insert
@@ -13,26 +12,13 @@ module Data.UnorderedMap
        , size
        , foldM
        , foldM'
-
-       , insertS
-       , lookupS
-       , deleteS
-       , foldMS
-
-       , emptyB
-       , insertB
-       , lookupB
-       , deleteB
-       , foldMB
        ) where
 
 import Data.IORef
 import Data.Serialize
 import Prelude hiding (lookup)
-import System.Environment
 import Control.Monad hiding (foldM)
 import Foreign hiding (unsafeForeignPtrToPtr)
-import Foreign.Ptr
 import Foreign.C.Types
 import Foreign.ForeignPtr.Unsafe
 import qualified Data.ByteString as B
@@ -72,13 +58,13 @@ foreign import ccall unsafe "hashmap.h iter_hasNext"
   iter_hasNext :: (Ptr UMO) -> (Ptr UMIO) -> IO Bool
 
 foreign import ccall unsafe "hashmap.h iter_next"
-  iter_next :: (Ptr UMO) -> (Ptr UMIO) -> Ptr (Ptr Word8) -> Ptr CSize -> Ptr (Ptr Word8) -> Ptr CSize -> IO Bool
+  iter_next :: (Ptr UMO) -> (Ptr UMIO) -> Ptr (Ptr Word8) -> Ptr CSize -> Ptr (Ptr Word8) -> Ptr CSize -> IO ()
 
 empty :: IO (UnorderedMap k v)
 empty = hashmap_create >>= liftM UM . newForeignPtr hashmap_destroy
 
-emptyB :: IO (UnorderedMap_)
-emptyB = hashmap_create >>= newForeignPtr hashmap_destroy
+-- emptyB :: IO (UnorderedMap_)
+-- emptyB = hashmap_create >>= newForeignPtr hashmap_destroy
 
 insertB :: UnorderedMap_ -> B.ByteString -> B.ByteString -> IO ()
 insertB umap0 key0 val0 = do
@@ -171,68 +157,4 @@ foldM f acc (UM umap) = foldMB f' acc umap
         right (Right x) = x
 
 foldM' :: (Serialize k, Serialize v) => (a -> (k, v) -> IO a) -> a -> UnorderedMap k v -> IO a
-foldM' f acc (UM umap) = foldMB f' acc umap
-  where f' !a (k, v) = f a (right . decode $ k, right . decode $ v)
-        right (Right x) = x
-
-instance Storable B.ByteString where
-  -- sizeOf (Bi.PS _ _ l) = sizeOf l + l
-  sizeOf _ = 100
-  alignment _ = alignment (undefined :: Ptr Word8)
-  poke dst (Bi.PS fp o l) =
-    withForeignPtr fp $ \p -> do
-      poke (castPtr dst) l
-      copyBytes (dst `plusPtr` sizeOf l) (p `plusPtr` o) l
-  peek src = do
-    len <- peek (castPtr src) :: IO Int
-    Bi.create len (\dst -> copyBytes dst (castPtr src `plusPtr` sizeOf len) len)
-
-insertS :: (Storable k, Storable v) => UnorderedMap k v -> k -> v -> IO ()
-insertS (UM umap0) key val =
-  withForeignPtr umap0 $ \umap ->
-  with key $ \pKey ->
-  with val $ \pVal ->
-  hashmap_insert umap (castPtr pKey) (fromIntegral . sizeOf $ key) (castPtr pVal) (fromIntegral . sizeOf $ val)
-  
-lookupS :: (Storable k, Storable v) => UnorderedMap k v -> k -> IO (Maybe v)
-lookupS (UM umap0) key =
-  withForeignPtr umap0 $ \umap ->
-  with key $ \pKey ->
-  with 2 $ \pNV ->
-  with nullPtr $ \ppVal -> do
-    hashmap_lookup umap (castPtr pKey) (fromIntegral . sizeOf $ key) ppVal pNV
-    nV <- peek pNV
-    if nV == 0
-      then return Nothing
-      else liftM Just $ peek (castPtr ppVal)
-
-deleteS :: (Storable k) => UnorderedMap k v -> k -> IO ()
-deleteS (UM umap0) key = 
-  withForeignPtr umap0 $ \umap ->
-  with key $ \pKey -> do
-    hashmap_delete umap (castPtr pKey) (fromIntegral . sizeOf $ key)
-
-foldMS :: (Storable k, Storable v) => (a -> (k, v) -> IO a) -> a -> UnorderedMap k v -> IO a
-foldMS f acc0 (UM umap0) = withForeignPtr umap0 $ \umap -> do
-  acc <- newIORef acc0
-  it <- iter_create umap
-  loop umap it acc
-  iter_destroy it
-  readIORef acc
-    where 
-      -- loop :: Ptr UMO -> Ptr UMIO -> IORef a -> IO ()
-      loop umap it acc = do
-        hasNext <- iter_hasNext umap it
-        if not hasNext
-          then return ()
-          else do
-          with 2 $ \pNK -> with 2 $ \pNV ->
-            with nullPtr $ \ppKey -> with nullPtr $ \ppVal -> do
-              iter_next umap it ppKey pNK ppVal pNV
-              nK <- peek pNK
-              nV <- peek pNV
-              key <- peek ppKey >>= peek . castPtr
-              val <- peek ppVal >>= peek . castPtr
-              readIORef acc >>= (`f` (key, val)) >>= (writeIORef acc $!)
-          loop umap it acc
-
+foldM' f = foldM (\ !a -> f a)
