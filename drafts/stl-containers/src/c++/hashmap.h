@@ -17,6 +17,7 @@ extern "C"
 #endif
 
     HashMap* hashmap_create();
+    HashMap* hashmap_create_sized(std::size_t size);
     void hashmap_destroy(HashMap* h);
 
     void hashmap_insert(HashMap* h, const uint8_t* key, std::size_t nK, const uint8_t* val, std::size_t nV);

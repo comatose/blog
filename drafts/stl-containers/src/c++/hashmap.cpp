@@ -9,6 +9,10 @@ HashMap* hashmap_create(){
     return new HashMap();
 }
 
+HashMap* hashmap_create_sized(std::size_t size){
+    return new HashMap(size);
+}
+
 void hashmap_destroy(HashMap* h){
     delete h;
     h = NULL;

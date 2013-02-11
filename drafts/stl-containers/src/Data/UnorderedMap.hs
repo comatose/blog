@@ -6,12 +6,15 @@ module Data.UnorderedMap
        UnorderedMap
 
        , empty
+       , emptySized
        , insert
        , lookup
        , delete
        , size
        , foldM
        , foldM'
+       , toList
+       , fromList
        ) where
 
 import Data.IORef
@@ -20,7 +23,6 @@ import Prelude hiding (lookup)
 import Control.Monad hiding (foldM)
 import Foreign hiding (unsafeForeignPtrToPtr)
 import Foreign.C.Types
-import Foreign.ForeignPtr.Unsafe
 import qualified Data.ByteString as B
 import qualified Data.ByteString.Internal as Bi
 
@@ -30,6 +32,9 @@ data UnorderedMap k v = UM {-# UNPACK #-} !UnorderedMap_
 
 foreign import ccall unsafe "hashmap.h hashmap_create"
   hashmap_create :: IO (Ptr UMO)
+
+foreign import ccall unsafe "hashmap.h hashmap_create_sized"
+  hashmap_create_sized :: CSize -> IO (Ptr UMO)
 
 foreign import ccall unsafe "hashmap.h &hashmap_destroy"
   hashmap_destroy :: FinalizerPtr UMO
@@ -63,41 +68,34 @@ foreign import ccall unsafe "hashmap.h iter_next"
 empty :: IO (UnorderedMap k v)
 empty = hashmap_create >>= liftM UM . newForeignPtr hashmap_destroy
 
--- emptyB :: IO (UnorderedMap_)
--- emptyB = hashmap_create >>= newForeignPtr hashmap_destroy
+emptySized :: Int -> IO (UnorderedMap k v)
+emptySized s = hashmap_create_sized (fromIntegral s) >>= liftM UM . newForeignPtr hashmap_destroy
 
 insertB :: UnorderedMap_ -> B.ByteString -> B.ByteString -> IO ()
-insertB umap0 key0 val0 = do
-  let (key1, offK, lenK) = Bi.toForeignPtr key0
-      (val1, offV, lenV) = Bi.toForeignPtr val0
-      umap = unsafeForeignPtrToPtr umap0
-      key = unsafeForeignPtrToPtr key1
-      val = unsafeForeignPtrToPtr val1
-
+insertB umap0 (Bi.PS key0 offK lenK) (Bi.PS val0 offV lenV) =
+  withForeignPtr umap0 $ \umap ->
+  withForeignPtr key0 $ \key ->
+  withForeignPtr val0 $ \val ->
   hashmap_insert umap (key `plusPtr` offK) (fromIntegral lenK) (val `plusPtr` offV) (fromIntegral lenV)
-
-  touchForeignPtr key1
-  touchForeignPtr val1
-  touchForeignPtr umap0
   
 lookupB :: UnorderedMap_ -> B.ByteString -> IO (Maybe B.ByteString)
-lookupB umap0 key0 = do
-  let (key1, offK, lenK) = Bi.toForeignPtr key0
-      umap = unsafeForeignPtrToPtr umap0
-      key = unsafeForeignPtrToPtr key1
-      lookup_ = with 2 $ \pNV ->
-        with nullPtr $ \ppVal -> do
-          hashmap_lookup umap (key `plusPtr` offK) (fromIntegral lenK) ppVal pNV
-          nV <- peek pNV
-          if nV == 0
-            then return Nothing
-            else do pVal <- peek ppVal
-                    liftM Just $ Bi.create (fromIntegral nV) (\dst -> copyBytes dst pVal (fromIntegral nV))
-  val <- lookup_
+lookupB umap0 (Bi.PS key0 offK lenK) =
+  withForeignPtr umap0 $ \umap ->
+  withForeignPtr key0 $ \key ->
+  with 0 $ \pNV ->
+  with nullPtr $ \ppVal -> do
+    hashmap_lookup umap (key `plusPtr` offK) (fromIntegral lenK) ppVal pNV
+    nV <- peek pNV
+    if nV == 0
+      then return Nothing
+      else do pVal <- peek ppVal
+              liftM Just $ Bi.create (fromIntegral nV) (\dst -> copyBytes dst pVal (fromIntegral nV))
 
-  touchForeignPtr key1
-  touchForeignPtr umap0
-  return val
+deleteB :: UnorderedMap_ -> B.ByteString -> IO ()
+deleteB umap0 (Bi.PS key0 offK lenK) =
+  withForeignPtr umap0 $ \umap ->
+  withForeignPtr key0 $ \key ->
+  hashmap_delete umap (key `plusPtr` offK) (fromIntegral lenK)
 
 foldMB :: (a -> (B.ByteString, B.ByteString) -> IO a) -> a -> UnorderedMap_ -> IO a
 foldMB f acc0 umap0 = withForeignPtr umap0 $ \umap -> do
@@ -124,17 +122,6 @@ foldMB f acc0 umap0 = withForeignPtr umap0 $ \umap -> do
               readIORef acc >>= (`f` (key, val)) >>= (writeIORef acc)
           loop umap it acc
 
-deleteB :: UnorderedMap_ -> B.ByteString -> IO ()
-deleteB umap0 key0 = do
-  let (key1, offK, lenK) = Bi.toForeignPtr key0
-      umap = unsafeForeignPtrToPtr umap0
-      key = unsafeForeignPtrToPtr key1
-
-  hashmap_delete umap (key `plusPtr` offK) (fromIntegral lenK)
-
-  touchForeignPtr key1
-  touchForeignPtr umap0
-
 insert :: (Serialize k, Serialize v) => UnorderedMap k v -> k -> v -> IO ()
 insert (UM umap) key val = insertB umap (encode key) (encode val)
 
@@ -155,6 +142,17 @@ foldM :: (Serialize k, Serialize v) => (a -> (k, v) -> IO a) -> a -> UnorderedMa
 foldM f acc (UM umap) = foldMB f' acc umap
   where f' a (k, v) = f a (right . decode $ k, right . decode $ v)
         right (Right x) = x
+        right _ = error "cereal decode failed."
 
 foldM' :: (Serialize k, Serialize v) => (a -> (k, v) -> IO a) -> a -> UnorderedMap k v -> IO a
 foldM' f = foldM (\ !a -> f a)
+
+toList :: (Serialize k, Serialize v) => UnorderedMap k v -> IO [(k, v)]
+toList = foldM f []
+  where f list entry = return (entry:list)
+
+fromList :: (Serialize k, Serialize v) => [(k, v)] -> IO (UnorderedMap k v)
+fromList list = do
+  um <- empty
+  mapM_ (uncurry (insert um)) list
+  return um
