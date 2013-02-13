@@ -1,19 +1,15 @@
 #ifndef __hashmap_h__
 #define __hashmap_h__
 
-#include <vector>
-#include <unordered_map>
 #include <cstdint>
 #include <boost/functional/hash.hpp>
+#include <vector>
+#include <unordered_map>
 
 typedef std::vector<uint8_t> Key;
 typedef std::vector<uint8_t> Value;
 typedef std::unordered_map<Key, Value, boost::hash<Key>> HashMap;
-
-typedef struct {
-    uint8_t* block;
-    size_t size;
-} Param;
+typedef HashMap::iterator HashMapIter;
 
 #ifdef __cplusplus
 extern "C"
@@ -21,6 +17,7 @@ extern "C"
 #endif
 
     HashMap* hashmap_create();
+    HashMap* hashmap_create_sized(std::size_t size);
     void hashmap_destroy(HashMap* h);
 
     void hashmap_insert(HashMap* h, const uint8_t* key, std::size_t nK, const uint8_t* val, std::size_t nV);

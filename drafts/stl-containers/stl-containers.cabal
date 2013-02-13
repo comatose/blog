@@ -1,0 +1,38 @@
+cabal-version: >= 1.2.3
+name: stl-containers
+synopsis: Bindings to C++ STL containers
+description: Bindings to C++ STL containers
+author: Boncheol Gu
+maintainer: boncheol.gu@gmail.com
+license: BSD3
+license-file: LICENSE
+version: 0.1
+build-type:Simple
+category: FFI
+library
+  build-depends:
+    base >= 3 && < 5
+    , bytestring >= 0.9
+    , cereal >= 0.3
+    -- , bindings-DSL >= 1.0.7 && < 1.1
+  extensions:
+    ForeignFunctionInterface
+    , BangPatterns
+    , EmptyDataDecls
+  cc-options:
+    -Wall
+    -std=c++11
+  ghc-options:
+    -Wall
+  hs-source-dirs:
+    src
+  include-dirs:
+    src/c++
+  exposed-modules:
+    -- Data.DataTypes
+    Data.UnorderedMap
+    -- Data.Storable.UnorderedMap
+  extra-libraries:
+    stdc++
+  c-sources:
+    src/c++/hashmap.cpp

@@ -9,6 +9,10 @@ HashMap* hashmap_create(){
     return new HashMap();
 }
 
+HashMap* hashmap_create_sized(std::size_t size){
+    return new HashMap(size);
+}
+
 void hashmap_destroy(HashMap* h){
     delete h;
     h = NULL;
@@ -16,12 +20,13 @@ void hashmap_destroy(HashMap* h){
 }
 
 void hashmap_insert(HashMap* h, const uint8_t* key, size_t nK, const uint8_t* val, size_t nV){
-    cout << "[I]" << nK << ":" << nV << endl;
-    h->emplace(make_pair(Key(key, key + nK), Value(val, val + nV)));
+    // cout << "[I]" << nK << ":" << nV << endl;
+    (*h)[Key(key, key + nK)] = Value(val, val + nV);
+    // h->emplace(make_pair(Key(key, key + nK), Value(val, val + nV)));
 }
 
 void hashmap_lookup(HashMap* h, const uint8_t* key, size_t nK, uint8_t** pVal, size_t* pNV){
-    cout << "[L]" << nK << ":";
+    // cout << "[L]" << nK << ":";
     auto it = h->find(Key(key, key + nK));
     if(it == h->end()){
 	*pVal = NULL;
@@ -31,11 +36,11 @@ void hashmap_lookup(HashMap* h, const uint8_t* key, size_t nK, uint8_t** pVal, s
 	*pVal = it->second.data();
 	*pNV = it->second.size();
     }
-    cout << *pNV << endl;
+    // cout << *pNV << endl;
 }
 
 void hashmap_delete(HashMap* h, const uint8_t* key, size_t nK){
-    cout << "[D]" << nK << endl;
+    // cout << "[D]" << nK << endl;
     h->erase(Key(key, key + nK));
 }
 
