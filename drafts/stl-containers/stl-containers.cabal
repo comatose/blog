@@ -6,7 +6,7 @@ author: Boncheol Gu
 maintainer: boncheol.gu@gmail.com
 license: BSD3
 license-file: LICENSE
-version: 0.1
+version: 0.1.1
 build-type:Simple
 category: FFI
 library
@@ -22,8 +22,10 @@ library
   cc-options:
     -Wall
     -std=c++11
+    -O2
   ghc-options:
     -Wall
+    -O
   hs-source-dirs:
     src
   include-dirs:
