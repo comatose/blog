@@ -123,20 +123,20 @@ foldMB f acc0 umap0 = withForeignPtr umap0 $ \umap -> do
             hasNext <- iter_hasNext umap it
             if not hasNext
               then readIORef acc
-              else do
+              else
               with 2 $ \pNK ->
-                with 2 $ \pNV ->
-                with nullPtr $ \ppKey ->
-                with nullPtr $ \ppVal -> do
-                  iter_next umap it ppKey pNK ppVal pNV
-                  nK <- peek pNK
-                  nV <- peek pNV
-                  pKey <- peek ppKey
-                  pVal <- peek ppVal
-                  key <- Bi.create (fromIntegral nK) (\dst -> copyBytes dst pKey (fromIntegral nK))
-                  val <- Bi.create (fromIntegral nV) (\dst -> copyBytes dst pVal (fromIntegral nV))
-                  readIORef acc >>= (`f` (key, val)) >>= writeIORef acc
-                  loop umap it acc
+              with 2 $ \pNV ->
+              with nullPtr $ \ppKey ->
+              with nullPtr $ \ppVal -> do
+                iter_next umap it ppKey pNK ppVal pNV
+                nK <- peek pNK
+                nV <- peek pNV
+                pKey <- peek ppKey
+                pVal <- peek ppVal
+                key <- Bi.create (fromIntegral nK) (\dst -> copyBytes dst pKey (fromIntegral nK))
+                val <- Bi.create (fromIntegral nV) (\dst -> copyBytes dst pVal (fromIntegral nV))
+                readIORef acc >>= (`f` (key, val)) >>= writeIORef acc
+                loop umap it acc
 
 deleteB :: UnorderedMap_ -> B.ByteString -> IO ()
 deleteB umap0 key0 = do
