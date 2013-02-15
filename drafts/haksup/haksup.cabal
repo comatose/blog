@@ -1,0 +1,38 @@
+cabal-version: >= 1.2.3
+name: haksup
+synopsis: Collection of machine learning algorithms
+description: Collection of machine learning algorithms
+author: Boncheol Gu
+maintainer: boncheol.gu@gmail.com
+license: BSD3
+license-file: LICENSE
+version: 0.1
+build-type:Simple
+category: Data Mining, Machine Learning
+library
+  build-depends:
+    base >= 3 && < 5
+    , containers
+    , parallel >= 2
+    -- , bytestring >= 0.9
+    -- , cereal >= 0.3
+    -- , bindings-DSL >= 1.0.7 && < 1.1
+  extensions:
+    BangPatterns
+  ghc-options:
+    -Wall
+    -O
+  hs-source-dirs:
+    src
+  exposed-modules:
+    Haksup.Clustering.KMeans
+  -- cc-options:
+  --   -Wall
+  --   -std=c++11
+  --   -O2
+  -- include-dirs:
+  --   src/c++
+  -- extra-libraries:
+  --   stdc++
+  -- c-sources:
+  --   src/c++/hashmap.cpp
