@@ -17,7 +17,6 @@
 /drafts/HECFS/~/blog/drafts/HECFS/cabal-dev/packages/00-index.tar
 /drafts/KMeans
 /drafts/HECFS/cabal-dev/*
-/drafts/HECFS/dist/*
 /drafts/HECFS/KMeans.h
 /drafts/HECFS/KMeans.h.0
 /drafts/HECFS/KMeans.h.1
@@ -35,5 +34,6 @@
 /drafts/stl-containers/Test
 /drafts/stl-containers/c++/libstl.a
 /drafts/stl-containers/c++/test
-/drafts/stl-containers/dist/*
 /drafts/haksup/dist/*
+/drafts/stl-containers/dedupeffi
+/drafts/stl-containers/dist/*

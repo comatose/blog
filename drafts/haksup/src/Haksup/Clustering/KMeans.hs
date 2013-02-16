@@ -4,17 +4,19 @@ module Haksup.Clustering.KMeans where
 import qualified Data.Map as M
 import Control.Arrow ((&&&))
 import Control.Parallel.Strategies
+import Data.List (foldl1')
+import Control.Monad (liftM2)
 
-class (Show c, Ord c, Eq c) => Coordinate c where
-  distance :: c -> c -> Double
-  centroid :: [c] -> c
+type Point = [Double]
 
-cluster :: (NFData c, Coordinate c) => [c] -> [c] -> [[c]]
+cluster :: [Point] -> [Point] -> [[Point]]
 cluster cs = M.elems . M.fromListWith (++) . map (\x -> (closest x, [x]))
-  where closest x = snd . minimum . map (distance x &&& id) $ cs
 -- cluster cs = M.elems . M.fromListWith (++) . withStrategy (parListChunk 2500 rdeepseq) . (map (\x -> (closest x, [x])))
+  where closest x = snd . minimum . map (distance x &&& id) $ cs
+        distance xs ys = sum . (map (^2)) $ zipWith (-) xs ys
+                    
 
-kmeans :: (NFData c, Coordinate c) => Int -> [c] -> [[c]]
+kmeans :: Int -> [Point] -> [[Point]]
 kmeans n xs = go (take n xs)
   where go cs = let clst = cluster cs xs
                     ncs = map centroid clst
@@ -22,3 +24,6 @@ kmeans n xs = go (take n xs)
                 in if ncs == cs
                    then clst
                    else go ncs
+        centroid = liftM2 (divide) (foldl1' plus) (fromIntegral . length)
+        plus = zipWith (+)
+        divide xs n = map (/n) xs
