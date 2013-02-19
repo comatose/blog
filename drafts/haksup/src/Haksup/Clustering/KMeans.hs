@@ -29,10 +29,11 @@ centroidOf = liftM2 (divide) (foldl1' plus) (fromIntegral . length)
                     
 kmeansGen :: (a -> Point) -> Int -> [a] -> [[a]]
 kmeansGen f k xs = loop (take k . map f $ xs)
-  where loop cs = let clst = cluster f cs xs
-                      ncs = map (centroidOf . map f) clst
-                    -- ncs = withStrategy (parList rdeepseq) (map (centroidOf . map f) clst)
-                  in if cs == ncs then clst else loop ncs
+  where loop cs = 
+            let clst = cluster f cs xs
+                ncs = map (centroidOf . map f) clst
+                -- ncs = withStrategy (parList rdeepseq) (map (centroidOf . map f) clst)
+            in if cs == ncs then clst else loop ncs
 
 kmeans :: Int -> [Point] -> [[Point]]
 kmeans = kmeansGen id
