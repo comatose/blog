@@ -20,7 +20,7 @@ cluster :: (NFData a) => (a -> Point) -> [Point] -> [a] -> [[a]]
 cluster f cs = M.elems . M.fromListWith (++) . withStrategy (parList rdeepseq) . map (\x -> (closestOf x, [x]))
   where
     closestOf x = minimumBy (compare `on` distance (f x)) cs
-    distance x y = sum . (map (^2)) $ zipWith (-) x y
+    distance x y = sum . (map (^(2::Int))) $ zipWith (-) x y
 
 centroidOf :: [Point] -> Point
 centroidOf = liftM2 (divide) (foldl1' plus) (fromIntegral . length)

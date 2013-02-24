@@ -1,26 +1,32 @@
-{-# LANGUAGE FlexibleInstances #-}
-{-# LANGUAGE ScopedTypeVariables #-}
-{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE DeriveGeneric         #-}
+{-# LANGUAGE FlexibleInstances     #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE ScopedTypeVariables   #-}
+{-# LANGUAGE TemplateHaskell       #-}
 
-import Data.Monoid (mempty)
-import Test.Framework (defaultMain, defaultMainWithOpts, testGroup)
-import Test.Framework.Options (TestOptions, TestOptions'(..))
-import Test.Framework.Runners.Options (RunnerOptions, RunnerOptions'(..))
-import Test.Framework.Providers.HUnit
-import Test.Framework.Providers.QuickCheck2 (testProperty)
-import Test.Framework.TH
+import           Data.Monoid                          (mempty)
+import           Test.Framework                       (defaultMain,
+                                                       defaultMainWithOpts,
+                                                       testGroup)
+import           Test.Framework.Options               (TestOptions,
+                                                       TestOptions' (..))
+import           Test.Framework.Providers.QuickCheck2
+import           Test.Framework.Runners.Options       (RunnerOptions,
+                                                       RunnerOptions' (..))
+import           Test.Framework.TH
 
-import Test.QuickCheck
-import Test.HUnit
+import           Test.HUnit
+import           Test.QuickCheck
 
-import Data.List
+import           Data.List
 
-import Haksup.Clustering.KMeans
-import qualified Data.ByteString.Lazy as Bl
-import Data.Int (Int32)
-import Data.Serialize (decodeLazy)
+import qualified Data.ByteString.Lazy                 as Bl
+import           Data.Int                             (Int32)
+import           Data.Serialize                       (decodeLazy)
+import           Haksup.Clustering.KMeans
 
-main = $(defaultMainGenerator)-- defaultMain tests
+-- main = $(defaultMainGenerator)-- defaultMain tests
+main = defaultMain tests
 
 tests = [
         testGroup "Group 'kmeans'" [
@@ -35,7 +41,7 @@ tests = [
 
 
 newtype Samples a = Samples (Int, [a]) deriving (Show, Read)
-  
+
 instance Arbitrary (Samples Point) where
   arbitrary = fmap Samples $ do
     k <- choose (4, 10)
@@ -66,7 +72,7 @@ toPoint = map (fromIntegral . toInt32) . toBlocks 4
                                       in block : toBlocks n rest
 
 prop_kmeansGen1 (Samples (k, xs)) =
-  sort xs == (sort . concat . kmeansGen toPoint k $ xs)
+  (sort xs == (sort . concat . kmeansGen toPoint k $ xs))
 
 prop_kmeansGen2 (Samples (k, xs)) =
   (k >= length (kmeansGen toPoint k xs))
