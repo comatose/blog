@@ -1,11 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
 {-# LANGUAGE PackageImports     #-}
 
-import           "cryptocipher" Crypto.Cipher.AES         (Key, initKey256)
-import           Crypto.Hash.SHA256        (hash)
-import           Crypto.Padding            (padPKCS5, unpadPKCS5)
+import qualified Data.ByteString           as B
 import           Data.ByteString.Char8     (pack)
+import           Data.Digest.SHA256        (hash)
+import           Data.LargeWord
 import           Data.Maybe                (fromJust)
+import qualified Data.Serialize            as S (decode, encode)
+import           Data.Word
 import           Filesystem.Path.CurrentOS ((</>))
 import qualified Filesystem.Path.CurrentOS as FP
 import           HECFS
@@ -19,15 +21,15 @@ main :: IO ()
 main = do
   (Config nodes k) <- readConf "conf.json"
   [op, file] <- getArgs
-  key <- runInputT defaultSettings (getPassword (Just '*') "Password: ") >>= createKey . fromJust
+  key <- runInputT defaultSettings (getPassword (Just '*') "Password: ") >>= return . createKey . fromJust
   let parts = map (FP.encodeString . (</> (FP.decodeString file)) . FP.decodeString) nodes
   case op of
     "en" -> store key file k parts
     "de" -> retrieve key parts k (file ++ ".dec")
     _ -> error "invalid option"
 
-createKey :: String -> IO Key
-createKey = either error return . initKey256 . hash . pack
+createKey :: String -> Word64
+createKey = either error id . S.decode . B.pack . hash . map (fromIntegral . fromEnum)
 
 readConf :: FilePath -> IO Config
 readConf fn = do
