@@ -12,6 +12,7 @@ main :: IO ()
 main = do
   [cs, f] <- getArgs
   let chunkSize = read cs
+  -- D.kmeansDedupe chunkSize f
   (sizeDeduped, sizeOriginal) <- D.dedupeFile chunkSize f
   print (sizeDeduped * chunkSize)
   print (sizeOriginal * chunkSize)
