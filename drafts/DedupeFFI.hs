@@ -39,4 +39,3 @@ kmeansDedupe block_size fp = Bl.readFile fp >>= print . kmeansGen conv 4 . toBlo
         conv = map (fromIntegral . f) . toBlocks 4
         f :: Bl.ByteString -> Int32
         f = either (const 0) id . decodeLazy
-        
