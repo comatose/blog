@@ -1,10 +1,12 @@
 ---
 title: Haskell online courses
 author: comatose
-tags: haskell, monad
+tags: haskell, lecture
 ---
 
 [University of Virginia  CS 1501 Lectures  Spring 2013](http://shuklan.com/haskell/index.html)
+
+[CIS 194: Introduction to Haskell (Spring 2013)](http://www.seas.upenn.edu/~cis194/)
 
 [School of Haskell](https://www.fpcomplete.com/)
 
