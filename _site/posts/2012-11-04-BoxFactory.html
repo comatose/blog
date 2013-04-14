@@ -16,6 +16,7 @@
                 <!-- <a href="/about.html">About</a> -->
                 <!-- <a href="/contact.html">Contact</a> -->
                 <a href="../archive.html">Archive</a>
+		<a href="../pages.html">Pages</a>
 		<a href="../links.html">Links</a>
             </div>
         </div>
@@ -31,12 +32,12 @@
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span> <span class="kw">module</span> <span class="dt">Main</span> <span class="kw">where</span>
 <span class="fu">&gt;</span> 
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Monad</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Monad.Memo</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Monad.State</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Data.Hashable</span>
-<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.HashMap.Lazy</span>           <span class="kw">as</span> <span class="dt">H</span>
-<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.Map</span>                    <span class="kw">as</span> <span class="dt">M</span></code></pre>
+<span class="fu">&gt;</span> <span class="kw">import</span>           Control.Monad
+<span class="fu">&gt;</span> <span class="kw">import</span>           Control.Monad.Memo
+<span class="fu">&gt;</span> <span class="kw">import</span>           Control.Monad.State
+<span class="fu">&gt;</span> <span class="kw">import</span>           Data.Hashable
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> Data.HashMap.Lazy           <span class="kw">as</span> H
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> Data.Map                    <span class="kw">as</span> M</code></pre>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="kw">type</span> <span class="dt">Problem</span> <span class="fu">=</span> ([(<span class="dt">Integer</span>, <span class="dt">Int</span>)], [(<span class="dt">Integer</span>, <span class="dt">Int</span>)])</code></pre>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> solveNaive ::</span> <span class="dt">Problem</span> <span class="ot">-&gt;</span> <span class="dt">String</span>
 <span class="fu">&gt;</span> solveNaive <span class="fu">=</span> <span class="fu">show</span> <span class="fu">.</span> <span class="fu">uncurry</span> go

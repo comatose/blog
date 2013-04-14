@@ -16,6 +16,7 @@
                 <!-- <a href="/about.html">About</a> -->
                 <!-- <a href="/contact.html">Contact</a> -->
                 <a href="../archive.html">Archive</a>
+		<a href="../pages.html">Pages</a>
 		<a href="../links.html">Links</a>
             </div>
         </div>
@@ -29,9 +30,9 @@
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="ot">{-# LANGUAGE NoMonomorphismRestriction #-}</span>
 <span class="fu">&gt;</span> <span class="ot">{-# LANGUAGE FlexibleContexts #-}</span>
 <span class="fu">&gt;</span> 
-<span class="fu">&gt;</span> <span class="kw">import</span> <span class="dt">Control.Monad.Fix</span> (fix)
-<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.Map</span> <span class="kw">as</span> <span class="dt">M</span>
-<span class="fu">&gt;</span> <span class="kw">import</span> <span class="dt">Control.Monad.State</span> <span class="kw">hiding</span> (fix)
+<span class="fu">&gt;</span> <span class="kw">import</span> Control.Monad.Fix (fix)
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> Data.Map <span class="kw">as</span> M
+<span class="fu">&gt;</span> <span class="kw">import</span> Control.Monad.State <span class="kw">hiding</span> (fix)
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span><span class="ot"> fibM' ::</span> (<span class="kw">Monad</span> m) <span class="ot">=&gt;</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> m <span class="dt">Integer</span>) <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> m <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibM' _ <span class="dv">0</span> <span class="fu">=</span> <span class="fu">return</span> <span class="dv">0</span>

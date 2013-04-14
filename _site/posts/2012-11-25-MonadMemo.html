@@ -16,6 +16,7 @@
                 <!-- <a href="/about.html">About</a> -->
                 <!-- <a href="/contact.html">Contact</a> -->
                 <a href="../archive.html">Archive</a>
+		<a href="../pages.html">Pages</a>
 		<a href="../links.html">Links</a>
             </div>
         </div>
@@ -43,11 +44,11 @@ memoln fl fk f k <span class="fu">=</span> <span class="kw">do</span>
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span> <span class="kw">module</span> <span class="dt">Main</span> <span class="kw">where</span>
 <span class="fu">&gt;</span> 
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Monad</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Monad.State</span>
-<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.IntMap</span>           <span class="kw">as</span> <span class="dt">I</span>
-<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Control.Monad.Memo</span>    <span class="kw">as</span> <span class="dt">M4</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">System.Environment</span></code></pre>
+<span class="fu">&gt;</span> <span class="kw">import</span>           Control.Monad
+<span class="fu">&gt;</span> <span class="kw">import</span>           Control.Monad.State
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> Data.IntMap           <span class="kw">as</span> I
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> Control.Monad.Memo    <span class="kw">as</span> M4
+<span class="fu">&gt;</span> <span class="kw">import</span>           System.Environment</code></pre>
 <p><code>fibMM</code>이 monad-memo를 이용한 것</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span><span class="ot"> fibMM ::</span> (<span class="dt">M4.MapLike</span> c <span class="dt">Int</span> <span class="dt">Integer</span>) <span class="ot">=&gt;</span> c <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibMM ml <span class="fu">=</span> (<span class="ot">`M4.evalMemoState`</span> ml) <span class="fu">.</span> f

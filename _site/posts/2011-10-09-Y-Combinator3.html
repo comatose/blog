@@ -16,6 +16,7 @@
                 <!-- <a href="/about.html">About</a> -->
                 <!-- <a href="/contact.html">Contact</a> -->
                 <a href="../archive.html">Archive</a>
+		<a href="../pages.html">Pages</a>
 		<a href="../links.html">Links</a>
             </div>
         </div>
@@ -37,7 +38,7 @@
 <span class="fu">&gt;</span> fibSlow <span class="fu">=</span> fix fib</code></pre>
 <p>함수명 <code>fib</code>는 shadowing 되므로 인자 변수명 <code>fib</code>와는 별개임을 주의. Haskell Syntax의 장점이 돋보인다.</p>
 <p>지금도 충분히 흥미로운데 더욱 흥미로운 것은 이를 간단하게 Memoization을 할 수 있다.</p>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="kw">import</span> <span class="dt">Data.MemoTrie</span>(memo)
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="kw">import</span> Data.MemoTrie(memo)
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span><span class="ot"> fibFast ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span>
 <span class="fu">&gt;</span> fibFast <span class="fu">=</span> fix (memo <span class="fu">.</span> fib)</code></pre>

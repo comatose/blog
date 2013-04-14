@@ -16,6 +16,7 @@
                 <!-- <a href="/about.html">About</a> -->
                 <!-- <a href="/contact.html">Contact</a> -->
                 <a href="../archive.html">Archive</a>
+		<a href="../pages.html">Pages</a>
 		<a href="../links.html">Links</a>
             </div>
         </div>
@@ -39,38 +40,38 @@
 <p><code>fix'</code>은 <code>fix</code>를 좀 더 풀어쓴 형태다. 결과적으로 <code>fix</code>는 <code>f</code>를 <code>f(f(f(... )))</code> 형태로 무한히 적용한다.</p>
 <p><code>factorial</code>의 재귀 버전과 <code>fix</code> 버전은 다음과 같다.</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="co">-- recursive factorial</span>
-<span class="fu">&gt;</span> fact n <span class="fu">=</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> fact (n<span class="dv">-1</span>)
+<span class="fu">&gt;</span> fact n <span class="fu">=</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> fact (n<span class="fu">-</span><span class="dv">1</span>)
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span> <span class="co">-- factorial by fix</span>
-<span class="fu">&gt;</span> fact <span class="fu">=</span> fix (\rec n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> rec (n<span class="dv">-1</span>))</code></pre>
+<span class="fu">&gt;</span> fact <span class="fu">=</span> fix (\rec n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> rec (n<span class="fu">-</span><span class="dv">1</span>))</code></pre>
 <p><code>fix</code>를 이용해서 anonymous recursion이 가능해진다.</p>
 <p><code>fix</code> 버전 <code>fact</code>를 다음과 같이 정의에 따라 확장해도 되고,</p>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> fact' <span class="fu">=</span> \rec n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> rec (n<span class="dv">-1</span>)
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> fact' <span class="fu">=</span> \rec n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> rec (n<span class="fu">-</span><span class="dv">1</span>)
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span> fix fact'
 <span class="fu">&gt;</span>   <span class="fu">=</span> <span class="kw">let</span> x <span class="fu">=</span> fact' x
 <span class="fu">&gt;</span>     <span class="kw">in</span> x
 <span class="fu">&gt;</span>   <span class="fu">=</span> fact' x
-<span class="fu">&gt;</span>   <span class="fu">=</span> (\rec n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> rec (n<span class="dv">-1</span>)) x
-<span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> x (n<span class="dv">-1</span>)
-<span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> fact' x (n<span class="dv">-1</span>)
+<span class="fu">&gt;</span>   <span class="fu">=</span> (\rec n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> rec (n<span class="fu">-</span><span class="dv">1</span>)) x
+<span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> x (n<span class="fu">-</span><span class="dv">1</span>)
+<span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> fact' x (n<span class="fu">-</span><span class="dv">1</span>)
 <span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span>
-<span class="fu">&gt;</span>           <span class="kw">else</span> n <span class="fu">*</span> (\rec n' <span class="ot">-&gt;</span> <span class="kw">if</span> n' <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n' <span class="fu">*</span> rec (n'<span class="fu">-</span><span class="dv">1</span>)) x (n<span class="dv">-1</span>)
+<span class="fu">&gt;</span>           <span class="kw">else</span> n <span class="fu">*</span> (\rec n' <span class="ot">-&gt;</span> <span class="kw">if</span> n' <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n' <span class="fu">*</span> rec (n'<span class="fu">-</span><span class="dv">1</span>)) x (n<span class="fu">-</span><span class="dv">1</span>)
 <span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span>
-<span class="fu">&gt;</span>           <span class="kw">else</span> n <span class="fu">*</span> (<span class="kw">if</span> n<span class="dv">-1</span> <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> (n<span class="dv">-1</span>) <span class="fu">*</span> x (n<span class="dv">-2</span>))
+<span class="fu">&gt;</span>           <span class="kw">else</span> n <span class="fu">*</span> (<span class="kw">if</span> n<span class="fu">-</span><span class="dv">1</span> <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> (n<span class="fu">-</span><span class="dv">1</span>) <span class="fu">*</span> x (n<span class="fu">-</span><span class="dv">2</span>))
 <span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span>
-<span class="fu">&gt;</span>           <span class="kw">else</span> n <span class="fu">*</span> (<span class="kw">if</span> n<span class="dv">-1</span> <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> (n<span class="dv">-1</span>) <span class="fu">*</span> fact' x (n<span class="dv">-2</span>))
+<span class="fu">&gt;</span>           <span class="kw">else</span> n <span class="fu">*</span> (<span class="kw">if</span> n<span class="fu">-</span><span class="dv">1</span> <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> (n<span class="fu">-</span><span class="dv">1</span>) <span class="fu">*</span> fact' x (n<span class="fu">-</span><span class="dv">2</span>))
 <span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span>
-<span class="fu">&gt;</span>           <span class="kw">else</span> n <span class="fu">*</span> (<span class="kw">if</span> n<span class="dv">-1</span> <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span>
-<span class="fu">&gt;</span>                     <span class="kw">else</span> (n<span class="dv">-1</span>) <span class="fu">*</span> (<span class="kw">if</span> n<span class="dv">-2</span> <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span>
-<span class="fu">&gt;</span>                                   <span class="kw">else</span> (n<span class="dv">-2</span>) <span class="fu">*</span> fact' x (n<span class="dv">-3</span>)))
+<span class="fu">&gt;</span>           <span class="kw">else</span> n <span class="fu">*</span> (<span class="kw">if</span> n<span class="fu">-</span><span class="dv">1</span> <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>                     <span class="kw">else</span> (n<span class="fu">-</span><span class="dv">1</span>) <span class="fu">*</span> (<span class="kw">if</span> n<span class="fu">-</span><span class="dv">2</span> <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span>
+<span class="fu">&gt;</span>                                   <span class="kw">else</span> (n<span class="fu">-</span><span class="dv">2</span>) <span class="fu">*</span> fact' x (n<span class="fu">-</span><span class="dv">3</span>)))
 <span class="fu">&gt;</span>   <span class="fu">=</span> <span class="fu">...</span></code></pre>
 <p>또는 <code>fix</code>의 denotational semantics에 의해 다음도 가능하다.</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="co">-- fix will find a fixed point of fact', i.e. the function f such that f == fact' f.</span>
 <span class="fu">&gt;</span> <span class="co">-- But let's expand what this means:</span>
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span> f <span class="fu">=</span> fact' f
-<span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> f (n<span class="dv">-1</span>)</code></pre>
+<span class="fu">&gt;</span>   <span class="fu">=</span> \n <span class="ot">-&gt;</span> <span class="kw">if</span> n <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> <span class="dv">1</span> <span class="kw">else</span> n <span class="fu">*</span> f (n<span class="fu">-</span><span class="dv">1</span>)</code></pre>
 <p><code>fix fact' == fact</code> 가 확인된다.</p>
 
 <div id="disqus_thread"></div>

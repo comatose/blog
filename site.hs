@@ -42,11 +42,31 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
+    match "pages/*" $ do
+        route $ setExtension "html"
+        compile $ pandocCompiler
+            >>= loadAndApplyTemplate "templates/page.html"    defaultContext
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= relativizeUrls
+
+    create ["pages.html"] $ do
+        route idRoute
+        compile $ do
+            let archiveCtx =
+                    field "pages" (\_ -> pageList return) `mappend`
+                    constField "title" "Pages"              `mappend`
+                    defaultContext
+
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/pages.html" archiveCtx
+                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                >>= relativizeUrls
 
     match "index.html" $ do
         route idRoute
         compile $ do
-            let indexCtx = field "posts" $ \_ -> postList (take 13 . recentFirst)
+            let indexCtx = field "posts" $ \_ ->
+                                postList $ fmap (take 13) . recentFirst
 
             getResourceBody
                 >>= applyAsTemplate indexCtx
@@ -64,9 +84,17 @@ postCtx =
 
 
 --------------------------------------------------------------------------------
-postList :: ([Item String] -> [Item String]) -> Compiler String
+postList :: ([Item String] -> Compiler [Item String]) -> Compiler String
 postList sortFilter = do
-    posts   <- sortFilter <$> loadAll "posts/*"
+    posts   <- sortFilter =<< loadAll "posts/*"
     itemTpl <- loadBody "templates/post-item.html"
     list    <- applyTemplateList itemTpl postCtx posts
+    return list
+
+--------------------------------------------------------------------------------
+pageList :: ([Item String] -> Compiler [Item String]) -> Compiler String
+pageList sortFilter = do
+    pages   <- sortFilter =<< loadAll "pages/*"
+    itemTpl <- loadBody "templates/page-item.html"
+    list    <- applyTemplateList itemTpl defaultContext pages
     return list

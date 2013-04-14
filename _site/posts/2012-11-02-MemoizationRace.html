@@ -16,6 +16,7 @@
                 <!-- <a href="/about.html">About</a> -->
                 <!-- <a href="/contact.html">Contact</a> -->
                 <a href="../archive.html">Archive</a>
+		<a href="../pages.html">Pages</a>
 		<a href="../links.html">Links</a>
             </div>
         </div>
@@ -31,17 +32,17 @@
 <span class="fu">&gt;</span> 
 <span class="fu">&gt;</span> <span class="kw">module</span> <span class="dt">Main</span> <span class="kw">where</span>
 <span class="fu">&gt;</span> 
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Exception</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Monad</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Control.Monad.State</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Data.Array</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Data.Hashable</span>
-<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.HashMap.Lazy</span>     <span class="kw">as</span> <span class="dt">H</span>
-<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.IntMap</span>           <span class="kw">as</span> <span class="dt">I</span>
-<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.Map</span>              <span class="kw">as</span> <span class="dt">M</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">System.CPUTime</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">System.Environment</span>
-<span class="fu">&gt;</span> <span class="kw">import</span>           <span class="dt">Text.Printf</span></code></pre>
+<span class="fu">&gt;</span> <span class="kw">import</span>           Control.Exception
+<span class="fu">&gt;</span> <span class="kw">import</span>           Control.Monad
+<span class="fu">&gt;</span> <span class="kw">import</span>           Control.Monad.State
+<span class="fu">&gt;</span> <span class="kw">import</span>           Data.Array
+<span class="fu">&gt;</span> <span class="kw">import</span>           Data.Hashable
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> Data.HashMap.Lazy     <span class="kw">as</span> H
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> Data.IntMap           <span class="kw">as</span> I
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> Data.Map              <span class="kw">as</span> M
+<span class="fu">&gt;</span> <span class="kw">import</span>           System.CPUTime
+<span class="fu">&gt;</span> <span class="kw">import</span>           System.Environment
+<span class="fu">&gt;</span> <span class="kw">import</span>           Text.Printf</code></pre>
 <p>haskell은 memoization이 비교적 쉽게 가능한데, <a href="http://www.haskell.org/hoogle/">hoogle</a>과 <a href="http://holumbus.fh-wedel.de/hayoo/hayoo.html">hayoo</a>를 검색해 보니 총 4개의 package가 검색되었다.</p>
 <ol style="list-style-type: decimal">
 <li><a href="http://hackage.haskell.org/package/memoize">memoize</a></li>
@@ -49,10 +50,10 @@
 <li><a href="http://hackage.haskell.org/package/MemoTrie">MemoTrie</a></li>
 <li><a href="http://hackage.haskell.org/package/monad-memo">monad-memo</a></li>
 </ol>
-<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.Function.Memoize</span> <span class="kw">as</span> <span class="dt">M1</span>
-<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.MemoCombinators</span>  <span class="kw">as</span> <span class="dt">M2</span>
-<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.MemoTrie</span>         <span class="kw">as</span> <span class="dt">M3</span>
-<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Control.Monad.Memo</span>    <span class="kw">as</span> <span class="dt">M4</span></code></pre>
+<pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> Data.Function.Memoize <span class="kw">as</span> M1
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> Data.MemoCombinators  <span class="kw">as</span> M2
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> Data.MemoTrie         <span class="kw">as</span> M3
+<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> Control.Monad.Memo    <span class="kw">as</span> M4</code></pre>
 <p>fibonacci 수열을 대상으로 간단한 benchmark를 수행해 보았다.</p>
 <pre class="sourceCode literate haskell"><code class="sourceCode haskell"><span class="fu">&gt;</span> <span class="kw">instance</span> (<span class="kw">Eq</span> k, <span class="dt">Hashable</span> k) <span class="ot">=&gt;</span> <span class="dt">M4.MapLike</span> (<span class="dt">H.HashMap</span> k v) k v <span class="kw">where</span>
 <span class="fu">&gt;</span>   <span class="fu">lookup</span> <span class="fu">=</span> H.lookup
