@@ -21,3 +21,5 @@ tags: haskell, monad
 [What makes the free monad free?](http://blog.functorial.com/posts/2012-07-22-What-Makes-The-Free-Monad-Free.html)
 
 [A language and its interpretation - Learning free monads](http://debasishg.blogspot.kr/2013/01/a-language-and-its-interpretation.html)
+
+[Free monad transformers](http://www.haskellforall.com/2012/07/free-monad-transformers.html)
