@@ -19,6 +19,8 @@ title: Monads
 [The Less Travelled Monad Tutorial: Understanding Kinds](http://softwaresimply.blogspot.kr/2012/04/less-travelled-monad-tutorial-part-1.html
 )
 
+[Why Do Monads Matter?](http://cdsmith.wordpress.com/2012/04/18/why-do-monads-matter/)
+
 [The Greenhorn's Guide to becoming a Monad Cowboy](http://www.muitovar.com/monad/moncow.xhtml)
 
 [Haskell lottery: a nice and easy example of monads and monad transformers](http://joaopizani.hopto.org/en/2012/01/haskell-transformers/)
